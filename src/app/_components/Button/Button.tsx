@@ -5,6 +5,9 @@ import { ButtonProps, ButtonShape } from "./Button.type";
 import dynamic from "next/dynamic";
 import { useLocale } from "next-intl";
 import { Mobile } from "../icons";
+const MobileIcon = dynamic(() => import("@/app/_components/icons/Mobile"), {
+  ssr: true,
+});
 
 const sizeClasses: Record<Size, string> = {
   tiny: "btn-xs",
@@ -23,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = "Contained",
   dimensions = "medium",
   isDisabled = false,
-  icon,
+  icon = <MobileIcon />,
   borderColor = "light",
   shape = "default",
   type = "button",
@@ -48,9 +51,7 @@ const Button: React.FC<ButtonProps> = ({
       {...rest}
     >
       <div className="btn-text-wrapper">{children}</div>
-      <div className="btn-icon">
-        <Mobile />
-      </div>
+      <div className="btn-icon">{icon}</div>
     </button>
   );
 };
