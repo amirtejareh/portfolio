@@ -1,14 +1,15 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import localFont from "next/font/local";
-import { Roboto } from "next/font/google";
+import { Rubik } from "next/font/google";
 import QueryProvider from "@/providers/react-query-provider";
 
-const roboto = Roboto({
+const rubik = Rubik({
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-roboto",
-  weight: ["100", "300", "400", "500", "700", "700", "900"],
+  variable: "--font-rubik",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal"],
 });
 
 const peyda = localFont({
@@ -76,7 +77,7 @@ export default async function LocaleLayout({
       lang={locale}
       dir={locale === "fa" ? "rtl" : "ltr"}
       suppressHydrationWarning={true}
-      className={`${peyda.variable} ${roboto.variable}`}
+      className={`${peyda.variable} ${rubik.variable}`}
     >
       <body>
         <QueryProvider>

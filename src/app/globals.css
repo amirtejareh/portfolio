@@ -22,11 +22,11 @@ html {
 }
 
 :lang(en) {
-  font-family: var(--font-roboto);
+  font-family: var(--font-rubik);
 }
 
 .en {
-  font-family: var(--font-roboto);
+  font-family: var(--font-rubik);
 }
 
 .fa {

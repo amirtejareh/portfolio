@@ -1,14 +1,15 @@
 import "./globals.css";
 import localFont from "next/font/local";
-import { Roboto } from "next/font/google";
+import { Rubik } from "next/font/google";
 import MessagesProvider from "./[locale]/MessageProvider";
 import { useLocale } from "next-intl";
 
-const roboto = Roboto({
+const rubik = Rubik({
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-roboto",
-  weight: ["100", "300", "400", "500", "700", "900"],
+  variable: "--font-rubik",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal"],
 });
 
 const peyda = localFont({
@@ -73,7 +74,7 @@ export default function RootLayout({
       suppressHydrationWarning={true}
       lang={locale}
       dir={locale === "fa" ? "rtl" : "ltr"}
-      className={`${peyda.variable} ${roboto.variable}`}
+      className={`${peyda.variable} ${rubik.variable}`}
     >
       <MessagesProvider locale={locale}>
         <body>{children}</body>
