@@ -1,0 +1,34 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "../tailwind/components.css";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --color-primary: theme("colors.primary");
+    --color-white: theme("colors.white");
+    --color-black: theme("colors.black");
+    --color-background: theme("colors.background");
+    --color-hover: theme("colors.hover");
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html {
+  font-family: var(--font-peyda);
+}
+
+:lang(en) {
+  font-family: var(--font-roboto);
+}
+
+.en {
+  font-family: var(--font-roboto);
+}
+
+.fa {
+  font-family: var(--font-peyda);
+}
