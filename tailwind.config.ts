@@ -9,7 +9,7 @@ export const tailwindColors: ColorObject = {
   white: "rgba(255, 255, 255, 1) ",
   black: "rgba(17, 17, 17, 1) ",
   background: "rgba(242, 242, 242, 1)",
-  primary: "rgba(178, 118, 41, 1)",
+  primary: "rgba(239, 142, 53, 1)",
   hover: "rgba(151, 97, 27, 1)",
   "secondary-1": "rgba(243, 183, 0, 1)",
   "secondary-2": "rgba(72, 50, 14, 1) ",
