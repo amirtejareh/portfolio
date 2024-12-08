@@ -4,7 +4,6 @@ import { Size } from "../types/size.type";
 import { ButtonProps, ButtonShape } from "./Button.type";
 import dynamic from "next/dynamic";
 import { useLocale } from "next-intl";
-import { Mobile } from "../icons";
 const MobileIcon = dynamic(() => import("@/app/_components/icons/Mobile"), {
   ssr: true,
 });

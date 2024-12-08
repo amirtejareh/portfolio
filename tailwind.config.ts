@@ -8,7 +8,10 @@ type ColorObject = {
 export const tailwindColors: ColorObject = {
   white: "rgba(255, 255, 255, 1) ",
   black: "rgba(17, 17, 17, 1) ",
-  gray: "rgba(224, 224, 224, 1)",
+  gray: "rgba(206, 206, 206, 1)",
+  darkGray: "rgba(178, 178, 178, 1)",
+  mirror: "rgba(100, 100, 100, 0.2)",
+  lightGray: "rgba(33, 33, 30, 1)",
   background: "rgba(242, 242, 242, 1)",
   primary: "rgba(239, 142, 53, 1)",
   hover: "rgba(151, 97, 27, 1)",
@@ -35,6 +38,12 @@ const config: Config = {
     extend: {
       boxShadow: {
         custom: "0 4px 10px 0 rgba(0,0,0,0.1)",
+      },
+      fontFamily: {
+        lobster: ["var(--font-lobster-two)", "cursive"],
+        rubik: ["var(--font-rubik)", "sans-serif"],
+        peyda: ["var(--font-peyda)", "sans-serif"],
+        moul: ["var(--font-moul)", "sans-serif"],
       },
       backgroundImage: {
         "custom-gradient":

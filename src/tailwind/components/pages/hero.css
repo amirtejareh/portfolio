@@ -1,0 +1,3 @@
+.hero li {
+  @apply hover:text-primary;
+}
