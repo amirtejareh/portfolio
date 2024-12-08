@@ -8,6 +8,7 @@ type ColorObject = {
 export const tailwindColors: ColorObject = {
   white: "rgba(255, 255, 255, 1) ",
   black: "rgba(17, 17, 17, 1) ",
+  gray: "rgba(224, 224, 224, 1)",
   background: "rgba(242, 242, 242, 1)",
   primary: "rgba(239, 142, 53, 1)",
   hover: "rgba(151, 97, 27, 1)",
