@@ -35,7 +35,7 @@ const Hero = () => {
           <span className="text-white !font-lobster text-[32px] font-[400] pt-24 px-64">
             Amir Tejareh
           </span>
-          <div className="relative z-30 text-white flex justify-end items-center gap-[160px] rounded-es-[40px] px-64">
+          <div className="relative z-30 isolate bg-mirror  text-white flex justify-end items-center gap-[160px] rounded-es-[40px] px-64">
             <header>
               <nav>
                 <ul className="flex space-x-16 text-16 font-[400] leading-[32px]">
