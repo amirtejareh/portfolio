@@ -19,7 +19,7 @@ const Switch: React.FC<SwitchProps> = ({
   className,
   ...rest
 }) => {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(true);
   const classes = classNames("switch", className, {
     [`switch-${color}`]: color,
     [`${sizeClasses[dimensions]}`]: dimensions,

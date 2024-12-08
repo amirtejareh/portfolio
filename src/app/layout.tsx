@@ -1,6 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
-import { Rubik } from "next/font/google";
+import { Rubik, Lobster_Two, Moul } from "next/font/google";
 import MessagesProvider from "./[locale]/MessageProvider";
 import { useLocale } from "next-intl";
 
@@ -10,6 +10,22 @@ const rubik = Rubik({
   variable: "--font-rubik",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   style: ["normal"],
+});
+
+const lobsterTwo = Lobster_Two({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal"],
+  variable: "--font-lobster-two",
+});
+
+const moul = Moul({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal"],
+  variable: "--font-moul",
 });
 
 const peyda = localFont({
@@ -74,7 +90,7 @@ export default function RootLayout({
       suppressHydrationWarning={true}
       lang={locale}
       dir={locale === "fa" ? "rtl" : "ltr"}
-      className={`${peyda.variable} ${rubik.variable}`}
+      className={`${peyda.variable} ${rubik.variable}  ${lobsterTwo.variable} ${moul.variable}`}
     >
       <MessagesProvider locale={locale}>
         <body>{children}</body>

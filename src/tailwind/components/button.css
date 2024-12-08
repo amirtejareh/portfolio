@@ -2,11 +2,11 @@
   @apply gap-[16px] text-[16px] border-[1px] border-primary border-solid rounded-[10px] flex justify-between items-center  relative overflow-hidden;
 
   &-text-wrapper {
-    @apply pl-[16px] py-[8px];
+    @apply pl-[16px] py-[8px] grow;
   }
 
   &-icon {
-    @apply bg-primary px-[10px] py-[8px];
+    @apply bg-primary px-[10px] py-[8px] flex h-[100%] items-center justify-center;
   }
 
   &-xs {
@@ -14,7 +14,13 @@
   }
 
   &-sm {
-    @apply h-[64px] text-[16px] font-[500] leading-[24px];
+    @apply h-[64px] text-[16px] font-[500] leading-[24px] w-[233px];
+  }
+  &-lg {
+    @apply h-[64px] rounded-[16px] text-[16px] font-[500] leading-[24px] w-[233px];
+    .btn-icon {
+      @apply w-[80px];
+    }
   }
 
   &-block {
