@@ -1,0 +1,25 @@
+.switch {
+  @apply w-[47px] h-[20px]  inline-flex items-center cursor-pointer rounded-[10px] border-solid border-[1px] border-gray relative;
+}
+
+.switch-input {
+  @apply hidden absolute;
+}
+
+.switch-slider {
+  @apply rounded-[10px];
+  transition: background-color 0.3s;
+}
+
+.switch-checked .switch-slider {
+  @apply bg-primary w-[16px] h-[16px] rounded-[8px] absolute right-[2px];
+}
+
+.switch-unchecked .switch-slider {
+  @apply bg-primary w-[16px] h-[16px] rounded-[8px] absolute left-[2px];
+}
+
+.switch-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
