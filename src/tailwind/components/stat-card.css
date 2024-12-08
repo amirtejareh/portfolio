@@ -1,0 +1,26 @@
+.stat-card {
+  @apply flex  items-center gap-16 justify-center w-[222px] h-[96px] backdrop-blur-[12px] rounded-[8px] border-solid border-[0.5px] border-statCardBorder bg-[linear-gradient(to-bottom,rgba(33,33,30,0.08),rgba(33,33,30,0.8))];
+
+  &-text {
+    @apply text-[14px] leading-[24px] font-[400] w-[73px] h-[48px] text-statCardTextColor;
+  }
+
+  &-count {
+    @apply text-[40px] leading-[32px] font-[600] text-primary;
+  }
+  &-shining {
+    @apply absolute  w-[32px] h-[23px] rounded-[4px] 
+    bg-[linear-gradient(180deg,_#EF8E35_0%,_rgba(239,142,53,0.25)_47.5%,_rgba(239,142,53,0)_100%)] 
+                   shadow-[0px_0px_5px_0px_rgba(239,142,53,0.4)]  -z-10;
+  }
+
+  &-top {
+    @apply left-[77px] top-[-1px];
+  }
+  &-right {
+    @apply right-[-7px] rotate-90 top-[16px];
+  }
+  &-bottom {
+    @apply right-[9px] rotate-180 bottom-[-2px];
+  }
+}

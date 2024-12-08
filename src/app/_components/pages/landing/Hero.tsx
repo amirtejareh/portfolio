@@ -102,7 +102,7 @@ const Hero = () => {
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute top-[133px] right-0 z-20"
       >
-        <div className="absolute bottom-[200px] left-[50px] z-20">
+        <div className="absolute bottom-[200px] hover:cursor-pointer left-[50px] z-20">
           <SvgCv />
         </div>
         <Image

@@ -79,7 +79,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning={true}
       className={`${peyda.variable} ${rubik.variable}`}
     >
-      <body>
+      <body className="bg-background">
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
             {children}

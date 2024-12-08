@@ -33,8 +33,6 @@ const Button: React.FC<ButtonProps> = ({
   className,
   ...rest
 }) => {
-  console.log(className, "className");
-
   const locale = useLocale();
   const classes = classNames("btn", classNames, {
     [`btn-${variant}`]: variant,
