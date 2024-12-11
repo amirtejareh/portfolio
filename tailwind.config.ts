@@ -34,7 +34,7 @@ const config: Config = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
-      lg: "1440px",
+      lg: "1360px",
       md: "1280px",
       sm: "744px",
       xs: "360px",

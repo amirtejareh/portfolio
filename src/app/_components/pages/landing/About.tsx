@@ -29,9 +29,9 @@ const About = () => {
         About Me
       </h2>
 
-      <div className="flex justify-start mt-[56px] gap-[80px]">
+      <div className="flex justify-center  md:!justify-start mt-[56px] gap-[20px] md:!gap-[80px]">
         <motion.div
-          className="flex justify-start mt-[56px] gap-[80px]"
+          className="flex justify-center md:!justify-start mt-[56px] flex-wrap gap-[20px] md:!gap-[80px]"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -39,7 +39,7 @@ const About = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="relative overflow-hidden w-[394px] h-[360px] rounded-se-[64px] border-solid border-[1px] border-border mb-[50px]"
+            className="relative overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] border-solid border-[1px] border-border mb-[50px]"
           >
             <Image
               src={`/images/about.png`}
@@ -55,7 +55,7 @@ const About = () => {
           <div className="flex flex-col">
             <motion.div
               variants={itemVariants}
-              className="max-w-[709px] text-text leading-[32px] text-[18px] font-[400]"
+              className="max-w-[709px] px-32 text-text leading-[32px] text-[18px] font-[400]"
             >
               I’m a full-stack developer with over 10 years of experience,
               specializing in frontend technologies like HTML, CSS, and
@@ -68,7 +68,7 @@ const About = () => {
 
             <motion.div
               variants={containerVariants}
-              className="flex mt-[104px] gap-16"
+              className="flex justify-center md:!justify-start flex-wrap mt-[80px] md:!mt-[104px] gap-16"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}

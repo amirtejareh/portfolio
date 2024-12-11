@@ -1,5 +1,32 @@
+@keyframes moveAround {
+  0% {
+    top: -2px;
+    left: -4px;
+    transform: translate(0, 0);
+  }
+  25% {
+    top: -2px;
+    left: 224px;
+    transform: translate(-100%, 0);
+  }
+  50% {
+    top: 98px;
+    left: 224px;
+    transform: translate(-100%, -100%);
+  }
+  75% {
+    top: 98px;
+    left: -2px;
+    transform: translate(0, -100%);
+  }
+  100% {
+    top: -2px;
+    left: -2px;
+    transform: translate(0, 0);
+  }
+}
 .stat-card {
-  @apply flex  items-center gap-16 justify-center w-[222px] h-[96px] backdrop-blur-[12px] rounded-[8px] border-solid border-[0.5px] border-statCardBorder bg-[linear-gradient(to-bottom,rgba(33,33,30,0.08),rgba(33,33,30,0.8))];
+  @apply flex items-center gap-16 justify-center w-[222px] h-[96px] backdrop-blur-[12px] rounded-[8px] border-solid border-[0.5px] border-statCardBorder bg-[linear-gradient(to-bottom,rgba(33,33,30,0.08),rgba(33,33,30,0.8))];
 
   &-text {
     @apply text-[14px] leading-[24px] font-[400] w-[73px] h-[48px] text-statCardTextColor;
@@ -8,10 +35,11 @@
   &-count {
     @apply text-[40px] leading-[32px] font-[600] text-primary;
   }
+
   &-shining {
-    @apply absolute  w-[32px] h-[23px] rounded-[4px] 
-    bg-[linear-gradient(180deg,_#EF8E35_0%,_rgba(239,142,53,0.25)_47.5%,_rgba(239,142,53,0)_100%)] 
-                   shadow-[0px_0px_5px_0px_rgba(239,142,53,0.4)]  -z-10;
+    @apply absolute w-[32px] !z-[-1] h-[23px] rounded-[4px] bg-primary    bg-[linear-gradient(180deg,_#EF8E35_0%,_rgba(239,142,53,0.25)_47.5%,_rgba(239,142,53,0)_100%)];
+    will-change: transform;
+    animation: moveAround 2s linear infinite;
   }
 
   &-top {

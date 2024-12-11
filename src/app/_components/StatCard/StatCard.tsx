@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { StatCardProps } from "./StatCard.type";
 
@@ -11,10 +11,18 @@ const StatCard: React.FC<StatCardProps> = ({
   ...rest
 }) => {
   const classes = classNames("stat-card", classNames);
+  const [visible, setVisible] = useState("hidden");
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible("visible");
+    }, 1000);
+  }, []);
 
   return (
     <div className="relative">
-      <div className={`stat-card-shining stat-card-${shiningPosition}`}></div>
+      <div
+        className={`${visible} -z-10 stat-card-shining stat-card-${shiningPosition}`}
+      ></div>
 
       <div className={`relative ${className} ${classes}`} {...rest}>
         <div className="stat-card-count relative z-10">
