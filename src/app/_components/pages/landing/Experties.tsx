@@ -51,10 +51,10 @@ const Experties = () => {
       <div
         id="Expertise"
         ref={containerRef}
-        className="relative  gap-[62px] justify-center overflow-hidden flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-[98px]"
+        className="relative flex-wrap gap-[10px]  md:!gap-[62px] justify-center overflow-hidden flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-auto min-h-[98px]"
       >
         {items.map((item, index) => (
-          <div key={index} className="flex">
+          <div key={index} className="flex scale-[0.6] sm:!scale-100">
             {item}
           </div>
         ))}
@@ -66,10 +66,10 @@ const Experties = () => {
             I’m a full-stack developer and I work remotely from Iran
           </div>
         </div>
-        <div className="w-[711px] mt-[8px] sm:!mt-0 text-white pl-[10px] sm:!pl-[41px] border-l-[1px] border-solid border-statCardBorder">
+        <div className="w-[100%] max-w-[711px] mt-[8px] sm:!mt-0 text-white pl-[10px] sm:!pl-[41px] border-l-[1px] border-solid border-statCardBorder">
           <div className="flex justify-between">
             <div className="text-[20px]">
-              <div>Asa Co</div>
+              <div className="w-[150px] md:!w-auto ">Asa Co</div>
               <div className="text-[16px] text-darkGray">
                 Head of Frontend Development
               </div>
@@ -78,7 +78,7 @@ const Experties = () => {
           </div>
           <div className="flex justify-between">
             <div className="text-[20px]">
-              <div>Hafez Brokerage</div>
+              <div className="w-[150px] md:!w-auto">Hafez Brokerage</div>
               <div className="text-[16px] text-darkGray">
                 Senior Frontend Developer
               </div>
@@ -87,7 +87,7 @@ const Experties = () => {
           </div>
           <div className="flex justify-between">
             <div className="text-[20px]">
-              <div>Gaj Market</div>
+              <div className="w-[150px] md:!w-auto">Gaj Market</div>
               <div className="text-[16px] text-darkGray">
                 Frontend Developer
               </div>
@@ -96,7 +96,9 @@ const Experties = () => {
           </div>
           <div className="flex justify-between">
             <div className="text-[20px]">
-              <div>Novin Hi-Tech Solutions (Keshavarzi Bank)</div>
+              <div className="w-[150px] md:!w-auto">
+                Novin Hi-Tech Solutions (Keshavarzi Bank)
+              </div>
               <div className="text-[16px] text-darkGray">
                 Frontend Developer
               </div>
@@ -105,7 +107,9 @@ const Experties = () => {
           </div>
           <div className="flex justify-between">
             <div className="text-[20px]">
-              <div>Shamsipour Technical and Vocational University</div>
+              <div className="w-[150px] md:!w-auto">
+                Shamsipour Technical and Vocational University
+              </div>
               <div className="text-[16px] text-darkGray">
                 University Lecturer
               </div>
@@ -114,7 +118,7 @@ const Experties = () => {
           </div>
           <div className="flex justify-between">
             <div className="text-[20px]">
-              <div>Hotelyar</div>
+              <div className="w-[150px] md:!w-auto">Hotelyar</div>
               <div className="text-[16px] text-darkGray">
                 Full-Stack PHP Developer
               </div>

@@ -32,6 +32,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
             data?.map((tab: any, index) => {
               return (
                 <div
+                  key={index}
                   ref={index == 0 ? projectRef : null}
                   onClick={() => {
                     printPosts(index);
@@ -41,7 +42,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
                     active == index
                       ? "  text-primary"
                       : "text-border hover:border-primary hover:text-primary"
-                  } px-[21px] rounded-[24px] cursor-pointer  min-w-[143px] hover:border-primary hover:text-primary]  flex justify-center  items-center py-[8px] border-[1px] border-solid bordeer-border text-[20px]`}
+                  } px-[21px] rounded-[24px] cursor-pointer min-w-[95px]  md:!min-w-[143px] hover:border-primary hover:text-primary]  flex justify-center  items-center py-[8px] border-[1px] border-solid bordeer-border text-[16px] md:!text-[20px]`}
                 >
                   {tab?.title}
                 </div>
@@ -50,10 +51,13 @@ const Tab: React.FC<ITab> = ({ data }) => {
         </div>
       </div>
 
-      <div className="flex mt-[56px] gap-[32px] flex-wrap">
+      <div className="flex mt-[56px] gap-[32px] flex-wrap justify-center md:!justify-normal">
         {posts?.length > 0 &&
-          posts?.map((post) => (
-            <div className="relative flex-shrink-0 flex-wrap flex w-[600px] h-[383px]">
+          posts?.map((post, index) => (
+            <div
+              key={index}
+              className="relative flex-shrink-0 flex-wrap flex w-[300px] md:!w-[600px] h-[200px] md:!h-[383px]"
+            >
               <Image
                 src={`/images/gym.png`}
                 loading="lazy"

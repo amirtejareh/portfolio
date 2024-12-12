@@ -36,9 +36,11 @@ const Skills = () => {
         <div className="text-primary !font-moul text-[40px] text-center">
           My Skills
         </div>
-        <div className="flex px-64 gap-[40px] mt-[56px] flex-wrap">
-          {skillCardOptions?.map((skill) => {
-            return <SkillCard title={skill.title} logo={skill.logo} />;
+        <div className="flex px-64 gap-[40px] mt-[56px] flex-wrap justify-center md:!justify-normal">
+          {skillCardOptions?.map((skill, index) => {
+            return (
+              <SkillCard key={index} title={skill.title} logo={skill.logo} />
+            );
           })}
         </div>
       </div>

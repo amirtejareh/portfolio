@@ -15,14 +15,16 @@ const Footer = () => {
   return (
     <div className="px-64 mb-[100px]">
       <div className="mt-[110px]   h-[1px] bg-[rgb(135,135,135,1)]"></div>
-      <div className="mt-[33px] flex justify-around">
+      <div className="mt-[33px] flex flex-wrap md:!flex-nowrap justify-around">
         <div className="flex flex-col">
-          <span className="text-[40px] text-border">
+          <span className="text-[40px] text-center md:!text-left text-border">
             Do You have a project?
           </span>
-          <span className="text-[40px] text-border">Let's Talk</span>
+          <span className="text-[40px] text-border text-center md:!text-left">
+            Let's Talk
+          </span>
         </div>
-        <div className="text-white">
+        <div className="text-white ">
           <Button icon={<ArrowRightIcon />} dimensions="large">
             <a className="text-16 text-text" href="tel:+989126903127">
               Available for projects
@@ -31,8 +33,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-[33px]   h-[1px] bg-[rgb(135,135,135,1)]"></div>
-      <div className="flex justify-around">
-        <div className="mt-[44px] text-border text-16">
+      <div className="flex justify-around flex-wrap flex-col-reverse md:!flex-nowrap md:!flex-row">
+        <div className="mt-[44px] text-border text-16 text-center md:!text-left">
           © Amir Tejareh All Rights Reserved
         </div>
         <div className="flex mt-[18px] gap-[9px]">
