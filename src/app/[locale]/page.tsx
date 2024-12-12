@@ -25,6 +25,10 @@ const Services = dynamic(
   }
 );
 
+const Work = dynamic(() => import("@/app/_components/pages/landing/Work"), {
+  ssr: true,
+});
+
 export default function HomePage() {
   return (
     <>
@@ -33,6 +37,7 @@ export default function HomePage() {
       <Experties />
       <Skills />
       <Services />
+      <Work />
     </>
   );
 }
