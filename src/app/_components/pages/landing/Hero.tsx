@@ -42,22 +42,17 @@ const Hero = () => {
           <header>
             <nav>
               <ul className="flex space-x-8 ext-[16px] leading-[32px]">
-                {[
-                  "About",
-                  "Expertise",
-                  "Skills",
-                  "Services",
-                  "Work",
-                  "Award",
-                ].map((item) => (
-                  <motion.li
-                    key={item}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <a href={`#${item}`}>{item}</a>
-                  </motion.li>
-                ))}
+                {["About", "Expertise", "Skills", "Services", "Work"].map(
+                  (item) => (
+                    <motion.li
+                      key={item}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <a href={`#${item}`}>{item}</a>
+                    </motion.li>
+                  )
+                )}
               </ul>
             </nav>
           </header>

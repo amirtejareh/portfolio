@@ -22,8 +22,8 @@ const PricingCard: React.FC<IPricingCard> = ({
       <div className="flex justify-between mt-[40px]">
         <div className="text-[28px] text-border">{title}</div>
         <div className="text-primary text-[40px] font-bold">
-          {price}
           {sign}
+          {price}
         </div>
       </div>
       <div className="mt-16 text-[18px] text-darkGray">{subtitle}</div>

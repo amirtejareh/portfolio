@@ -17,7 +17,7 @@
     @apply h-[64px] text-[16px] font-[500] leading-[24px] w-[233px];
   }
   &-lg {
-    @apply h-[64px] rounded-[16px] text-[16px] font-[500] leading-[24px] w-[233px];
+    @apply h-[64px] rounded-[16px] text-[16px] font-[500] leading-[24px] min-w-[233px] w-auto;
     .btn-icon {
       @apply w-[80px];
     }

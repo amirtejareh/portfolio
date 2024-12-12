@@ -49,9 +49,10 @@ const Services = () => {
           <PricingCard
             title={service.title}
             subtitle={service.subtitle}
-            price={100}
+            price={5000}
             services={service.services}
             servicesLogo={service.logo}
+            sign="$"
           />
         </div>
       ))}
