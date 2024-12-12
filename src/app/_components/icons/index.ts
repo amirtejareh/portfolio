@@ -1,4 +1,5 @@
 export { default as Angular } from "./Angular";
+export { default as App } from "./App";
 export { default as ArrowRight } from "./ArrowRight";
 export { default as Asa } from "./Asa";
 export { default as Bootstrap } from "./Bootstrap";
@@ -17,3 +18,4 @@ export { default as Node } from "./Node";
 export { default as React } from "./React";
 export { default as Rest } from "./Rest";
 export { default as Seo } from "./Seo";
+export { default as Web } from "./Web";

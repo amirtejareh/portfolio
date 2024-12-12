@@ -14,7 +14,7 @@ import SvgMongodb from "../../../_components/icons/Mongodb";
 import SvgSeo from "../../../_components/icons/Seo";
 import SvgFlutter from "../../../_components/icons/Flutter";
 
-const Skill = () => {
+const Skills = () => {
   const skillCardOptions = [
     { title: "React Js", logo: <SvgReact /> },
     { title: "Node Js", logo: <SvgNode /> },
@@ -32,7 +32,7 @@ const Skill = () => {
   ];
   return (
     <>
-      <div className="mt-[120px]">
+      <div className="mt-[120px]" id="Skills">
         <div className="text-primary !font-moul text-[40px] text-center">
           My Skills
         </div>
@@ -46,4 +46,4 @@ const Skill = () => {
   );
 };
 
-export default Skill;
+export default Skills;

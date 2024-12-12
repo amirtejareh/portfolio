@@ -46,7 +46,7 @@ const Hero = () => {
                   "About",
                   "Expertise",
                   "Skills",
-                  "Service",
+                  "Services",
                   "Work",
                   "Award",
                 ].map((item) => (

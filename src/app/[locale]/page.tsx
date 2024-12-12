@@ -11,14 +11,19 @@ const About = dynamic(() => import("@/app/_components/pages/landing/About"), {
 
 const Experties = dynamic(
   () => import("@/app/_components/pages/landing/Experties"),
+  { ssr: true }
+);
+
+const Skills = dynamic(() => import("@/app/_components/pages/landing/Skills"), {
+  ssr: true,
+});
+
+const Services = dynamic(
+  () => import("@/app/_components/pages/landing/Services"),
   {
     ssr: true,
   }
 );
-
-const Skill = dynamic(() => import("@/app/_components/pages/landing/Skill"), {
-  ssr: true,
-});
 
 export default function HomePage() {
   return (
@@ -26,7 +31,8 @@ export default function HomePage() {
       <Hero />
       <About />
       <Experties />
-      <Skill />
+      <Skills />
+      <Services />
     </>
   );
 }
