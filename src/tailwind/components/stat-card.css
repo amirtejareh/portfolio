@@ -26,8 +26,7 @@
   }
 }
 .stat-card {
-  @apply flex items-center gap-16 justify-center w-[222px] h-[96px] backdrop-blur-[12px] rounded-[8px] border-solid border-[0.5px] border-statCardBorder bg-[linear-gradient(to-bottom,rgba(33,33,30,0.08),rgba(33,33,30,0.8))];
-
+  @apply flex items-center gap-16 justify-center w-[222px] h-[96px] backdrop-blur-[12px] rounded-[8px] border-solid border-[0.5px] border-statCardBorder bg-[linear-gradient(90deg,_rgba(33,33,30,0.08)_0%,_rgba(33,33,30,0.8)_100%)];
   &-text {
     @apply text-[14px] leading-[24px] font-[400] w-[73px] h-[48px] text-statCardTextColor;
   }
