@@ -24,7 +24,7 @@ const About = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.1 } },
   };
   return (
-    <div className="about px-64">
+    <div id="About" className="px-64">
       <h2 className="mt-[120px] !font-moul text-[40px] font-[400] leading-[60px] text-primary">
         About Me
       </h2>

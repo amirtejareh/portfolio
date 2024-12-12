@@ -55,7 +55,7 @@ const Hero = () => {
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <a href="#">{item}</a>
+                    <a href={`#${item}`}>{item}</a>
                   </motion.li>
                 ))}
               </ul>
@@ -63,9 +63,9 @@ const Hero = () => {
           </header>
           <div className="flex gap-[24px] md:!gap-64 mr-[10px] md:!mr-[38px]">
             <div className="flex items-center gap-8">
-              <span>light</span>
+              <span>light </span>
               <Switch isChecked={true} />
-              <span>dark</span>
+              <span>dark </span>
             </div>
 
             <div>
