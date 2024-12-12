@@ -61,7 +61,7 @@ const About = () => {
               specializing in frontend technologies like HTML, CSS, and
               JavaScript, along with frameworks such as React and Angular. I
               have a solid grasp of backend systems for seamless integration and
-              stay updated on industry trends. I'm eager to connect with
+              stay updated on industry trends. I&rsquo;m eager to connect with
               professionals to explore new opportunities and enhance the digital
               landscape.
             </motion.div>

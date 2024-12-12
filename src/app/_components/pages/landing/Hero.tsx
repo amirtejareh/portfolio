@@ -86,7 +86,7 @@ const Hero = () => {
             Amir Tejareh
           </div>
           <div className="mt-[24px] pl-[16px] border-l-2 border-primary text-darkGray  text-[20px] lleading-[32px] max-w-[400px]">
-            I'm a full-stack developer and I work remotely from Iran
+            I&rsquo;m a full-stack developer and I work remotely from Iran
           </div>
           <div className="mt-[40px] text-white">
             <Button icon={<ArrowRightIcon />} dimensions="large">

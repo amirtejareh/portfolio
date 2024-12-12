@@ -21,7 +21,7 @@ const Footer = () => {
             Do You have a project?
           </span>
           <span className="text-[40px] text-border text-center md:!text-left">
-            Let's Talk
+            Let&rsquo; Talk
           </span>
         </div>
         <div className="text-white ">

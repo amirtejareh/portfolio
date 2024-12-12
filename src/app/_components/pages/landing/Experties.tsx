@@ -13,7 +13,11 @@ const SvgHotelyar = dynamic(() => import("@/app/_components/icons/Hotelyar"), {
 });
 
 const Experties = () => {
-  const items = [<SvgHafez />, <SvgAsa />, <SvgHotelyar />];
+  const items = [
+    { id: 1, component: <SvgHafez /> },
+    { id: 2, component: <SvgAsa /> },
+    { id: 3, component: <SvgHotelyar /> },
+  ];
   const containerRef = useRef(null);
 
   // useEffect(() => {
@@ -53,9 +57,9 @@ const Experties = () => {
         ref={containerRef}
         className="relative flex-wrap gap-[10px]  md:!gap-[62px] justify-center overflow-hidden flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-auto min-h-[98px]"
       >
-        {items.map((item, index) => (
-          <div key={index} className="flex scale-[0.6] sm:!scale-100">
-            {item}
+        {items.map((item) => (
+          <div key={item.id} className="flex scale-[0.6] sm:!scale-100">
+            {item.component}
           </div>
         ))}
       </div>
