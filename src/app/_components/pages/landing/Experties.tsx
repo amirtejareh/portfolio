@@ -1,52 +1,60 @@
 import React from "react";
-import SvgHafez from "../../../_components/icons/Hafez";
-import SvgAsa from "../../../_components/icons/Asa";
-import SvgHotelyar from "../../../_components/icons/Hotelyar";
+import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
+
+const SvgHafez = dynamic(() => import("@/app/_components/icons/Hafez"), {
+  ssr: true,
+});
+const SvgAsa = dynamic(() => import("@/app/_components/icons/Asa"), {
+  ssr: true,
+});
+const SvgHotelyar = dynamic(() => import("@/app/_components/icons/Hotelyar"), {
+  ssr: true,
+});
 
 const Experties = () => {
   const items = [<SvgHafez />, <SvgAsa />, <SvgHotelyar />];
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const elements = Array.from(container.children) as HTMLElement[];
+  // useEffect(() => {
+  //   const container = containerRef.current;
+  //   const elements = Array.from(container.children) as HTMLElement[];
 
-    const speed = 1;
-    const gap = 50;
+  //   const speed = 1;
+  //   const gap = 50;
 
-    const containerWidth = container.offsetWidth;
-    const elementWidth = elements[0].offsetWidth;
-    const totalWidth = elementWidth + gap;
+  //   const containerWidth = container.offsetWidth;
+  //   const elementWidth = elements[0].offsetWidth;
+  //   const totalWidth = elementWidth + gap;
 
-    elements.forEach((el, index) => {
-      let position = -index * totalWidth;
+  //   elements.forEach((el, index) => {
+  //     let position = -index * totalWidth;
 
-      const animate = () => {
-        position += speed;
+  //     const animate = () => {
+  //       position += speed;
 
-        el.style.transform = `translateX(${position}px)`;
+  //       el.style.transform = `translateX(${position}px)`;
 
-        if (position > containerWidth) {
-          position = -totalWidth * elements.length + totalWidth;
-        }
+  //       if (position > containerWidth) {
+  //         position = -totalWidth * elements.length + totalWidth;
+  //       }
 
-        requestAnimationFrame(animate);
-      };
+  //       requestAnimationFrame(animate);
+  //     };
 
-      animate();
-    });
-  }, []);
+  //     animate();
+  //   });
+  // }, []);
   return (
     <div>
       {" "}
       <div
         id="Expertise"
         ref={containerRef}
-        className="relative overflow-hidden flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-[98px]"
+        className="relative  gap-[62px] justify-center overflow-hidden flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-[98px]"
       >
         {items.map((item, index) => (
-          <div key={index} className="absolute">
+          <div key={index} className="flex">
             {item}
           </div>
         ))}

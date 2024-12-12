@@ -22,6 +22,12 @@ export default function HomePage() {
       <Hero />
       <About />
       <Experties />
+      <div className="mt-[120px]">
+        <div className="text-primary !font-moul text-[40px] text-center">
+          My Skills
+        </div>
+        <div className="mt-[56px]"></div>
+      </div>
     </>
   );
 }
