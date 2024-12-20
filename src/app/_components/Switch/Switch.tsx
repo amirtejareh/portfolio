@@ -41,7 +41,6 @@ const Switch: React.FC<SwitchProps> = ({
           }
         }}
         className="switch-input"
-        {...rest}
       />
       <span className="switch-slider" />
     </label>

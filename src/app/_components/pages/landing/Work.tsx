@@ -36,7 +36,7 @@ const Work = () => {
     },
   ]);
   return (
-    <div className="mt-[120px] px-64 " id="Work">
+    <div className=" mt-[40px] md:!mt-[120px] px-64 " id="Work">
       <div className="text-primary !font-moul text-[40px] text-center">
         My Project
       </div>

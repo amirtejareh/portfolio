@@ -21,7 +21,11 @@ const StatCard: React.FC<StatCardProps> = ({
   return (
     <div className="relative">
       <div
-        className={`${visible} -z-10 stat-card-shining stat-card-${shiningPosition}`}
+        className={`${visible} -z-10  ${
+          shiningPosition === "right"
+            ? "stat-card-shining-right"
+            : "stat-card-shining"
+        } stat-card-${shiningPosition}`}
       ></div>
 
       <div className={`relative ${className} ${classes}`} {...rest}>

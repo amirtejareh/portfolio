@@ -1,6 +1,11 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
+import SvgHtsc from "../../icons/Htsc";
+import SvgDaric from "../../icons/Daric";
+import SvgShamsipour from "../../icons/Shamsipour";
+import SvgGaj from "../../icons/Gaj";
+import SvgAmirTejareh from "../../icons/AmirTejareh";
 
 const SvgHafez = dynamic(() => import("@/app/_components/icons/Hafez"), {
   ssr: true,
@@ -14,9 +19,13 @@ const SvgHotelyar = dynamic(() => import("@/app/_components/icons/Hotelyar"), {
 
 const Experties = () => {
   const items = [
-    { id: 1, component: <SvgHafez /> },
-    { id: 2, component: <SvgAsa /> },
-    { id: 3, component: <SvgHotelyar /> },
+    { id: 1, component: <SvgAsa /> },
+    { id: 2, component: <SvgHtsc /> },
+    { id: 3, component: <SvgHafez /> },
+    { id: 4, component: <SvgDaric /> },
+    { id: 5, component: <SvgHotelyar /> },
+    { id: 6, component: <SvgShamsipour /> },
+    { id: 7, component: <SvgGaj /> },
   ];
   const containerRef = useRef(null);
 
@@ -51,28 +60,32 @@ const Experties = () => {
   // }, []);
   return (
     <div>
-      {" "}
       <div
         id="Expertise"
         ref={containerRef}
-        className="relative flex-wrap gap-[10px]  md:!gap-[62px] justify-center overflow-hidden flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-auto min-h-[98px]"
+        className="relative overflow-auto flex-nowrap gap-[76.67px] justify-start md:!justify-center scrollbar-hide px-64 flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-auto min-h-[98px]"
       >
         {items.map((item) => (
-          <div key={item.id} className="flex scale-[0.6] sm:!scale-100">
+          <div key={item.id} className="flex ">
             {item.component}
           </div>
         ))}
       </div>
-      <div className="mt-[104px] flex-wrap justify-center md:!justify-between flex px-[24px]  sm:!px-[64px]">
-        <div>
-          <div className="!font-moul text-[40px] text-border">My Experties</div>
-          <div className="w-[216px] text-darkGray text-[20px]">
+      <div className="relative mt-[104px] flex-wrap justify-start md:!justify-between flex px-[24px]  sm:!px-[64px]">
+        <span className="hidden md:!flex absolute top-[130px]">
+          <SvgAmirTejareh />
+        </span>
+        <div className="w-[100%] md:!w-auto ">
+          <div className="!font-moul text-[40px] text-primary">
+            My Experties
+          </div>
+          <div className="w-auto md:!w-[216px] text-darkGray text-[20px]">
             I’m a full-stack developer and I work remotely from Iran
           </div>
         </div>
-        <div className="w-[100%] max-w-[711px] mt-[8px] sm:!mt-0 text-white pl-[10px] sm:!pl-[41px] border-l-[1px] border-solid border-statCardBorder">
+        <div className="w-[100%] mt-[40px] md:!mt-0 max-w-[711px]  text-white pl-[10px] sm:!pl-[41px] border-l-[1px] border-solid border-statCardBorder">
           <div className="flex justify-between">
-            <div className="text-[20px]">
+            <div className="flex flex-col gap-[8px] text-[20px]">
               <div className="w-[150px] md:!w-auto ">Asa Co</div>
               <div className="text-[16px] text-darkGray">
                 Head of Frontend Development
@@ -80,8 +93,8 @@ const Experties = () => {
             </div>
             <div className="text-[18px] text-border">2024-present</div>
           </div>
-          <div className="flex justify-between">
-            <div className="text-[20px]">
+          <div className="flex justify-between mt-[32px]">
+            <div className="flex flex-col gap-[8px] text-[20px]">
               <div className="w-[150px] md:!w-auto">Hafez Brokerage</div>
               <div className="text-[16px] text-darkGray">
                 Senior Frontend Developer
@@ -89,8 +102,8 @@ const Experties = () => {
             </div>
             <div className="text-[18px] text-border">2022-2024</div>
           </div>
-          <div className="flex justify-between">
-            <div className="text-[20px]">
+          <div className="flex justify-between mt-[32px]">
+            <div className="flex flex-col gap-[8px] text-[20px]">
               <div className="w-[150px] md:!w-auto">Gaj Market</div>
               <div className="text-[16px] text-darkGray">
                 Frontend Developer
@@ -98,8 +111,8 @@ const Experties = () => {
             </div>
             <div className="text-[18px] text-border">2022-2022</div>
           </div>
-          <div className="flex justify-between">
-            <div className="text-[20px]">
+          <div className="flex justify-between mt-[32px]">
+            <div className=" flex flex-col gap-[8px] text-[20px]">
               <div className="w-[150px] md:!w-auto">
                 Novin Hi-Tech Solutions (Keshavarzi Bank)
               </div>
@@ -109,8 +122,8 @@ const Experties = () => {
             </div>
             <div className="text-[18px] text-border">2019-2022</div>
           </div>
-          <div className="flex justify-between">
-            <div className="text-[20px]">
+          <div className="flex justify-between mt-[32px]">
+            <div className="flex flex-col gap-[8px] text-[20px]">
               <div className="w-[150px] md:!w-auto">
                 Shamsipour Technical and Vocational University
               </div>
@@ -120,8 +133,8 @@ const Experties = () => {
             </div>
             <div className="text-[18px] text-border">2017-2019</div>
           </div>
-          <div className="flex justify-between">
-            <div className="text-[20px]">
+          <div className="flex justify-between mt-[32px]">
+            <div className="flex flex-col gap-[8px] text-[20px]">
               <div className="w-[150px] md:!w-auto">Hotelyar</div>
               <div className="text-[16px] text-darkGray">
                 Full-Stack PHP Developer

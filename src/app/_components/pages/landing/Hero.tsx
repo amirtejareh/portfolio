@@ -79,7 +79,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 0.5 }}
         >
-          <div className="text-gray text-[24px] mt-[50px] sm:!mt-[140px] leading-[32px] font-[400]">
+          <div className="text-gray text-[24px] mt-[50px] sm:!mt-[140px] leading-[32px] font-normal">
             Full-Stack Developer
           </div>
           <div className="mt-[40px] text-white text-[80px] leading-[88px] !font-moul">
@@ -103,26 +103,14 @@ const Hero = () => {
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute top-[133px] right-[-50px] sm:!right-[100px] z-10 md:z-20 w-[700px] h-full"
       >
-        <div className="absolute inset-0 md:hidden blur-[5px]">
-          <Image
-            src={`/images/AmirTejareh.png`}
-            loading="lazy"
-            layout="fill"
-            objectFit="cover"
-            alt="Senior Fullstack Developer"
-            className="opacity-50"
-          />
-        </div>
-
-        <div className="hidden md:block absolute bottom-[100px]">
-          <div className="absolute bottom-[200px] left-[50px] z-20">
-            <SvgCv />
+        <div className=" absolute w-[255px] h-[235px] sm:!w-[400px] right-[200px] sm:!right-[50px] bottom-[100px] md:!bottom-[130px] sm:!h-[362px] md:!w-[700px] md:!h-[640px]">
+          <div className="absolute  bottom-[25px] sm:!bottom-[70px]  scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
+            <SvgCv className="" />
           </div>
           <Image
             src={`/images/AmirTejareh.png`}
             loading="lazy"
-            width={775}
-            height={715}
+            layout="fill"
             objectFit="contain"
             alt="Senior Fullstack Developer"
             className="hover:scale-105 transition-transform duration-500"

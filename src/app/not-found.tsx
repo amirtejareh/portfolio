@@ -17,7 +17,7 @@ export default function NotFound() {
           height={144}
           alt="404 Not Found"
         />
-        <span className="text-[32px] font-[700] text-gray-150">not found</span>
+        <span className="text-[32px] font-bold text-gray-150">not found</span>
       </div>
     </>
   );
