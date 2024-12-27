@@ -63,7 +63,7 @@ const Experties = () => {
       <div
         id="Expertise"
         ref={containerRef}
-        className="relative overflow-auto flex-nowrap gap-[76.67px] justify-start md:!justify-center scrollbar-hide px-64 flex items-center border-statCardBorder border-[1px] border-solid mt-[120px] h-auto min-h-[98px]"
+        className="relative overflow-auto flex-nowrap gap-[76.67px] justify-start md:!justify-center scrollbar-hide px-64 flex items-center border-statCardBorder border-t-[1px] border-b-[1px] border-solid mt-[120px] h-auto min-h-[98px]"
       >
         {items.map((item) => (
           <div key={item.id} className="flex ">

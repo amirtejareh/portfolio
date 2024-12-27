@@ -13,10 +13,10 @@ const Footer = () => {
     { ssr: true }
   );
   return (
-    <div className="px-64 mb-[100px]">
-      <div className="mt-[110px]   h-[1px] bg-[rgb(135,135,135,1)]"></div>
-      <div className="mt-[33px] flex-col justify-center   sm:!flex-row flex flex-wrap md:!flex-nowrap sm:!justify-around">
-        <div className="flex flex-col">
+    <div className="px-64 mb-[100px] ">
+      <div className="mt-[110px]  h-[1px] bg-[rgb(135,135,135,1)]"></div>
+      <div className="mt-[33px] items-center flex-col justify-center   sm:!flex-row flex flex-wrap md:!flex-nowrap sm:!justify-around">
+        <div className="flex  flex-col">
           <span className="text-[28px] md:!text-[40px] text-center md:!text-left text-border">
             Do You have a project?
           </span>
@@ -35,18 +35,18 @@ const Footer = () => {
           </Button>
         </div>
       </div>
+
       <div className="mt-[33px]   h-[1px] bg-[rgb(135,135,135,1)]"></div>
-      <div className="flex justify-around flex-wrap flex-col-reverse md:!flex-nowrap md:!flex-row">
-        <div className="flex justify-center items-center gap-[8px] mt-16 md:!mt-[44px] text-border text-16 text-center md:!text-left">
+      <div className="flex mt-[40px] justify-around flex-wrap flex-col-reverse md:!flex-nowrap md:!flex-row">
+        <div className="flex justify-center items-center gap-[8px] text-border text-16 text-center md:!text-left">
           <span>
             <SvgCopyRight />
           </span>
           <span className="text-darkGray">
-            {" "}
             Amir Tejareh All Rights Reserved
           </span>
         </div>
-        <div className="flex justify-center mt-[18px] gap-[9px]">
+        <div className="flex items-center justify-center gap-[9px]">
           <div className="flex w-[44px] h-[44px] rounded-8 items-center justify-center bg-[rgba(47_47_47)] rounded-[8px]">
             <a
               href="https://t.me/amirtejareh"

@@ -4,6 +4,7 @@ export { default as App } from "./App";
 export { default as ArrowRight } from "./ArrowRight";
 export { default as Asa } from "./Asa";
 export { default as Bootstrap } from "./Bootstrap";
+export { default as Close } from "./Close";
 export { default as CopyRight } from "./CopyRight";
 export { default as Css } from "./Css";
 export { default as Cv } from "./Cv";
