@@ -14,7 +14,7 @@ const Footer = () => {
   );
   return (
     <div className="px-64 mb-[100px] ">
-      <div className="mt-[110px]  h-[1px] bg-[rgb(135,135,135,1)]"></div>
+      <div className="mt-[49px] sm:!mt-[40px] md:!mt-[120px]  h-[1px] bg-[rgb(135,135,135,1)]"></div>
       <div className="mt-[33px] items-center flex-col justify-center   sm:!flex-row flex flex-wrap md:!flex-nowrap sm:!justify-around">
         <div className="flex  flex-col">
           <span className="text-[24px] sm:!text-[28px]  md:!text-[40px]  text-left text-border">
