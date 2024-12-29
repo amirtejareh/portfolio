@@ -151,7 +151,7 @@ const Hero = () => {
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="flex items-center gap-16"
+              className="flex md:hidden items-center gap-16"
             >
               <div
                 className="flex md:hidden flex-col items-center justify-center gap-[5px] w-[40px] h-[40px] rounded-[12px] bg-[rgba(47,47,47)] cursor-pointer"
