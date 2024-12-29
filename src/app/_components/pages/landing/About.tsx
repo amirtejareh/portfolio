@@ -90,7 +90,7 @@ const About = () => {
               </motion.div>
               <motion.div variants={statVariants}>
                 <StatCard
-                  shiningPosition="right"
+                  shiningPosition="bottom"
                   count={100}
                   sign="%"
                   text="On Time Delivery"
@@ -98,7 +98,7 @@ const About = () => {
               </motion.div>
               <motion.div variants={statVariants}>
                 <StatCard
-                  shiningPosition="bottom"
+                  shiningPosition="right"
                   count={5}
                   sign="+"
                   text="Programming languages"
