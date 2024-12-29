@@ -108,8 +108,17 @@ const Hero = () => {
         initial={{ scale: 1.2 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute inset-0 bg-[url('/images/hero.jpg')] bg-cover bg-center z-0"
-      ></motion.div>
+        className="absolute inset-0 z-0"
+      >
+        <Image
+          src="/images/hero.jpg"
+          alt="Hero Background"
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+          quality={100}
+        />
+      </motion.div>
       <div className="absolute inset-0 bg-black/85"></div>
 
       {/* Header Section */}
