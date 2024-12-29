@@ -26,7 +26,7 @@ const About = () => {
 
   return (
     <div id="About" className="px-64">
-      <h2 className="mt-[120px] !font-moul text-[40px] font-normal leading-[60px] text-primary">
+      <h2 className="mt-[40px] sm:!mt-[64px] md:!mt-[120px]!font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] font-normal leading-[60px] text-primary">
         About Me
       </h2>
 
@@ -56,7 +56,7 @@ const About = () => {
           <div className="flex flex-col">
             <motion.div
               variants={itemVariants}
-              className="max-w-[709px] px-32 text-text leading-[32px] text-[18px] font-normal"
+              className="max-w-[709px] px-32 text-text leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal"
             >
               I’m a full-stack developer with over 10 years of experience,
               specializing in frontend technologies like HTML, CSS, and
@@ -69,7 +69,7 @@ const About = () => {
 
             <motion.div
               variants={containerVariants}
-              className="flex justify-start flex-wrap mt-[80px] md:!mt-[104px] gap-16"
+              className="flex justify-start flex-wrap mt-[16px] sm:!mt-[80px] md:!mt-[104px] gap-16"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
@@ -90,10 +90,18 @@ const About = () => {
               </motion.div>
               <motion.div variants={statVariants}>
                 <StatCard
-                  shiningPosition="bottom"
+                  shiningPosition="right"
                   count={100}
                   sign="%"
                   text="On Time Delivery"
+                />
+              </motion.div>
+              <motion.div variants={statVariants}>
+                <StatCard
+                  shiningPosition="bottom"
+                  count={5}
+                  sign="+"
+                  text="Programming languages"
                 />
               </motion.div>
             </motion.div>

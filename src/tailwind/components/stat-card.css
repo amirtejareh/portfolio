@@ -5,7 +5,7 @@
   }
 
   &-count {
-    @apply text-[28px] md:!text-[40px] leading-[32px] font-semibold text-primary;
+    @apply text-[24px] sm:!text-[28px]  md:!text-[40px] leading-[32px] font-semibold text-primary;
   }
 
   &-shining {

@@ -32,11 +32,11 @@ const Skills = () => {
   ];
   return (
     <>
-      <div className="mt-[120px]" id="Skills">
-        <div className="text-primary !font-moul text-[40px] text-center">
+      <div className="mt-[40px] sm:!mt-[64px] md:!mt-[120px]" id="Skills">
+        <div className="text-primary !font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] text-center">
           My Skills
         </div>
-        <div className="flex px-16 sm:!px-[40px] md:!px-64 gap-16 md:!gap-[40px] mt-[56px] flex-wrap justify-center ">
+        <div className="flex px-16 sm:!px-[40px] md:!px-64 gap-16 md:!gap-[40px] mt-[16px] sm:!mt-[28px]  md:!mt-[56px] flex-wrap justify-center ">
           {skillCardOptions?.map((skill, index) => {
             return (
               <SkillCard key={index} title={skill.title} logo={skill.logo} />

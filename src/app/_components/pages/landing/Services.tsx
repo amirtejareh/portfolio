@@ -39,8 +39,11 @@ const Services = () => {
     },
   ];
   return (
-    <div className="mt-[120px] px-16 sm:!px-[40px] md:!px-64  " id="Services">
-      <div className="text-primary !font-moul text-[40px] text-center">
+    <div
+      className="mt-[40px] sm:!mt-[64px] md:!mt-[120px] px-16 sm:!px-[40px] md:!px-64  "
+      id="Services"
+    >
+      <div className="text-primary !font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] text-center">
         My Services
       </div>
 

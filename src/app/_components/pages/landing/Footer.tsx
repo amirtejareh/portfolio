@@ -17,10 +17,10 @@ const Footer = () => {
       <div className="mt-[110px]  h-[1px] bg-[rgb(135,135,135,1)]"></div>
       <div className="mt-[33px] items-center flex-col justify-center   sm:!flex-row flex flex-wrap md:!flex-nowrap sm:!justify-around">
         <div className="flex  flex-col">
-          <span className="text-[28px] md:!text-[40px] text-center md:!text-left text-border">
+          <span className="text-[24px] sm:!text-[28px]  md:!text-[40px] text-center md:!text-left text-border">
             Do You have a project?
           </span>
-          <span className="text-[28px] md:!text-[40px] text-border text-center md:!text-left">
+          <span className="text-[24px] sm:!text-[28px] md:!text-[40px] text-border text-center md:!text-left">
             Let&rsquo;s Talk
           </span>
         </div>
@@ -37,12 +37,12 @@ const Footer = () => {
       </div>
 
       <div className="mt-[33px]   h-[1px] bg-[rgb(135,135,135,1)]"></div>
-      <div className="flex mt-[40px] justify-around flex-wrap flex-col-reverse md:!flex-nowrap md:!flex-row">
+      <div className="flex mt-[40px] gap-[16px] justify-around flex-wrap flex-col-reverse md:!flex-nowrap md:!flex-row">
         <div className="flex justify-center items-center gap-[8px] text-border text-16 text-center md:!text-left">
           <span>
             <SvgCopyRight />
           </span>
-          <span className="text-darkGray">
+          <span className="text-darkGray text-[12px] md:!text-[16px]">
             Amir Tejareh All Rights Reserved
           </span>
         </div>

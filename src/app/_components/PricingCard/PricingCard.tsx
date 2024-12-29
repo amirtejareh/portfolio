@@ -28,7 +28,7 @@ const PricingCard: React.FC<IPricingCard> = ({
         <div className=" mt-16 md:!mt-[12px] text-[14px] md:!text-[18px] text-darkGray leading-[20px]">
           {subtitle}
         </div>
-        <div className="text-primary mt-24 md:!mt-16 ml-[3px] text-[40px] leading-[48px] font-bold">
+        <div className="text-primary mt-24 md:!mt-16 ml-[3px] text-[24px] sm:!text-[28px]  md:!text-[40px] leading-[48px] font-bold">
           {sign}
           {price}
         </div>

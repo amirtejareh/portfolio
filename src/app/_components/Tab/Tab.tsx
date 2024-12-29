@@ -26,7 +26,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
   };
   return (
     <div>
-      <div className="mt-[56px]">
+      <div className="mt-[24px] sm:!mt-[56px]">
         <div className="flex gap-16 w-auto h-[48px] rounded-[24px] justify-center flex-row-reverse">
           {data &&
             data?.map((tab: any, index) => {
@@ -51,7 +51,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
         </div>
       </div>
 
-      <div className="flex mt-[56px] gap-[32px] flex-wrap justify-center md:!justify-normal">
+      <div className="flex mt-[24px] sm:!mt-[64px] md:!mt-[56px] gap-[12px] sm:!gap-[24px] md:!gap-[32px] flex-wrap justify-center md:!justify-normal">
         {posts?.length > 0 &&
           posts?.map((post, index) => (
             <div

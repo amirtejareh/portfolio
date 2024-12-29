@@ -150,7 +150,7 @@ const Hero = () => {
           <div className="text-gray text-[24px] mt-[50px] sm:!mt-[140px] leading-[32px] font-normal">
             Full-Stack Developer
           </div>
-          <div className="mt-[40px] text-white text-[80px] leading-[88px] !font-moul">
+          <div className="mt-[40px] text-white  text-[32px]  sm:!text-[64px]  md:!text-[80px] leading-[88px] !font-moul">
             Amir Tejareh
           </div>
           <div className="mt-[24px] pl-[16px] border-l-2 border-primary text-darkGray  text-[20px] lleading-[32px] max-w-[170px] sm:!max-w-[400px]">
