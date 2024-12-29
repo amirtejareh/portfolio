@@ -6,6 +6,7 @@ import Switch from "../../Switch/Switch";
 import SvgCv from "../../icons/Cv";
 import { useEffect, useRef, useState } from "react";
 import SvgClose from "../../icons/Close";
+import Link from "next/link";
 
 const ArrowRightIcon = dynamic(
   () => import("@/app/_components/icons/ArrowRight"),
@@ -15,6 +16,8 @@ const ArrowRightIcon = dynamic(
 const Hero = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const sidebarMenuRef = useRef(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   useEffect(() => {
@@ -28,6 +31,27 @@ const Hero = () => {
     window.document.addEventListener("mousedown", checkMenu);
   }, []);
 
+  useEffect(() => {
+    const handleSize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    window.addEventListener("resize", handleSize);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen === true && dimensions.width <= 1279) {
+      document.body.classList.add("overflow-hidden");
+    } else if (isMenuOpen === false && dimensions.width <= 1279) {
+      document.body.classList.remove("overflow-hidden");
+    }
+    if (isMenuOpen === true && dimensions.width > 1279) {
+      setIsMenuOpen(false);
+    }
+  }, [isMenuOpen, dimensions]);
+
   return (
     <div className="hero relative w-screen h-screen bg-black overflow-hidden flex flex-col">
       {/* Background with Zoom-Out Animation */}
@@ -38,7 +62,7 @@ const Hero = () => {
         initial={{ x: "100%" }}
         animate={{ x: isMenuOpen ? "0%" : "100%" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className={`z-[9999] absolute right-0 top-0 flex flex-col text-white p-[24px] bg-[rgba(22_21_20)] w-[335px] h-[100vh]`}
+        className={`z-[9999] fixed right-0 top-0 flex flex-col text-white p-[24px] bg-[rgba(22_21_20)] w-[335px] h-[100vh]`}
       >
         <div className="flex justify-between">
           <span className="text-[20px] text-white md:flex !font-lobster">
@@ -53,13 +77,15 @@ const Hero = () => {
             {["About", "Expertise", "Skills", "Services", "Work"].map(
               (item) => (
                 <li key={item}>
-                  <a href={`#${item}`}>{item}</a>
+                  <Link onClick={() => setIsMenuOpen(false)} href={`#${item}`}>
+                    {item}
+                  </Link>
                 </li>
               )
             )}
           </ul>
         </div>
-        <div className="flex flex-grow items-end justify-center">
+        <div className="flex flex-grow items-end mb-[56px] justify-center">
           <Button>
             <a href="tel:+989126903127">Contact Me</a>
           </Button>
