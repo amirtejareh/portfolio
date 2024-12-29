@@ -61,7 +61,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
             <>
               <div
                 key={index}
-                className="relative flex-shrink-0 flex-wrap flex w-[300px] md:!w-[600px] h-[200px] md:!h-[383px]"
+                className="relative flex-shrink-0 flex-wrap flex w-[343px] h-[213px]  sm:!w-[664px] sm:!h-[483px]  md:!w-[600px]  md:!h-[383px]"
               >
                 <Image
                   src={`/images/gym.png`}
@@ -72,9 +72,9 @@ const Tab: React.FC<ITab> = ({ data }) => {
                   alt="gym Not Found"
                 />
                 <div className=" backdrop-filter-[30px]  w-full bg-[linear-gradient(90deg,_rgba(44,42,41,0.7)_0%,_rgba(44,42,41,0.2)_100%)] flex absolute bottom-0 h-64 px-[20px] justify-between items-center">
-                  <div className="flex gap-[25px] flex-grow">
+                  <div className="flex gap-[10px] sm:!gap-[25px] flex-grow">
                     <p className="text-border">Gym website</p>
-                    <div className="flex gap-[2px] text-border">
+                    <div className="flex gap-[2px] items-center text-border">
                       <p>
                         <SvgFigma />
                       </p>
@@ -92,7 +92,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
                   <div className=" h-[40px] rounded-[24px] border-[1px] border-solid border-border">
                     <a
                       href="#"
-                      className="h-[40px] flex text-border text-16  items-center justify-center w-[150px]"
+                      className="h-[40px] flex text-border text-[12px] sm:!text-16  items-center justify-center w-[100px] sm:!w-[121px] md:!w-[150px]"
                     >
                       Check this work
                     </a>

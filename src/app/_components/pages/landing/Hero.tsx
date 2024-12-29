@@ -19,6 +19,7 @@ const Hero = () => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const [orientationDevice, setOrientation] = useState<string>("landscape");
 
   useEffect(() => {
     const checkMenu = (event) => {
@@ -28,6 +29,12 @@ const Hero = () => {
         }
       }
     };
+
+    if (window.matchMedia("(orientation: landscape)").matches) {
+      setOrientation("landscape");
+    } else {
+      setOrientation("portrait");
+    }
     window.document.addEventListener("mousedown", checkMenu);
   }, []);
 
@@ -42,6 +49,11 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
+    if (window.matchMedia("(orientation: landscape)").matches) {
+      setOrientation("landscape");
+    } else {
+      setOrientation("portrait");
+    }
     if (isMenuOpen === true && dimensions.width <= 1279) {
       document.body.classList.add("overflow-hidden");
     } else if (isMenuOpen === false && dimensions.width <= 1279) {
@@ -85,7 +97,7 @@ const Hero = () => {
             )}
           </ul>
         </div>
-        <div className="flex flex-grow items-end mb-[56px] justify-center">
+        <div className="flex flex-grow items-end mb-[156px] justify-center">
           <Button>
             <a href="tel:+989126903127">Contact Me</a>
           </Button>
@@ -197,9 +209,15 @@ const Hero = () => {
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute top-[133px] right-[-50px] sm:!right-[100px] z-10 md:z-20 w-[700px] h-full"
       >
-        <div className=" absolute w-[255px] h-[235px] sm:!w-[400px] right-[150px] sm:!right-[50px] bottom-[130px] md:!bottom-[130px] sm:!h-[362px] md:!w-[700px] md:!h-[640px]">
-          <div className="absolute  bottom-[5px] sm:!bottom-[70px]  scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
-            <SvgCv className="" />
+        <div
+          className={`absolute ${
+            orientationDevice === "portrait"
+              ? "w-[500px] h-[500px]  right-[20px] bottom-[140px]"
+              : "w-[300px] h-[300px]  right-[150px] bottom-[100px]"
+          } sm:!w-[450px] sm:!h-[400px] md:!w-[700px] md:!h-[640px]  sm:!right-[50px] md:!bottom-[130px]`}
+        >
+          <div className="absolute  bottom-[60px] sm:!bottom-[70px]  scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
+            <SvgCv />
           </div>
           <Image
             src={`/images/AmirTejareh.png`}
