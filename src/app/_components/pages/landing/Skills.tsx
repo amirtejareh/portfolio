@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SkillCard from "../../../_components/SkillCard/SkillCard";
 import SvgReact from "../../../_components/icons/React";
 import SvgNode from "../../../_components/icons/Node";
@@ -13,23 +13,42 @@ import SvgMysql from "../../../_components/icons/Mysql";
 import SvgMongodb from "../../../_components/icons/Mongodb";
 import SvgSeo from "../../../_components/icons/Seo";
 import SvgFlutter from "../../../_components/icons/Flutter";
+import useGetSkills from "@/hooks/skills/useGetSkills";
 
 const Skills = () => {
-  const skillCardOptions = [
-    { title: "React Js", logo: <SvgReact /> },
-    { title: "Node Js", logo: <SvgNode /> },
-    { title: "Angular", logo: <SvgAngular /> },
-    { title: "Bootstrap ", logo: <SvgBootstrap /> },
-    { title: "HTML5 ", logo: <SvgHtml /> },
-    { title: "CSS3 ", logo: <SvgCss /> },
-    { title: "Debugging ", logo: <SvgDebugging /> },
-    { title: "Git ", logo: <SvgGit /> },
-    { title: "Rest API ", logo: <SvgRest /> },
-    { title: "MySQL ", logo: <SvgMysql /> },
-    { title: "MongoDB ", logo: <SvgMongodb /> },
-    { title: "SEO", logo: <SvgSeo /> },
-    { title: "Flutter", logo: <SvgFlutter /> },
-  ];
+  // const skillCardOptions = [
+  //   { title: "React Js", logo: <SvgReact /> },
+  //   { title: "Node Js", logo: <SvgNode /> },
+  //   { title: "Angular", logo: <SvgAngular /> },
+  //   { title: "Bootstrap ", logo: <SvgBootstrap /> },
+  //   { title: "HTML5 ", logo: <SvgHtml /> },
+  //   { title: "CSS3 ", logo: <SvgCss /> },
+  //   { title: "Debugging ", logo: <SvgDebugging /> },
+  //   { title: "Git ", logo: <SvgGit /> },
+  //   { title: "Rest API ", logo: <SvgRest /> },
+  //   { title: "MySQL ", logo: <SvgMysql /> },
+  //   { title: "MongoDB ", logo: <SvgMongodb /> },
+  //   { title: "SEO", logo: <SvgSeo /> },
+  //   { title: "Flutter", logo: <SvgFlutter /> },
+  // ];
+
+  interface ISkill {
+    title: { rendered: string };
+    _embedded: string;
+  }
+
+  const getSkills = useGetSkills();
+
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    const formattedSkills = getSkills?.data?.map((skill: ISkill) => ({
+      title: skill.title.rendered,
+      image: skill._embedded["wp:featuredmedia"]?.[0]?.source_url || "",
+    }));
+    setSkills(formattedSkills);
+  }, [getSkills?.data]);
+
   return (
     <>
       <div className="mt-[40px] sm:!mt-[64px] md:!mt-[120px]" id="Skills">
@@ -37,9 +56,9 @@ const Skills = () => {
           My Skills
         </div>
         <div className="flex px-16 sm:!px-[40px] md:!px-64 gap-16 md:!gap-[40px] mt-[16px] sm:!mt-[28px]  md:!mt-[56px] flex-wrap justify-center ">
-          {skillCardOptions?.map((skill, index) => {
+          {skills?.map((skill, index) => {
             return (
-              <SkillCard key={index} title={skill.title} logo={skill.logo} />
+              <SkillCard key={index} title={skill.title} logo={skill.image} />
             );
           })}
         </div>
