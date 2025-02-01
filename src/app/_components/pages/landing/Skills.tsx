@@ -1,37 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SkillCard from "../../../_components/SkillCard/SkillCard";
-import SvgReact from "../../../_components/icons/React";
-import SvgNode from "../../../_components/icons/Node";
-import SvgAngular from "../../../_components/icons/Angular";
-import SvgBootstrap from "../../../_components/icons/Bootstrap";
-import SvgHtml from "../../../_components/icons/Html";
-import SvgCss from "../../../_components/icons/Css";
-import SvgDebugging from "../../../_components/icons/Debugging";
-import SvgGit from "../../../_components/icons/Git";
-import SvgRest from "../../../_components/icons/Rest";
-import SvgMysql from "../../../_components/icons/Mysql";
-import SvgMongodb from "../../../_components/icons/Mongodb";
-import SvgSeo from "../../../_components/icons/Seo";
-import SvgFlutter from "../../../_components/icons/Flutter";
+
 import useGetSkills from "@/hooks/skills/useGetSkills";
 
 const Skills = () => {
-  // const skillCardOptions = [
-  //   { title: "React Js", logo: <SvgReact /> },
-  //   { title: "Node Js", logo: <SvgNode /> },
-  //   { title: "Angular", logo: <SvgAngular /> },
-  //   { title: "Bootstrap ", logo: <SvgBootstrap /> },
-  //   { title: "HTML5 ", logo: <SvgHtml /> },
-  //   { title: "CSS3 ", logo: <SvgCss /> },
-  //   { title: "Debugging ", logo: <SvgDebugging /> },
-  //   { title: "Git ", logo: <SvgGit /> },
-  //   { title: "Rest API ", logo: <SvgRest /> },
-  //   { title: "MySQL ", logo: <SvgMysql /> },
-  //   { title: "MongoDB ", logo: <SvgMongodb /> },
-  //   { title: "SEO", logo: <SvgSeo /> },
-  //   { title: "Flutter", logo: <SvgFlutter /> },
-  // ];
-
   interface ISkill {
     title: { rendered: string };
     _embedded: string;

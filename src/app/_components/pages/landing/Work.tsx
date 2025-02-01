@@ -1,46 +1,86 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import useGetProjects from "@/hooks/skills/useGetProjects";
+import useGetProjectCategories from "@/hooks/skills/useGetProjectCategories";
 
 const Tab = dynamic(() => import("@/app/_components/Tab/Tab"), {
   ssr: true,
 });
 
 const Work = () => {
-  const [data, setData] = useState<any>([
-    {
-      title: "Dashboard",
-      data: [
-        {
-          website: { title: "Gym website", link: "#" },
-          image: "",
-        },
-      ],
-    },
-    {
-      title: "Website",
-      data: [
-        {
-          website: { title: "Gym website", link: "#" },
-          image: "",
-        },
-      ],
-    },
-    {
-      title: "App",
-      data: [
-        {
-          website: { title: "Gym website", link: "#" },
-          image: "",
-        },
-      ],
-    },
-  ]);
+  const {
+    data: projectsData,
+    isLoading: loadingProjects,
+    error: errorProjects,
+  } = useGetProjects();
+  const {
+    data: categoriesData,
+    isLoading: loadingCategories,
+    error: errorCategories,
+  } = useGetProjectCategories();
+
+  const [projects, setProjects] = useState(null);
+  const [categories, setCategories] = useState(null);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    if (projectsData) {
+      setProjects(projectsData);
+    }
+  }, [projectsData]);
+
+  useEffect(() => {
+    if (categoriesData) {
+      setCategories(categoriesData);
+    }
+  }, [categoriesData]);
+
+  useEffect(() => {
+    if (!categories || !projects) return;
+
+    const formattedData = categories.map((category) => {
+      const categoryProjects = projects
+        .filter((project) => project.project_category.includes(category.id))
+        .map((project) => {
+          return {
+            website: {
+              title: project.title.rendered,
+              link: project?.acf?.project_link?.url,
+            },
+            attachment: project?._embedded?.["acf:attachment"],
+
+            image:
+              project?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
+          };
+        });
+
+      return {
+        title: category.name,
+        data: categoryProjects,
+      };
+    });
+
+    setData(formattedData || []);
+  }, [categories, projects]);
+
+  if (loadingProjects || loadingCategories) {
+    return <div className="text-center text-gray-500">Loading...</div>;
+  }
+
+  if (errorProjects || errorCategories) {
+    return (
+      <div className="text-center text-red-500">
+        خطایی رخ داده است. لطفاً دوباره تلاش کنید.
+      </div>
+    );
+  }
+
   return (
     <div
       className="mt-[40px] sm:!mt-[64px] md:!mt-[120px] px-16 sm:!px-[40px] md:!px-64 "
       id="Work"
     >
-      <div className="text-primary !font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] text-center">
+      <div className="text-primary !font-moul text-[24px] sm:!text-[28px] md:!text-[40px] text-center">
         My Project
       </div>
 
