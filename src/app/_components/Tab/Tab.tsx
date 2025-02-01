@@ -72,7 +72,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
                     className="absolute"
                     alt="gym Not Found"
                   />
-                  <div className=" backdrop-filter-[30px]  w-full bg-[linear-gradient(90deg,_rgba(44,42,41,0.7)_0%,_rgba(44,42,41,0.2)_100%)] flex absolute bottom-0 h-64 px-[20px] justify-between items-center">
+                  <div className=" backdrop-blur-[4px]  w-full bg-[linear-gradient(90deg,_rgba(44,42,41,0.7)_0%,_rgba(44,42,41,0.2)_100%)] flex absolute bottom-0 h-64 px-[20px] justify-between items-center">
                     <div className="flex gap-[10px] sm:!gap-[25px] flex-grow">
                       <p className="text-border min-w-[95px]">
                         {post?.website?.title}
