@@ -5,6 +5,7 @@ import SvgAmirTejarehLight from "../../icons/AmirTejarehLight";
 import { useThemeStore } from "@/stores/darkmode.store";
 import useGetCompanies from "@/hooks/company/useGetCompanies";
 import Image from "next/image";
+import useGetExperties from "@/hooks/experties/useGetExperties";
 
 const Experties = () => {
   const containerRef = useRef(null);
@@ -32,6 +33,21 @@ const Experties = () => {
     setCompanies(formattedCompanies);
   }, [getCompanies?.data]);
 
+  const getExperts = useGetExperties();
+
+  const [experts, setExperts]: any = useState();
+
+  useEffect(() => {
+    const formattedExperts = getExperts?.data?.map((expert: any) => ({
+      title: expert?.title?.rendered,
+      about: expert?.acf?.about,
+      content: expert?.acf?.content,
+      image_dark: expert?.acf?.image_dark?.[0],
+      image_light: expert?.acf?.image_light?.[0],
+    }));
+    setExperts(formattedExperts?.[0]);
+  }, [getExperts?.data]);
+
   return (
     <div>
       <div
@@ -55,7 +71,27 @@ const Experties = () => {
       </div>
       <div className="relative mt-[40px] sm:!mt-[64px] md:!mt-[101px] flex-wrap justify-start md:!justify-between flex px-[24px]  sm:!px-[64px]">
         <span className="hidden md:!flex absolute top-[130px]">
-          {isDarkMode ? <SvgAmirTejareh /> : <SvgAmirTejarehLight />}
+          {isDarkMode ? (
+            <Image
+              loading="lazy"
+              layout="responsive"
+              src={experts?.image_dark}
+              alt={experts?.title}
+              width={dimensions.width}
+              height={dimensions.height}
+              onLoad={handleImageLoad}
+            />
+          ) : (
+            <Image
+              loading="lazy"
+              layout="responsive"
+              src={experts?.image_light}
+              alt={experts?.title}
+              width={dimensions.width}
+              height={dimensions.height}
+              onLoad={handleImageLoad}
+            />
+          )}
         </span>
         <div className="w-[100%] md:!w-auto ">
           <div className="!font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] text-primary">
@@ -66,162 +102,38 @@ const Experties = () => {
               isDarkMode ? "text-darkGray" : "text-[#767575]"
             } w-auto md:!w-[216px] text-[14px] md:!text-[20px]`}
           >
-            I’m a full-stack developer and I work remotely from Iran
+            {experts?.about}{" "}
           </div>
         </div>
         <div className="w-[100%] mt-[40px] md:!mt-0 max-w-[711px]  text-white pl-[10px] sm:!pl-[41px] border-l-[1px] border-solid border-statCardBorder">
-          <div className="flex justify-between">
-            <div className="flex flex-col gap-[8px] text-[16px] sm:!text-[20px]">
+          {experts?.content?.map((detail) => (
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-[8px] text-[16px] sm:!text-[20px]">
+                <div
+                  className={`${
+                    isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
+                  } w-[150px] md:!w-auto `}
+                >
+                  {detail?.company}
+                </div>
+                <div
+                  className={`${
+                    isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
+                  } text-[12px] sm:!text-[16px] `}
+                >
+                  {detail?.position}
+                </div>
+              </div>
               <div
-                className={`${
+                className={`                 ${
                   isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-                } w-[150px] md:!w-auto `}
-              >
-                Asa Co
-              </div>
-              <div
-                className={`${
-                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-                } text-[12px] sm:!text-[16px] `}
-              >
-                Head of Frontend Development
-              </div>
-            </div>
-            <div
-              className={`                 ${
-                isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-              }
+                }
 text-[12px] sm:!text-[18px]`}
-            >
-              2024-present
-            </div>
-          </div>
-          <div className="flex justify-between mt-[32px]">
-            <div className="flex flex-col gap-[8px] text-[16px] sm:!text-[20px]">
-              <div
-                className={`${
-                  isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-                } w-[150px] md:!w-auto`}
               >
-                Hafez Brokerage
-              </div>
-              <div
-                className={`${
-                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-                } text-[16px] `}
-              >
-                Senior Frontend Developer
+                {detail?.date}
               </div>
             </div>
-            <div
-              className={`                 ${
-                isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-              }
- text-[12px] sm:!text-[18px]`}
-            >
-              2022-2024
-            </div>
-          </div>
-          <div className="flex justify-between mt-[32px]">
-            <div className="flex flex-col gap-[8px] text-[16px] sm:!text-[20px]">
-              <div
-                className={`${
-                  isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-                } `}
-              >
-                Gaj Market
-              </div>
-              <div
-                className={`${
-                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-                } text-[16px] `}
-              >
-                Frontend Developer
-              </div>
-            </div>
-            <div
-              className={`${
-                isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-              } text-[12px] sm:!text-[18px]`}
-            >
-              2022-2022
-            </div>
-          </div>
-          <div
-            className={`flex justify-between mt-[32px] ${
-              isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-            } `}
-          >
-            <div className=" flex flex-col gap-[8px] text-[16px] sm:!text-[20px]">
-              <div className="w-[150px] md:!w-auto">
-                Novin Hi-Tech Solutions (Keshavarzi Bank)
-              </div>
-              <div
-                className={`${
-                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-                } text-[16px] `}
-              >
-                Frontend Developer
-              </div>
-            </div>
-            <div
-              className={`${
-                isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-              } text-[12px] sm:!text-[18px]`}
-            >
-              2019-2022
-            </div>
-          </div>
-          <div className="flex justify-between mt-[32px]">
-            <div className="flex flex-col gap-[8px] text-[16px] sm:!text-[20px]">
-              <div
-                className={`${
-                  isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-                } `}
-              >
-                Shamsipour Technical and Vocational University
-              </div>
-              <div
-                className={`${
-                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-                } text-[16px]`}
-              >
-                University Lecturer
-              </div>
-            </div>
-            <div
-              className={`${
-                isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-              } text-[12px] sm:!text-[18px]`}
-            >
-              2017-2019
-            </div>
-          </div>
-          <div className="flex justify-between mt-[32px]">
-            <div className="flex flex-col gap-[8px] text-[16px] sm:!text-[20px]">
-              <div
-                className={`${
-                  isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-                } `}
-              >
-                Hotelyar
-              </div>
-              <div
-                className={`${
-                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-                } text-[16px] `}
-              >
-                Full-Stack PHP Developer
-              </div>
-            </div>
-            <div
-              className={`${
-                isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-              } text-[12px] sm:!text-[18px] `}
-            >
-              2015-2017
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

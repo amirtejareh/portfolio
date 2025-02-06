@@ -1,5 +1,5 @@
 .switch {
-  @apply w-[47px] h-[32px]  inline-flex items-center cursor-pointer rounded-[20px] border-solid border-[1px] border-gray relative;
+  @apply w-[47px] h-[32px]  inline-flex items-center cursor-pointer rounded-[20px] border-solid border-[1px] border-[#545957] relative;
 }
 
 .switch-input {
