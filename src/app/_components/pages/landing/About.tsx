@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/legacy/image";
 import { motion } from "framer-motion";
 import StatCard from "../../StatCard/StatCard";
 import { useThemeStore } from "@/stores/darkmode.store";
+
+import useGetAbout from "@/hooks/about/useGetAbout";
 
 const About = () => {
   const containerVariants = {
@@ -14,6 +16,18 @@ const About = () => {
       },
     },
   };
+  const getAbout = useGetAbout();
+
+  const [aboutData, setAbout] = useState<any>();
+
+  useEffect(() => {
+    const formattedAbouts = getAbout?.data?.map((about: any) => ({
+      content: about.content.rendered,
+      card: about?.acf?.card || "",
+      image: about._embedded["wp:featuredmedia"]?.[0]?.source_url || "",
+    }));
+    setAbout(formattedAbouts?.[0]);
+  }, [getAbout?.data]);
 
   const { isDarkMode } = useThemeStore();
 
@@ -46,7 +60,7 @@ const About = () => {
             className="relative mt-[24px] md:!mt-0 overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] border-solid border-[1px] border-border mb-[50px]"
           >
             <Image
-              src={`/images/about.png`}
+              src={aboutData?.image ?? "/images/about.png"}
               blurDataURL="/images/about.png"
               loading="lazy"
               layout="fill"
@@ -64,53 +78,28 @@ const About = () => {
               className={`${
                 isDarkMode ? "text-text " : "text-[#767575]"
               } max-w-[709px] px-32 leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
-            >
-              I’m a full-stack developer with over 10 years of experience,
-              specializing in frontend technologies like HTML, CSS, and
-              JavaScript, along with frameworks such as React and Angular. I
-              have a solid grasp of backend systems for seamless integration and
-              stay updated on industry trends. I&rsquo;m eager to connect with
-              professionals to explore new opportunities and enhance the digital
-              landscape.
-            </motion.div>
+              dangerouslySetInnerHTML={{ __html: aboutData?.content }}
+            />
 
             <motion.div
               variants={containerVariants}
               className="flex justify-start flex-wrap mt-[16px] sm:!mt-[80px] md:!mt-[104px] gap-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              initial="visible"
+              viewport={{ once: false, amount: 0.2 }}
             >
-              <motion.div variants={statVariants}>
-                <StatCard
-                  shiningPosition="top"
-                  count={10}
-                  text="Years of Experience"
-                />
-              </motion.div>
-              <motion.div variants={statVariants}>
-                <StatCard
-                  shiningPosition="right"
-                  count={10}
-                  text="Completed Projects"
-                />
-              </motion.div>
-              <motion.div variants={statVariants}>
-                <StatCard
-                  shiningPosition="bottom"
-                  count={100}
-                  sign="%"
-                  text="On Time Delivery"
-                />
-              </motion.div>
-              <motion.div variants={statVariants}>
-                <StatCard
-                  shiningPosition="right"
-                  count={5}
-                  sign="+"
-                  text="Programming languages"
-                />
-              </motion.div>
+              {aboutData?.card?.map((detail) => {
+                return (
+                  <>
+                    <motion.div variants={statVariants}>
+                      <StatCard
+                        shiningPosition={detail?.position}
+                        count={detail?.number}
+                        text={detail?.text}
+                      />
+                    </motion.div>
+                  </>
+                );
+              })}
             </motion.div>
           </div>
         </motion.div>

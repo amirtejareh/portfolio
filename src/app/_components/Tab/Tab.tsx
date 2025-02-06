@@ -76,7 +76,7 @@ const Tab: React.FC<ITab> = ({ data }) => {
                     alt={post?.website?.title}
                   />
 
-                  <div className=" backdrop-blur-[4px]  w-full bg-[linear-gradient(90deg,_rgba(44,42,41,0.7)_0%,_rgba(44,42,41,0.2)_100%)] flex absolute bottom-0 h-64 px-[20px] justify-between items-center">
+                  <div className=" backdrop-blur-[4px] gap-[5px]   w-full bg-[linear-gradient(90deg,_rgba(44,42,41,0.7)_0%,_rgba(44,42,41,0.2)_100%)] flex absolute bottom-0 h-64 px-[20px] justify-between items-center">
                     <div className="flex gap-[10px] sm:!gap-[25px] flex-grow">
                       <p className="text-border min-w-[95px]">
                         {post?.website?.title}
@@ -86,14 +86,14 @@ const Tab: React.FC<ITab> = ({ data }) => {
                           return (
                             <p
                               key={index}
-                              className="relative w-[25px] h-[25px]"
+                              className="relative  w-[20px] h-[20px] sm:!w-[40px] sm:!h-[40px] border-[1px] border-[#434342] rounded-[50%]"
                             >
                               <Image
                                 src={`${attach?.source_url}`}
                                 loading="lazy"
                                 layout="fill"
                                 objectFit="cover"
-                                className="absolute"
+                                className="absolute w-[12px] !mx-auto top-0 px-[1px] py-[1px] sm:!px-0 sm:!py-0 sm:!top-[7px] h-[12px] sm:!w-[24px] sm:!h-[24px]"
                                 alt=""
                               />
                             </p>
@@ -104,10 +104,17 @@ const Tab: React.FC<ITab> = ({ data }) => {
                     <div className=" h-[40px] rounded-[24px] border-[1px] border-solid border-border">
                       <a
                         href={post?.website?.link}
-                        className="h-[40px] cursor-pointer flex text-border text-[12px] sm:!text-16  items-center justify-center w-[100px] sm:!w-[121px] md:!w-[150px]"
+                        className="h-[40px] hidden sm:!flex cursor-pointer  text-border text-[12px] sm:!text-16  items-center justify-center w-[70px] sm:!w-[121px] md:!w-[150px]"
                         target="_blank"
                       >
-                        Check this work
+                        <span className="hidden sm:!flex">check this work</span>
+                      </a>
+                      <a
+                        href={post?.website?.link}
+                        className="h-[40px]  sm:!hidden cursor-pointer flex px-5 text-border text-[12px] sm:!text-16  items-center justify-center w-[70px] sm:!w-[121px] md:!w-[150px]"
+                        target="_blank"
+                      >
+                        <span className="flex sm:!hidden">check</span>{" "}
                       </a>
                     </div>
                   </div>

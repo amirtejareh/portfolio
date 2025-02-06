@@ -5,10 +5,17 @@ import { useThemeStore } from "@/stores/darkmode.store";
 import Button from "../../Button/Button";
 import Switch from "../../Switch/Switch";
 import SvgClose from "../../icons/Close";
+import useGetSettings from "@/hooks/settings/useGetSettings";
 const TopHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, setDarkMode, orientationDevice, setOrientationDevice } =
     useThemeStore();
+  const getSettings: {
+    data: {
+      text_logo: string;
+      phone: string;
+    };
+  } = useGetSettings();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const sidebarMenuRef = useRef(null);
@@ -76,7 +83,7 @@ const TopHeader = () => {
               isDarkMode ? "text-[#EFEFEF]" : "text-[#232222]"
             } text-[20px]  md:flex !font-lobster`}
           >
-            Amir Tejareh
+            {getSettings?.data?.text_logo}
           </span>
           <span className="cursor-pointer" onClick={toggleMenu}>
             <SvgClose />
@@ -96,9 +103,9 @@ const TopHeader = () => {
           </ul>
         </div>
         <div className="flex flex-grow items-end mb-[156px] justify-center">
-          <Button>
-            <a href="tel:+989126903127">Contact Me</a>
-          </Button>
+          <a href={`tel:+98${getSettings?.data?.phone}`}>
+            <Button>Contact Me</Button>
+          </a>
         </div>
       </motion.div>
       {/* Header Section */}

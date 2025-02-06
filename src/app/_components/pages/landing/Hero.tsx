@@ -5,6 +5,7 @@ import Button from "../../Button/Button";
 import SvgCv from "../../icons/Cv";
 import { useThemeStore } from "@/stores/darkmode.store";
 import SvgCvBlack from "../../icons/CvBlack";
+import useGetSettings from "@/hooks/settings/useGetSettings";
 
 const ArrowRightIcon = dynamic(
   () => import("@/app/_components/icons/ArrowRight"),
@@ -13,6 +14,22 @@ const ArrowRightIcon = dynamic(
 
 const Hero = () => {
   const { isDarkMode, orientationDevice } = useThemeStore();
+  const getSettings: {
+    data: {
+      instagram: string;
+      text_logo: string;
+      linkedin: string;
+      telegram: string;
+      phone: string;
+      resume: string;
+      hero_first: string;
+      hero_second: string;
+      image_dark: string;
+      image_light: string;
+      github: string;
+      hero_about_me: string;
+    };
+  } = useGetSettings();
 
   return (
     <div
@@ -55,32 +72,36 @@ const Hero = () => {
               isDarkMode ? "text-[#CECECE]" : "text-[#767575]"
             } text-[24px] mt-[50px] sm:!mt-[140px] leading-[32px] font-normal`}
           >
-            Full-Stack Developer
+            {getSettings?.data?.hero_first}
           </div>
           <div
             className={`${
               isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
             } mt-[40px]  text-[32px]  sm:!text-[64px]  md:!text-[80px] leading-[88px] !font-moul`}
           >
-            Amir Tejareh
+            {getSettings?.data?.hero_second}
           </div>
           <div
             className={`${
               isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
             } mt-[24px] pl-[16px] border-l-2 border-primary  text-[20px] lleading-[32px] max-w-[170px] sm:!max-w-[400px]`}
           >
-            I&rsquo;m a full-stack developer and I work remotely from Iran
+            {getSettings?.data?.hero_about_me}
           </div>
-          <div
-            className={`mt-[40px] ${
-              isDarkMode
-                ? "text-white bg-background"
-                : "text-[#3D3B3B] bg-white"
-            } `}
-          >
-            <Button icon={<ArrowRightIcon />} dimensions="large">
-              Hire Me
-            </Button>
+          <div className={`mt-[40px] `}>
+            <a target="_blank" href={getSettings?.data?.telegram}>
+              <Button
+                className={`${
+                  isDarkMode
+                    ? "text-white bg-background"
+                    : "text-[#3D3B3B] bg-white"
+                } `}
+                icon={<ArrowRightIcon />}
+                dimensions="large"
+              >
+                Hire Me
+              </Button>
+            </a>
           </div>
         </motion.div>
       </div>
@@ -100,13 +121,17 @@ const Hero = () => {
           } sm:!w-[450px] sm:!h-[400px] md:!w-[700px] md:!h-[640px]  sm:!right-[50px] md:!bottom-[130px]`}
         >
           <div className="absolute  bottom-[60px] sm:!bottom-[70px]  scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
-            {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
+            <a target="_blank" href={getSettings?.data?.resume}>
+              {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
+            </a>
           </div>
 
           {isDarkMode ? (
             <Image
-              src={"/images/AmirTejareh.png"}
-              blurDataURL="/images/AmirTejareh.png"
+              src={getSettings?.data?.image_dark ?? "/images/AmirTejareh.png"}
+              blurDataURL={
+                getSettings?.data?.image_dark ?? "/images/AmirTejareh.png"
+              }
               loading="lazy"
               layout="fill"
               objectFit="contain"
@@ -116,8 +141,12 @@ const Hero = () => {
             />
           ) : (
             <Image
-              src={"/images/AmirTejarehLight.png"}
-              blurDataURL="/images/AmirTejarehLight.png"
+              src={
+                getSettings?.data?.image_light ?? "/images/AmirTejarehLight.png"
+              }
+              blurDataURL={
+                getSettings?.data?.image_light ?? "/images/AmirTejarehLight.png"
+              }
               loading="lazy"
               layout="fill"
               objectFit="contain"

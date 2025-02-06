@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 import Button from "../../Button/Button";
 import SvgTelegram from "../../icons/Telegram";
 import SvgInstagram from "../../icons/Instagram";
 import SvgLinkedin from "../../icons/Linkedin";
 import SvgGithub from "../../icons/Github";
-import SvgCopyRight from "../../icons/CopyRight";
 import { useThemeStore } from "@/stores/darkmode.store";
 import SvgGithubOrange from "../../icons/GithubOrange";
 import SvgTelegramOrange from "../../icons/TelegramOrange";
 import SvgInstagramOrange from "../../icons/InstagramOrange";
 import SvgLinkedinOrange from "../../icons/LinkedinOrange";
+import useGetSettings from "@/hooks/settings/useGetSettings";
 
 const Footer = () => {
   const ArrowRightIcon = dynamic(
@@ -18,6 +18,16 @@ const Footer = () => {
     { ssr: true }
   );
   const { isDarkMode, setDarkMode } = useThemeStore();
+
+  const getSettings: {
+    data: {
+      instagram: string;
+      linkedin: string;
+      telegram: string;
+      github: string;
+      phone: string;
+    };
+  } = useGetSettings();
 
   return (
     <div className="px-64 mb-[100px] ">
@@ -40,16 +50,16 @@ const Footer = () => {
           </span>
         </div>
         <div className="text-white mt-24 sm:!mt-[0] flex justify-center">
-          <Button icon={<ArrowRightIcon />} dimensions="large">
-            <a
-              className={`text-[14px] md:!text-16 ${
-                isDarkMode ? "text-text" : "!text-[#3D3B3B]"
-              } text-text`}
-              href="tel:+989126903127"
-            >
+          <a
+            className={`text-[14px] md:!text-16 ${
+              isDarkMode ? "text-text" : "!text-[#3D3B3B]"
+            } text-text`}
+            href={`tel:+98${getSettings?.data?.phone}`}
+          >
+            <Button icon={<ArrowRightIcon />} dimensions="large">
               Available for projects
-            </a>
-          </Button>
+            </Button>
+          </a>
         </div>
       </div>
 
@@ -74,54 +84,57 @@ const Footer = () => {
           </span>
         </div>
         <div className="flex items-center justify-center gap-[9px]">
-          <div
-            className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
-              isDarkMode
-                ? "bg-[rgba(47_47_47)]"
-                : "bg-white border-[1px] border-solid border-[#E9E9E9]"
-            } rounded-[8px]`}
+          <a
+            href={getSettings?.data?.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <a
-              href="https://t.me/amirtejareh"
-              target="_blank"
-              rel="noopener noreferrer"
+            <div
+              className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
+                isDarkMode
+                  ? "bg-[rgba(47_47_47)]"
+                  : "bg-white border-[1px] border-solid border-[#E9E9E9]"
+              } rounded-[8px]`}
             >
               {isDarkMode ? <SvgTelegram /> : <SvgTelegramOrange />}
-            </a>
-          </div>
-          <div
-            className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
-              isDarkMode
-                ? "bg-[rgba(47_47_47)]"
-                : "bg-white border-[1px] border-solid border-[#E9E9E9]"
-            } rounded-[8px]`}
-          >
-            <a href="https://github.com/amirtejareh" target="_blank">
+            </div>
+          </a>
+
+          <a href={getSettings?.data?.github} target="_blank">
+            <div
+              className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
+                isDarkMode
+                  ? "bg-[rgba(47_47_47)]"
+                  : "bg-white border-[1px] border-solid border-[#E9E9E9]"
+              } rounded-[8px]`}
+            >
               {isDarkMode ? <SvgGithub /> : <SvgGithubOrange />}
-            </a>
-          </div>
-          <div
-            className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
-              isDarkMode
-                ? "bg-[rgba(47_47_47)]"
-                : "bg-white border-[1px] border-solid border-[#E9E9E9]"
-            }             } rounded-[8px]`}
-          >
-            <a href="https://instagram.com/bluedev.agency" target="_blank">
+            </div>
+          </a>
+
+          <a href={getSettings?.data?.instagram} target="_blank">
+            <div
+              className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
+                isDarkMode
+                  ? "bg-[rgba(47_47_47)]"
+                  : "bg-white border-[1px] border-solid border-[#E9E9E9]"
+              }             } rounded-[8px]`}
+            >
               {isDarkMode ? <SvgInstagram /> : <SvgInstagramOrange />}{" "}
-            </a>
-          </div>
-          <div
-            className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
-              isDarkMode
-                ? "bg-[rgba(47_47_47)]"
-                : "bg-white border-[1px] border-solid border-[#E9E9E9]"
-            }             } rounded-[8px]`}
-          >
-            <a href="https://linkedin.com/in/amirtejareh" target="_blank">
+            </div>
+          </a>
+
+          <a href={getSettings?.data?.linkedin} target="_blank">
+            <div
+              className={`flex w-[44px] h-[44px] rounded-8 items-center justify-center ${
+                isDarkMode
+                  ? "bg-[rgba(47_47_47)]"
+                  : "bg-white border-[1px] border-solid border-[#E9E9E9]"
+              }             } rounded-[8px]`}
+            >
               {isDarkMode ? <SvgLinkedin /> : <SvgLinkedinOrange />}{" "}
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
