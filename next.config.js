@@ -7,6 +7,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+        protocol: "https",
+        hostname: "api.amirtejareh.com",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
         port: "",

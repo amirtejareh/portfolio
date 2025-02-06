@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import SvgFigma from "../icons/Figma";
-import SvgHtml5 from "../icons/Html5";
-import SvgCss3 from "../icons/Css3";
-import SvgReact from "../icons/React";
+import { useThemeStore } from "@/stores/darkmode.store";
 
 interface ITab {
   data: {
@@ -14,6 +11,7 @@ interface ITab {
 
 const Tab: React.FC<ITab> = ({ data }) => {
   const projectRef = useRef(null);
+  const { isDarkMode } = useThemeStore();
 
   useEffect(() => {
     if (projectRef?.current) {
@@ -45,7 +43,12 @@ const Tab: React.FC<ITab> = ({ data }) => {
                   className={`${
                     active == index
                       ? "  text-primary"
-                      : "text-border hover:border-primary hover:text-primary"
+                      : `${
+                          isDarkMode
+                            ? "text-border"
+                            : "!text-[#3D3B3B] hover:!text-primary"
+                        }  hover:border-primary hover:text-primary`
+                  }
                   } px-[21px] rounded-[24px] cursor-pointer min-w-[95px]  md:!min-w-[143px] hover:border-primary hover:text-primary]  flex justify-center  items-center py-[8px] border-[1px] border-solid bordeer-border text-[16px] md:!text-[20px]`}
                 >
                   {tab?.title}
@@ -70,17 +73,21 @@ const Tab: React.FC<ITab> = ({ data }) => {
                     layout="fill"
                     objectFit="cover"
                     className="absolute"
-                    alt="gym Not Found"
+                    alt={post?.website?.title}
                   />
+
                   <div className=" backdrop-blur-[4px]  w-full bg-[linear-gradient(90deg,_rgba(44,42,41,0.7)_0%,_rgba(44,42,41,0.2)_100%)] flex absolute bottom-0 h-64 px-[20px] justify-between items-center">
                     <div className="flex gap-[10px] sm:!gap-[25px] flex-grow">
                       <p className="text-border min-w-[95px]">
                         {post?.website?.title}
                       </p>
                       <div className="flex gap-[2px] items-center text-border">
-                        {post?.attachment?.map((attach) => {
+                        {post?.attachment?.map((attach, index) => {
                           return (
-                            <p className="relative w-[25px] h-[25px]">
+                            <p
+                              key={index}
+                              className="relative w-[25px] h-[25px]"
+                            >
                               <Image
                                 src={`${attach?.source_url}`}
                                 loading="lazy"

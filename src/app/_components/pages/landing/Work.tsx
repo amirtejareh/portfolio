@@ -50,7 +50,7 @@ const Work = () => {
             attachment: project?._embedded?.["acf:attachment"],
 
             image:
-              project?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
+              project?._embedded?.["wp:featuredmedia"][0]?.source_url || "",
           };
         });
 

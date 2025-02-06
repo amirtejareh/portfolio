@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/legacy/image";
 import { motion } from "framer-motion";
 import StatCard from "../../StatCard/StatCard";
+import { useThemeStore } from "@/stores/darkmode.store";
 
 const About = () => {
   const containerVariants = {
@@ -13,6 +14,8 @@ const About = () => {
       },
     },
   };
+
+  const { isDarkMode } = useThemeStore();
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -44,9 +47,11 @@ const About = () => {
           >
             <Image
               src={`/images/about.png`}
+              blurDataURL="/images/about.png"
               loading="lazy"
               layout="fill"
               objectFit="cover"
+              placeholder="blur"
               objectPosition={"center 25%"}
               alt="Senior Fullstack Developer"
               className=" rounded-se-[64px] hover:scale-105 transition-transform duration-500 border-solid border-[1px] border-border"
@@ -56,7 +61,9 @@ const About = () => {
           <div className="flex flex-col">
             <motion.div
               variants={itemVariants}
-              className="max-w-[709px] px-32 text-text leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal"
+              className={`${
+                isDarkMode ? "text-text " : "text-[#767575]"
+              } max-w-[709px] px-32 leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
             >
               I’m a full-stack developer with over 10 years of experience,
               specializing in frontend technologies like HTML, CSS, and

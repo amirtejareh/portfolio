@@ -25,7 +25,7 @@ const Services = () => {
         "Maintenance and Updates",
         "App Performance Optimization",
       ],
-      logo: <SvgApp />,
+      logo: <SvgWeb />,
     },
     {
       title: "WP Theme Implementation",
@@ -35,7 +35,7 @@ const Services = () => {
         "Theme Installation",
         "Responsive Theme",
       ],
-      logo: <SvgApp />,
+      logo: <SvgWeb />,
     },
   ];
   return (
@@ -49,7 +49,7 @@ const Services = () => {
 
       <div className="flex gap-[26px] md:!mt-[42px] mt-[24px] sm:!mt-[23px]  md:!gap-[23px] flex-wrap md:!flex-nowrap justify-center ">
         {services.map((service, index) => (
-          <div className="flex  justify-center   md:!justify-end" key={index}>
+          <div className="flex justify-center md:!justify-end" key={index}>
             <PricingCard
               title={service.title}
               subtitle={service.subtitle}

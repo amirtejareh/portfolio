@@ -1,7 +1,7 @@
 .stat-card {
-  @apply flex items-center px-16 gap-16 justify-center w-[162px] md:!w-[222px] h-[96px] backdrop-blur-[12px] rounded-[8px] border-solid border-[0.5px] border-statCardBorder bg-[linear-gradient(90deg,_rgba(33,33,30,0.08)_0%,_rgba(33,33,30,0.8)_100%)];
+  @apply flex items-center px-16 gap-16 justify-center w-[162px] md:!w-[222px] h-[96px] backdrop-blur-[12px] rounded-[8px] border-solid border-[0.5px];
   &-text {
-    @apply text-[10px] md:!text-[14px] leading-[24px] font-normal w-[73px] h-[48px] text-statCardTextColor;
+    @apply text-[10px] md:!text-[14px] leading-[24px] font-normal w-[73px] h-[48px];
   }
 
   &-count {
