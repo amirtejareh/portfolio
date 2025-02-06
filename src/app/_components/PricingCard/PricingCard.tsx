@@ -2,6 +2,8 @@ import React from "react";
 import Button from "../Button/Button";
 import { ArrowRight } from "../icons";
 import { useThemeStore } from "@/stores/darkmode.store";
+import Image from "next/image";
+import useGetSettings from "@/hooks/settings/useGetSettings";
 
 interface IPricingCard {
   title: string;
@@ -9,7 +11,7 @@ interface IPricingCard {
   price: number;
   sign?: string;
   services: string[];
-  servicesLogo: React.ReactElement;
+  servicesLogo: string;
 }
 
 const PricingCard: React.FC<IPricingCard> = ({
@@ -21,6 +23,7 @@ const PricingCard: React.FC<IPricingCard> = ({
   servicesLogo,
 }) => {
   const { isDarkMode } = useThemeStore();
+  const getSetttings: { data: { phone: string } } = useGetSettings();
 
   return (
     <div className="relative text-white border-[1px] rounded-[8px] border-statCardBorder pb-[20px] md:!pb-[0] border-solid w-[100%] max-w-[343px] sm:!max-w-[319px]  min-h-[404px]   md:!max-w-[395px] flex-wrap  h-auto md:!min-h-[496px] px-[20px] md:!px-[24px]">
@@ -47,29 +50,45 @@ const PricingCard: React.FC<IPricingCard> = ({
         </div>
       </div>
       <div className="flex gap-8 md:!gap-[12px] mt-[24px] md:!mt-[40px] flex-wrap">
-        {services?.map((service, index) => (
+        {services?.map((service: any, index) => (
           <div key={index} className="flex gap-8 w-[290px] leading-[20px]">
-            <div>{servicesLogo}</div>
+            <div>
+              <Image
+                loading="lazy"
+                layout="responsive"
+                src={servicesLogo ?? ""}
+                alt={title}
+                width={24}
+                height={24}
+              />
+            </div>
             <div
               className={`${
                 isDarkMode ? "text-[#EFEFEF]" : "text-[#767575]"
               } text-[14px] md:!text-[18px]`}
             >
-              {service}
+              {service?.text}
             </div>
           </div>
         ))}
       </div>
-      <Button
-        icon={<ArrowRight />}
-        dimensions="small"
-        className="mt-[40px] absolute bottom-24"
-        variant="Outline"
-      >
-        <a href="tel:+989126903127">
-          <span className="text-text font-semibold text-16"> Contact me</span>{" "}
-        </a>
-      </Button>
+      <a href={`tel:+98${getSetttings?.data?.phone}`}>
+        <Button
+          icon={<ArrowRight />}
+          dimensions="small"
+          className="mt-[40px] absolute bottom-24"
+          variant="Outline"
+        >
+          <span
+            className={`${
+              isDarkMode ? "text-text " : "text-white"
+            } font-semibold text-16`}
+          >
+            {" "}
+            Contact me
+          </span>{" "}
+        </Button>
+      </a>
     </div>
   );
 };

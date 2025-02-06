@@ -1,7 +1,7 @@
 import React from "react";
 import PricingCard from "../../PricingCard/PricingCard";
 import SvgWeb from "../../icons/Web";
-import SvgApp from "../../icons/App";
+import useGetServices from "@/hooks/services/useGetServices";
 
 const Services = () => {
   const services = [
@@ -38,6 +38,9 @@ const Services = () => {
       logo: <SvgWeb />,
     },
   ];
+
+  const getServices = useGetServices();
+
   return (
     <div
       className="mt-[40px] sm:!mt-[64px] md:!mt-[120px] px-16 sm:!px-[40px] md:!px-64  "
@@ -48,14 +51,16 @@ const Services = () => {
       </div>
 
       <div className="flex gap-[26px] md:!mt-[42px] mt-[24px] sm:!mt-[23px]  md:!gap-[23px] flex-wrap md:!flex-nowrap justify-center ">
-        {services.map((service, index) => (
+        {getServices?.data?.map((service, index) => (
           <div className="flex justify-center md:!justify-end" key={index}>
             <PricingCard
-              title={service.title}
-              subtitle={service.subtitle}
-              price={5000}
-              services={service.services}
-              servicesLogo={service.logo}
+              title={service?.acf?.title}
+              subtitle={service?.acf?.subtitle}
+              price={service?.acf?.price}
+              services={service?.acf?.content}
+              servicesLogo={
+                service._embedded["wp:featuredmedia"]?.[0]?.source_url || ""
+              }
               sign="$"
             />
           </div>

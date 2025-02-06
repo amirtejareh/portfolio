@@ -152,13 +152,11 @@ const TopHeader = () => {
           </header>
           <div className="flex gap-[24px] md:!gap-64 mr-[10px] md:!mr-[38px]">
             <div className="flex items-center gap-8">
-              <span>☀️</span>
               <Switch
-                className="w-[32px] md:!w-[47px]"
+                className="w-[69px]"
                 onChange={(e) => setDarkMode(e.target.checked)}
                 isChecked={true}
               />
-              <span>🌙 </span>
             </div>
 
             <div className="hidden md:!flex">

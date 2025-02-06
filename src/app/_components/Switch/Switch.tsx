@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { Size } from "../types/size.type";
 import { SwitchProps } from "./Switch.type";
+import SvgMoon from "../icons/Moon";
+import SvgSun from "../icons/Sun";
 
 const sizeClasses: Record<Size, string> = {
   tiny: "switch-xs",
@@ -17,7 +19,6 @@ const Switch: React.FC<SwitchProps> = ({
   dimensions = "medium",
   color = "default",
   className,
-  ...rest
 }) => {
   const [isChecked, setIsChecked] = useState<boolean>(true);
   const classes = classNames("switch", className, {
@@ -42,6 +43,20 @@ const Switch: React.FC<SwitchProps> = ({
         }}
         className="switch-input"
       />
+      <span
+        className={`absolute left-[8px] z-[9999] ${
+          !isChecked ? "text-white" : "text-[#545957]"
+        }`}
+      >
+        <SvgMoon />
+      </span>
+      <span
+        className={`absolute right-[8px] z-[9999] ${
+          isChecked ? "text-white" : "text-[#545957]"
+        }`}
+      >
+        <SvgSun />
+      </span>
       <span className="switch-slider" />
     </label>
   );
