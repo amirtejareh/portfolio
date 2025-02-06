@@ -1,36 +1,36 @@
-import React from "react";
-import dynamic from "next/dynamic";
-import { useEffect, useRef } from "react";
-import SvgHtsc from "../../icons/Htsc";
-import SvgDaric from "../../icons/Daric";
-import SvgShamsipour from "../../icons/Shamsipour";
-import SvgGaj from "../../icons/Gaj";
+import React, { useEffect, useState } from "react";
+import { useRef } from "react";
 import SvgAmirTejareh from "../../icons/AmirTejareh";
 import SvgAmirTejarehLight from "../../icons/AmirTejarehLight";
 import { useThemeStore } from "@/stores/darkmode.store";
-
-const SvgHafez = dynamic(() => import("@/app/_components/icons/Hafez"), {
-  ssr: true,
-});
-const SvgAsa = dynamic(() => import("@/app/_components/icons/Asa"), {
-  ssr: true,
-});
-const SvgHotelyar = dynamic(() => import("@/app/_components/icons/Hotelyar"), {
-  ssr: true,
-});
+import useGetCompanies from "@/hooks/company/useGetCompanies";
+import Image from "next/image";
 
 const Experties = () => {
-  const items = [
-    { id: 1, component: <SvgAsa /> },
-    { id: 2, component: <SvgHtsc /> },
-    { id: 3, component: <SvgHafez /> },
-    { id: 4, component: <SvgDaric /> },
-    { id: 5, component: <SvgHotelyar /> },
-    { id: 6, component: <SvgShamsipour /> },
-    { id: 7, component: <SvgGaj /> },
-  ];
   const containerRef = useRef(null);
   const { isDarkMode } = useThemeStore();
+  const [dimensions, setDimensions] = useState({ width: 1, height: 1 });
+
+  interface ICompany {
+    title: { rendered: string };
+    _embedded: string;
+  }
+
+  const getCompanies = useGetCompanies();
+
+  const [companies, setCompanies] = useState([]);
+  const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const { naturalWidth, naturalHeight } = event.currentTarget;
+    setDimensions({ width: naturalWidth, height: naturalHeight });
+  };
+  useEffect(() => {
+    const formattedCompanies = getCompanies?.data?.map((company: ICompany) => ({
+      title: company.title.rendered,
+
+      image: company._embedded["wp:featuredmedia"]?.[0]?.source_url || "",
+    }));
+    setCompanies(formattedCompanies);
+  }, [getCompanies?.data]);
 
   return (
     <div>
@@ -39,9 +39,17 @@ const Experties = () => {
         ref={containerRef}
         className="relative overflow-auto flex-nowrap gap-[76.67px] justify-start md:!justify-center scrollbar-hide px-64 flex items-center border-statCardBorder border-t-[1px] border-b-[1px] border-solid mt-[40px] sm:!mt-[64px] md:!mt-[120px] h-auto min-h-[98px]"
       >
-        {items.map((item) => (
-          <div key={item.id} className="flex ">
-            {item.component}
+        {companies?.map((item) => (
+          <div key={item.id} className="flex flex-shrink-0">
+            <Image
+              loading="lazy"
+              layout="responsive"
+              src={item?.image}
+              alt={item?.title}
+              width={dimensions.width}
+              height={dimensions.height}
+              onLoad={handleImageLoad}
+            />{" "}
           </div>
         ))}
       </div>
