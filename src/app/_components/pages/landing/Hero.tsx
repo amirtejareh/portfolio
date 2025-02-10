@@ -44,7 +44,7 @@ const Hero = () => {
   return (
     <div
       ref={ref}
-      className={`hero relative w-screen h-screen ${
+      className={`hero   h-screen ${
         isDarkMode ? "" : "bg-white"
       } overflow-hidden flex flex-col`}
     >
