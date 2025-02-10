@@ -1,4 +1,5 @@
 "use client";
+import { useThemeStore } from "@/stores/darkmode.store";
 import dynamic from "next/dynamic";
 
 const TopHeader = dynamic(
@@ -41,8 +42,13 @@ const Footer = dynamic(() => import("@/app/_components/pages/landing/Footer"), {
 });
 
 export default function HomePage() {
+  const { isDarkMode } = useThemeStore();
+
   return (
-    <div className="">
+    <>
+      {!isDarkMode && (
+        <div className="absolute top-0 left-0 z-[9999999] w-[400px] h-[400px] bg-[radial-gradient(circle_at_top_left,rgba(239,142,53,0.5)_0%,rgba(239,142,53,0)_70%)] blur-[100px] pointer-events-none"></div>
+      )}
       <TopHeader />
       <Hero />
       <About />
@@ -51,6 +57,6 @@ export default function HomePage() {
       <Services />
       <Work />
       <Footer />
-    </div>
+    </>
   );
 }

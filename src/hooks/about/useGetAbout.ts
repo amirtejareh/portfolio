@@ -6,6 +6,7 @@ const useGetAbout = () => {
     queryKey: ["get-about"],
     queryFn: getAbout,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

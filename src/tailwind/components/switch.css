@@ -1,5 +1,5 @@
 .switch {
-  @apply w-[47px] h-[32px]  inline-flex items-center cursor-pointer rounded-[20px] border-solid border-[1px] border-[#545957] relative;
+  @apply w-[47px] h-[32px]  inline-flex items-center cursor-pointer rounded-[20px] border-solid border-[1px] relative;
 }
 
 .switch-input {
@@ -7,16 +7,17 @@
 }
 
 .switch-slider {
+  cursor: pointer;
   @apply rounded-[10px];
   transition: background-color 0.3s;
 }
 
 .switch-checked .switch-slider {
-  @apply bg-primary w-[24px] h-[24px] rounded-[14px] absolute right-[4px];
+  @apply bg-primary w-[24px] h-[24px] rounded-[14px] absolute left-[4px];
 }
 
 .switch-unchecked .switch-slider {
-  @apply bg-primary w-[24px] h-[24px] rounded-[14px] absolute left-[4px];
+  @apply bg-primary w-[24px] h-[24px] rounded-[14px] absolute right-[4px];
 }
 
 .switch-disabled {

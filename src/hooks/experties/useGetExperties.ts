@@ -6,6 +6,7 @@ const useGetExperties = () => {
     queryKey: ["get-experties"],
     queryFn: getExperties,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

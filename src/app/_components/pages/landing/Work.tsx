@@ -2,18 +2,28 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import useGetProjects from "@/hooks/project/useGetProjects";
 import useGetProjectCategories from "@/hooks/project/useGetProjectCategories";
+import { useInView } from "react-intersection-observer";
 
 const Tab = dynamic(() => import("@/app/_components/Tab/Tab"), {
   ssr: true,
 });
 
 const Work = () => {
+  const { ref, inView } = useInView();
+  useEffect(() => {
+    if (inView) {
+      refetch();
+      categoryProjectRefetch();
+    }
+  }, [inView]);
   const {
     data: projectsData,
     isLoading: loadingProjects,
+    refetch,
     error: errorProjects,
   } = useGetProjects();
   const {
+    refetch: categoryProjectRefetch,
     data: categoriesData,
     isLoading: loadingCategories,
     error: errorCategories,
@@ -50,7 +60,7 @@ const Work = () => {
             attachment: project?._embedded?.["acf:attachment"],
 
             image:
-              project?._embedded?.["wp:featuredmedia"][0]?.source_url || "",
+              project?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
           };
         });
 
@@ -77,6 +87,7 @@ const Work = () => {
 
   return (
     <div
+      ref={ref}
       className="mt-[40px] sm:!mt-[64px] md:!mt-[120px] px-16 sm:!px-[40px] md:!px-64 "
       id="Work"
     >
@@ -84,7 +95,7 @@ const Work = () => {
         My Project
       </div>
 
-      <Tab data={data} />
+      <Tab inView={inView} data={data} />
     </div>
   );
 };

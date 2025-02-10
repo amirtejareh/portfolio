@@ -6,6 +6,7 @@ const useGetCompanies = () => {
     queryKey: ["get-companies"],
     queryFn: getCompanies,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

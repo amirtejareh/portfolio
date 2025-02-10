@@ -6,6 +6,7 @@ const useGetProjects = () => {
     queryKey: ["get-projects"],
     queryFn: getProjects,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

@@ -11,24 +11,15 @@ export default function ThemeProvider({
   const { isDarkMode, setDarkMode } = useThemeStore();
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setDarkMode(true);
-    }
-  }, []);
-
-  useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
     }
   }, [isDarkMode]);
 
   return (
-    <body className={`${isDarkMode ? "bg-background" : "bg-white"}`}>
+    <body className={` ${isDarkMode ? "bg-background" : "bg-[#f9f9f9]"}`}>
       {children}
     </body>
   );

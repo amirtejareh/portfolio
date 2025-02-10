@@ -6,6 +6,7 @@ const useGetProjectCategories = () => {
     queryKey: ["get-project-categories"],
     queryFn: getProjectCategories,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

@@ -6,6 +6,7 @@ const useGetServices = () => {
     queryKey: ["get-services"],
     queryFn: getServices,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

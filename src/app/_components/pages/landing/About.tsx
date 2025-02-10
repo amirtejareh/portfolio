@@ -5,6 +5,7 @@ import StatCard from "../../StatCard/StatCard";
 import { useThemeStore } from "@/stores/darkmode.store";
 
 import useGetAbout from "@/hooks/about/useGetAbout";
+import { useInView } from "react-intersection-observer";
 
 const About = () => {
   const containerVariants = {
@@ -17,6 +18,13 @@ const About = () => {
     },
   };
   const getAbout = useGetAbout();
+  const { ref, inView } = useInView({ triggerOnce: true });
+
+  useEffect(() => {
+    if (inView) {
+      getAbout?.refetch();
+    }
+  }, [inView]);
 
   const [aboutData, setAbout] = useState<any>();
 
@@ -24,7 +32,7 @@ const About = () => {
     const formattedAbouts = getAbout?.data?.map((about: any) => ({
       content: about.content.rendered,
       card: about?.acf?.card || "",
-      image: about._embedded["wp:featuredmedia"]?.[0]?.source_url || "",
+      image: about?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
     }));
     setAbout(formattedAbouts?.[0]);
   }, [getAbout?.data]);
@@ -42,14 +50,18 @@ const About = () => {
   };
 
   return (
-    <div id="About" className="px-64">
+    <div
+      ref={ref}
+      id="About"
+      className="px-16 md:!px-64 max-w-[1360px] mx-auto"
+    >
       <h2 className="mt-[40px] sm:!mt-[64px] md:!mt-[120px]!font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] font-normal leading-[60px] text-primary">
         About Me
       </h2>
 
-      <div className="flex justify-center  md:!justify-start  gap-[20px] md:!gap-[80px]">
+      <div className="flex justify-center  md:!justify-start  gap-[20px] md:!gap-[40px]">
         <motion.div
-          className="flex flex-col-reverse md:!flex-row justify-center md:!justify-start mt-16 md:!mt-[56px] flex-wrap md:!flex-nowrap gap-[20px] md:!gap-[80px]"
+          className="flex flex-col-reverse md:!flex-row justify-center md:!justify-start mt-16 md:!mt-[56px] flex-wrap md:!flex-nowrap gap-[20px] md:!gap-[40px]"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -57,18 +69,20 @@ const About = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="relative mt-[24px] md:!mt-0 overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] border-solid border-[1px] border-border mb-[50px]"
+            className="relative mt-[32px] overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] rounded-[8px] border-solid border-[1px] border-border mb-[50px] sm:!mb-0"
           >
             <Image
               src={aboutData?.image ?? "/images/about.png"}
-              blurDataURL="/images/about.png"
+              blurDataURL={aboutData?.image ?? "/images/about.png"}
               loading="lazy"
               layout="fill"
               objectFit="cover"
               placeholder="blur"
               objectPosition={"center 25%"}
-              alt="Senior Fullstack Developer"
-              className=" rounded-se-[64px] hover:scale-105 transition-transform duration-500 border-solid border-[1px] border-border"
+              alt={aboutData?.content ?? ""}
+              className={`${
+                isDarkMode ? "grayscale" : "grayscale-0"
+              } rounded-se-[64px] rounded-[8px] hover:scale-105 transition-transform duration-500 border-solid border-[1px] border-border`}
             />
           </motion.div>
 
@@ -77,27 +91,25 @@ const About = () => {
               variants={itemVariants}
               className={`${
                 isDarkMode ? "text-text " : "text-[#767575]"
-              } max-w-[709px] px-32 leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
+              } max-w-[709px] text-justify mt-[40px] leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
               dangerouslySetInnerHTML={{ __html: aboutData?.content }}
             />
 
             <motion.div
               variants={containerVariants}
-              className="flex justify-start flex-wrap mt-[16px] sm:!mt-[80px] md:!mt-[104px] gap-16"
+              className="flex justify-start flex-wrap mt-[16px] sm:!mt-[80px] md:!mt-[93px] gap-16"
               initial="visible"
               viewport={{ once: false, amount: 0.2 }}
             >
-              {aboutData?.card?.map((detail) => {
+              {aboutData?.card?.map((detail, index) => {
                 return (
-                  <>
-                    <motion.div variants={statVariants}>
-                      <StatCard
-                        shiningPosition={detail?.position}
-                        count={detail?.number}
-                        text={detail?.text}
-                      />
-                    </motion.div>
-                  </>
+                  <motion.div key={index} variants={statVariants}>
+                    <StatCard
+                      shiningPosition={detail?.position}
+                      count={detail?.number}
+                      text={detail?.text}
+                    />
+                  </motion.div>
                 );
               })}
             </motion.div>

@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -6,11 +7,24 @@ import Button from "../../Button/Button";
 import Switch from "../../Switch/Switch";
 import SvgClose from "../../icons/Close";
 import useGetSettings from "@/hooks/settings/useGetSettings";
+import { useInView } from "react-intersection-observer";
+
 const TopHeader = () => {
+  const { ref, inView } = useInView({ triggerOnce: true });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDarkMode, setDarkMode, orientationDevice, setOrientationDevice } =
-    useThemeStore();
+  const [currentPath, setCurrentPath] = useState("");
+
+  useEffect(() => {
+    if (typeof window != "undefined") {
+      const hash = window.location.hash;
+
+      setCurrentPath(hash);
+    }
+  }, []);
+
+  const { isDarkMode, setDarkMode, setOrientationDevice } = useThemeStore();
   const getSettings: {
+    refetch;
     data: {
       text_logo: string;
       phone: string;
@@ -63,21 +77,26 @@ const TopHeader = () => {
     };
     window.addEventListener("resize", handleSize);
   }, []);
+
+  useEffect(() => {
+    if (inView) getSettings?.refetch();
+  }, [inView]);
+
   return (
-    <>
+    <div className="z-[99999]" ref={ref}>
       {/* Sidebar Menu */}
       <motion.div
         ref={sidebarMenuRef}
         initial={{ x: "100%" }}
         animate={{ x: isMenuOpen ? "0%" : "100%" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className={` z-[9999] fixed right-0 top-0 flex flex-col ${
+        className={` z-[99999] fixed right-0 top-0 flex flex-col ${
           isDarkMode
             ? "text-[#EFEFEF]  bg-[rgba(22_21_20)] "
-            : "text-[#3D3B3B] bg-white"
+            : "text-[#3D3B3B] bg-[#f9f9f9]"
         }  p-[24px] w-[335px] h-[100vh]`}
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-[75px]">
           <span
             className={`${
               isDarkMode ? "text-[#EFEFEF]" : "text-[#232222]"
@@ -85,34 +104,59 @@ const TopHeader = () => {
           >
             {getSettings?.data?.text_logo}
           </span>
-          <span className="cursor-pointer" onClick={toggleMenu}>
+          <span
+            className={`cursor-pointer ${
+              isDarkMode ? "text-white" : "text-[#232222]"
+            }`}
+            onClick={toggleMenu}
+          >
             <SvgClose />
           </span>
         </div>
         <div className="mt-[40px]">
           <ul className="flex flex-col gap-[16px] leading-[32px]">
             {["About", "Expertise", "Skills", "Services", "Work"].map(
-              (item) => (
-                <li key={item}>
-                  <Link onClick={() => setIsMenuOpen(false)} href={`#${item}`}>
-                    {item}
-                  </Link>
-                </li>
-              )
+              (item) => {
+                return (
+                  <li
+                    onClick={() => setCurrentPath("#" + item)}
+                    className={`${
+                      "#" + item === currentPath
+                        ? "!text-[rgba(239_142_53)]"
+                        : "text-[#4F4F4F]"
+                    }`}
+                    key={item}
+                  >
+                    <Link
+                      onClick={() => setIsMenuOpen(false)}
+                      href={`#${item}`}
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                );
+              }
             )}
           </ul>
         </div>
         <div className="flex flex-grow items-end mb-[156px] justify-center">
-          <a href={`tel:+98${getSettings?.data?.phone}`}>
-            <Button>Contact Me</Button>
+          <a
+            className={`${isDarkMode ? "text-[#e0e0e0]" : "text-[#3D3B3B]"}`}
+            href={`tel:+98${getSettings?.data?.phone}`}
+          >
+            <Button
+              className={`${isDarkMode ? "text-[#e0e0e0]" : "text-[#3D3B3B]"}`}
+            >
+              Contact Me
+            </Button>
           </a>
         </div>
       </motion.div>
       {/* Header Section */}
       <div
         className={`${
-          isDarkMode ? "bg-[rgba(22_21_20)]" : "bg-white"
-        } sticky top-0 z-[99999] flex items-center justify-between `}
+          isDarkMode ? "bg-[rgba(22_21_20)]" : "bg-[#f9f9f9]"
+        }  flex items-center justify-between `}
       >
         <motion.span
           initial={{ opacity: 0, y: -50 }}
@@ -120,7 +164,7 @@ const TopHeader = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className={`${
             isDarkMode ? "text-[#EFEFEF]" : "text-[#232222]"
-          } md:flex !font-lobster text-[20px] sm:!text-[32px] pl-16 lg:!pl-64`}
+          } z-[99999] flex-shrink-0 md:flex !font-lobster text-[20px] sm:!text-[32px] px-16 lg:!px-64`}
         >
           Amir Tejareh
         </motion.span>
@@ -129,8 +173,8 @@ const TopHeader = () => {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className={`flex flex-wrap items-center gap-16 sm:!gap-[50px] w-full max-w-[220px] sm:!max-w-[373px] md:!max-w-[100%] justify-end md:!justify-center md:!w-auto  md:!gap-[160px] py-24 pr-16  md:!pr-64 ${
-            isDarkMode ? "bg-mirror" : "bg-[#21211E]"
+          className={`z-[9999] flex flex-wrap items-center gap-[16px] sm:!gap-[50px] w-full max-w-[220px] sm:!max-w-[373px] md:!w-full justify-end md:!justify-between md:!max-w-full  md:!gap-[160px] py-24 pr-16  ${
+            isDarkMode ? "bg-[rgba(255,255,255,0.1)]" : "bg-white"
           }  text-white rounded-[0] rounded-es-[40px] pl-16 sm:!pl-0 md:!pl-[50px] `}
         >
           <header className="hidden md:!flex">
@@ -140,7 +184,18 @@ const TopHeader = () => {
                   (item) => (
                     <motion.li
                       key={item}
-                      whileHover={{ scale: 1.1 }}
+                      onClick={() => setCurrentPath("#" + item)}
+                      className={`  ${
+                        "#" + item == currentPath
+                          ? "!text-[rgba(239_142_53)]"
+                          : `${
+                              isDarkMode ? "!text-[#E0E0E0]" : "!text-[#4F4F4F]"
+                            }`
+                      }`}
+                      whileHover={{
+                        scale: 1.1,
+                        color: "rgba(239, 142, 53, 1)",
+                      }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <a href={`#${item}`}>{item}</a>
@@ -155,12 +210,16 @@ const TopHeader = () => {
               <Switch
                 className="w-[69px]"
                 onChange={(e) => setDarkMode(e.target.checked)}
-                isChecked={true}
+                isDarkMode={isDarkMode}
               />
             </div>
 
             <div className="hidden md:!flex">
-              <Button>
+              <Button
+                className={`${
+                  isDarkMode ? "text-[#e0e0e0]" : "text-[#3D3B3B]"
+                }`}
+              >
                 <a href="tel:+989126903127">Contact Me</a>
               </Button>
             </div>
@@ -172,18 +231,32 @@ const TopHeader = () => {
               className="flex md:hidden items-center gap-16"
             >
               <div
-                className="flex md:hidden flex-col items-center justify-center gap-[5px] w-[40px] h-[40px] rounded-[12px] bg-[rgba(47,47,47)] cursor-pointer"
+                className={`flex md:hidden flex-col items-center justify-center gap-[5px] w-[40px] h-[40px] rounded-[12px] ${
+                  isDarkMode ? "bg-[rgba(47,47,47)]" : "bg-[#eaeaea]"
+                }  cursor-pointer`}
                 onClick={toggleMenu}
               >
-                <span className="w-[18px] h-[1.5px] rounded-[10px] bg-white"></span>
-                <span className="w-[18px] h-[1.5px] rounded-[10px] bg-white"></span>
-                <span className="w-[18px] h-[1.5px] rounded-[10px] bg-white"></span>
+                <span
+                  className={`w-[18px] h-[1.5px] rounded-[10px] ${
+                    isDarkMode ? "bg-white" : "bg-[rgba(47,47,47)]"
+                  } `}
+                ></span>
+                <span
+                  className={`w-[18px] h-[1.5px] rounded-[10px] ${
+                    isDarkMode ? "bg-white" : "bg-[rgba(47,47,47)]"
+                  }`}
+                ></span>
+                <span
+                  className={`w-[18px] h-[1.5px] rounded-[10px] ${
+                    isDarkMode ? "bg-white" : "bg-[rgba(47,47,47)]"
+                  }`}
+                ></span>
               </div>
             </motion.div>
           </div>
         </motion.div>
       </div>
-    </>
+    </div>
   );
 };
 

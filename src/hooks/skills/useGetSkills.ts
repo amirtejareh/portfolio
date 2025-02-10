@@ -6,6 +6,7 @@ const useGetSkills = () => {
     queryKey: ["get-skills"],
     queryFn: getSkills,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

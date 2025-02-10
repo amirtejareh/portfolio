@@ -6,6 +6,7 @@ const useGetSettings = () => {
     queryKey: ["get-settings"],
     queryFn: getSettings,
     refetchOnWindowFocus: false,
+    enabled: false,
   });
 };
 

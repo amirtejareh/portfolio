@@ -19,6 +19,7 @@ export const tailwindColors: ColorObject = {
   text: "rgba(224, 224, 224, 1)",
   statCardBorder: "rgba(67, 67, 66, 1)",
   statCardTextColor: "rgba(203, 203, 203, 1)",
+  heroFilter: "rgba(239, 142, 53, 0.4)",
   "secondary-1": "rgba(243, 183, 0, 1)",
   "secondary-2": "rgba(72, 50, 14, 1) ",
   "gray-100": "rgba(248, 250, 251, 1)",
@@ -63,12 +64,12 @@ const config: Config = {
           },
           "25%": {
             top: "-2px",
-            left: "224px",
+            left: "188px",
             transform: "translate(-100%, 0)",
           },
           "50%": {
             top: "98px",
-            left: "224px",
+            left: "188px",
             transform: "translate(-100%, -100%)",
           },
           "75%": {
@@ -122,12 +123,12 @@ const config: Config = {
           },
           "50%": {
             top: "98px",
-            left: "224px",
+            left: "188px",
             transform: "translate(-100%, -100%)",
           },
           "75%": {
             top: "-2px",
-            left: "224px",
+            left: "188px",
             transform: "translate(-100%, 0)",
           },
           "100%": {

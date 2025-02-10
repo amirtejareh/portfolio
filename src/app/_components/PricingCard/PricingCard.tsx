@@ -26,7 +26,11 @@ const PricingCard: React.FC<IPricingCard> = ({
   const getSetttings: { data: { phone: string } } = useGetSettings();
 
   return (
-    <div className="relative text-white border-[1px] rounded-[8px] border-statCardBorder pb-[20px] md:!pb-[0] border-solid w-[100%] max-w-[343px] sm:!max-w-[319px]  min-h-[404px]   md:!max-w-[395px] flex-wrap  h-auto md:!min-h-[496px] px-[20px] md:!px-[24px]">
+    <div
+      className={`relative text-white border-[1px] rounded-[8px] ${
+        isDarkMode ? "border-statCardBorder " : "border-[#e7e7e7]"
+      } pb-[20px] md:!pb-[0] border-solid w-[100%] max-w-[343px] sm:!max-w-[319px]  min-h-[404px]   md:!max-w-[395px] flex-wrap  h-auto md:!min-h-[496px] px-[20px] md:!px-[24px`}
+    >
       <div className="flex flex-col ">
         <div
           className={`${
@@ -85,7 +89,7 @@ const PricingCard: React.FC<IPricingCard> = ({
             } font-semibold text-16`}
           >
             {" "}
-            Contact me
+            Order Now
           </span>{" "}
         </Button>
       </a>
