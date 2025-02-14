@@ -47,7 +47,7 @@ export default function HomePage() {
   return (
     <>
       {!isDarkMode && (
-        <div className="absolute top-0 left-0 z-[9999999] w-[400px] h-[400px] bg-[radial-gradient(circle_at_top_left,rgba(239,142,53,0.5)_0%,rgba(239,142,53,0)_70%)] blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 left-0 z-[9999999] w-[300px] h-[300px] md:!w-[400px] md:!h-[400px] bg-[radial-gradient(circle_at_top_left,rgba(239,142,53,0.5)_0%,rgba(239,142,53,0)_70%)] blur-[100px] pointer-events-none"></div>
       )}
       <TopHeader />
       <Hero />

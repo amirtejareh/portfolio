@@ -22,6 +22,39 @@ const TopHeader = () => {
     }
   }, []);
 
+  const divRef = useRef(null); // reference to the div
+  const [margin, setMargin] = useState("auto"); // state to store calculated margin
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (divRef.current) {
+        const parentWidth = divRef.current.parentElement.offsetWidth; // Parent container width
+        const divWidth = divRef.current.offsetWidth; // Current width of the div
+
+        // Calculate margin value dynamically (center alignment logic)
+        const calculatedMargin = (parentWidth - divWidth) / 2;
+
+        // Update the value or fall back to "auto" if calculation fails
+        setMargin(calculatedMargin >= 0 ? `${calculatedMargin}px` : "auto");
+      }
+    };
+
+    // Use ResizeObserver to watch size changes
+    const resizeObserver = new ResizeObserver(() => handleResize());
+    if (divRef.current) {
+      resizeObserver.observe(divRef.current);
+      resizeObserver.observe(divRef.current.parentElement); // Also listen to parent size changes
+    }
+
+    // Initial calculation
+    handleResize();
+
+    return () => {
+      // Cleanup observer on unmount
+      resizeObserver.disconnect();
+    };
+  }, []);
+
   const { isDarkMode, setDarkMode, setOrientationDevice } = useThemeStore();
   const getSettings: {
     refetch;
@@ -83,14 +116,24 @@ const TopHeader = () => {
   }, [inView]);
 
   return (
-    <div className="z-[99999]" ref={ref}>
+    <div className="z-[999999] relative" ref={ref}>
+      <div
+        style={{ maxWidth: `${1079 + Number(margin.replace("px", ""))}px` }}
+        className={`${
+          margin === "0px" ? "hidden" : "visible"
+        } absolute top-0 right-0 bottom-0 w-full h-full z-[-1] rounded-es-[40px] ${
+          isDarkMode
+            ? "bg-[rgba(255,255,255,0.1)] backdrop-blur-[1px]"
+            : "bg-white"
+        }`}
+      />
       {/* Sidebar Menu */}
       <motion.div
         ref={sidebarMenuRef}
         initial={{ x: "100%" }}
         animate={{ x: isMenuOpen ? "0%" : "100%" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className={` z-[99999] fixed right-0 top-0 flex flex-col ${
+        className={` z-[9999999] fixed right-0 top-0 flex flex-col ${
           isDarkMode
             ? "text-[#EFEFEF]  bg-[rgba(22_21_20)] "
             : "text-[#3D3B3B] bg-[#f9f9f9]"
@@ -120,10 +163,12 @@ const TopHeader = () => {
                 return (
                   <li
                     onClick={() => setCurrentPath("#" + item)}
-                    className={`${
-                      "#" + item === currentPath
+                    className={`  ${
+                      "#" + item == currentPath
                         ? "!text-[rgba(239_142_53)]"
-                        : "text-[#4F4F4F]"
+                        : `${
+                            isDarkMode ? "!text-[#E0E0E0]" : "!text-[#4F4F4F]"
+                          }`
                     }`}
                     key={item}
                   >
@@ -154,8 +199,9 @@ const TopHeader = () => {
       </motion.div>
       {/* Header Section */}
       <div
-        className={`${
-          isDarkMode ? "bg-[rgba(22_21_20)]" : "bg-[#f9f9f9]"
+        ref={divRef}
+        className={`max-w-[1360px] mx-auto ${
+          isDarkMode ? "" : "bg-[#f9f9f9]"
         }  flex items-center justify-between `}
       >
         <motion.span
@@ -164,7 +210,7 @@ const TopHeader = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className={`${
             isDarkMode ? "text-[#EFEFEF]" : "text-[#232222]"
-          } z-[99999] flex-shrink-0 md:flex !font-lobster text-[20px] sm:!text-[32px] px-16 lg:!px-64`}
+          } z-[999999] flex-shrink-0 md:flex !font-lobster text-[20px] sm:!text-[32px] px-16 sm:!px-64`}
         >
           Amir Tejareh
         </motion.span>
@@ -173,8 +219,12 @@ const TopHeader = () => {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className={`z-[9999] flex flex-wrap items-center gap-[16px] sm:!gap-[50px] w-full max-w-[220px] sm:!max-w-[373px] md:!w-full justify-end md:!justify-between md:!max-w-full  md:!gap-[160px] py-24 pr-16  ${
-            isDarkMode ? "bg-[rgba(255,255,255,0.1)]" : "bg-white"
+          className={` z-[9999] flex flex-wrap items-center gap-[16px] sm:!gap-[50px] w-full max-w-[220px] sm:!max-w-[373px] md:!w-full justify-end md:!justify-between md:!max-w-full  md:!gap-[160px] py-24 pr-16  ${
+            isDarkMode
+              ? `${
+                  margin === "0px" ? "bg-[rgba(255,255,255,0.1)]" : "bg-inherit"
+                }`
+              : "bg-white"
           }  text-white rounded-[0] rounded-es-[40px] pl-16 sm:!pl-0 md:!pl-[50px] `}
         >
           <header className="hidden md:!flex">

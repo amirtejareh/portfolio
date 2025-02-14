@@ -59,7 +59,7 @@ const Experties = () => {
       <div
         id="Expertise"
         ref={containerRef}
-        className={`relative overflow-auto flex-nowrap gap-[76.67px] justify-start md:!justify-center scrollbar-hide px-16 md:!px-64 flex items-center ${
+        className={`relative overflow-auto flex-nowrap gap-[76.67px] justify-start md:!justify-center scrollbar-hide px-16 sm:!px-64 flex items-center ${
           isDarkMode ? "border-statCardBorder" : "border-[#ececea]"
         } border-t-[1px] border-b-[1px] border-solid mt-[40px] sm:!mt-[64px] md:!mt-[120px] h-auto min-h-[98px]`}
       >

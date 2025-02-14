@@ -45,7 +45,7 @@ const Hero = () => {
     <div
       ref={ref}
       className={`hero   h-screen ${
-        isDarkMode ? "" : "bg-white"
+        isDarkMode ? "" : "bg-[#f9f9f9]"
       } overflow-hidden flex flex-col`}
     >
       {/* Background with Zoom-Out Animation */}
@@ -69,9 +69,9 @@ const Hero = () => {
         } absolute inset-0 bg-black/85`}
       ></div>
 
-      <div className="max-w-[1360px] mx-auto w-full">
-        {/* Main Hero Section */}
-        <div className="flex-1 flex flex-col  items-start px-16 lg:px-64 z-20">
+      {/* Main Hero Section */}
+      <div className="max-w-[1360px] relative w-full mx-auto px-16 sm:!px-64">
+        <div className="flex-1 flex flex-col  items-start  z-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,10 +102,10 @@ const Hero = () => {
               {getSettings?.data?.telegram && (
                 <a target="_blank" href={getSettings?.data?.telegram}>
                   <Button
-                    className={`${
+                    className={`z-[999999] ${
                       isDarkMode
                         ? "text-white bg-background"
-                        : "text-[#3D3B3B] bg-white"
+                        : "text-[#3D3B3B] bg-[#f9f9f9]"
                     } `}
                     icon={<ArrowRightIcon />}
                     dimensions="large"
@@ -119,58 +119,62 @@ const Hero = () => {
         </div>
 
         {/* Image with Animation */}
-        <motion.div
-          initial={{ x: "100%", opacity: 0 }}
-          animate={{ x: 135, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className=" absolute top-[133px] right-[-50px] sm:!right-[100px] z-[9999] md:z-20 w-[700px] h-full"
-        >
-          <div
-            className={`absolute ${
-              orientationDevice === "portrait"
-                ? "w-[500px] h-[500px]  right-[20px] bottom-[140px]"
-                : "w-[300px] h-[300px]  right-[150px] bottom-[100px]"
-            } sm:!w-[450px] sm:!h-[400px] md:!w-[700px] md:!h-[640px]  sm:!right-[50px] md:!bottom-[130px]`}
+        {getSettings?.data && (
+          <motion.div
+            initial={{ x: "100%", y: "0", opacity: 0 }}
+            animate={{ x: 135, y: "0", opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className=" absolute  right-[-50px]  sm:!right-[100px] z-[9999] md:z-20 w-[700px] h-full"
           >
-            <div className="absolute  bottom-[60px] sm:!bottom-[70px]  scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
-              <a target="_blank" href={getSettings?.data?.resume}>
-                {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
-              </a>
-            </div>
+            <div
+              className={`absolute ${
+                orientationDevice === "portrait"
+                  ? "w-[500px] h-[500px] right-0 bottom-[233px] sm:!right-[50px] sm:!bottom-[100px]"
+                  : "w-[300px] h-[300px]  right-[150px] bottom-[100px]"
+              } sm:!w-[600px] sm:!h-[600px] md:!w-[800px] md:!h-[800px]  sm:!right-[-50px] md:!bottom-[110px]`}
+            >
+              <div className="absolute  bottom-[110px] sm:!bottom-[70px]  scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
+                <a target="_blank" href={getSettings?.data?.resume}>
+                  {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
+                </a>
+              </div>
 
-            {isDarkMode ? (
-              <Image
-                src={getSettings?.data?.image_dark ?? "/images/AmirTejareh.png"}
-                blurDataURL={
-                  getSettings?.data?.image_dark ?? "/images/AmirTejareh.png"
-                }
-                loading="lazy"
-                layout="fill"
-                objectFit="contain"
-                placeholder="blur"
-                alt={getSettings?.data?.hero_about_me}
-                className="hover:scale-105 transition-transform duration-500"
-              />
-            ) : (
-              <Image
-                src={
-                  getSettings?.data?.image_light ??
-                  "/images/AmirTejarehLight.png"
-                }
-                blurDataURL={
-                  getSettings?.data?.image_light ??
-                  "/images/AmirTejarehLight.png"
-                }
-                loading="lazy"
-                layout="fill"
-                objectFit="contain"
-                placeholder="blur"
-                alt={getSettings?.data?.hero_about_me}
-                className="hover:scale-105 transition-transform duration-500"
-              />
-            )}
-          </div>
-        </motion.div>
+              {isDarkMode ? (
+                <Image
+                  src={
+                    getSettings?.data?.image_dark ?? "/images/AmirTejareh.png"
+                  }
+                  blurDataURL={
+                    getSettings?.data?.image_dark ?? "/images/AmirTejareh.png"
+                  }
+                  loading="lazy"
+                  layout="fill"
+                  objectFit="contain"
+                  placeholder="blur"
+                  alt={getSettings?.data?.hero_about_me}
+                  className="hover:scale-105 transition-transform duration-500"
+                />
+              ) : (
+                <Image
+                  src={
+                    getSettings?.data?.image_light ??
+                    "/images/AmirTejarehLight.png"
+                  }
+                  blurDataURL={
+                    getSettings?.data?.image_light ??
+                    "/images/AmirTejarehLight.png"
+                  }
+                  loading="lazy"
+                  layout="fill"
+                  objectFit="contain"
+                  placeholder="blur"
+                  alt={getSettings?.data?.hero_about_me}
+                  className="hover:scale-105 transition-transform duration-500"
+                />
+              )}
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

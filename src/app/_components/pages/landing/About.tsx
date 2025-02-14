@@ -53,7 +53,7 @@ const About = () => {
     <div
       ref={ref}
       id="About"
-      className="px-16 md:!px-64 max-w-[1360px] mx-auto"
+      className="px-16 sm:!px-64 max-w-[1360px] mx-auto"
     >
       <h2 className="mt-[40px] sm:!mt-[64px] md:!mt-[120px]!font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] font-normal leading-[60px] text-primary">
         About Me
