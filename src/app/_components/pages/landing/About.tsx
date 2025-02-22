@@ -69,7 +69,7 @@ const About = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="relative mt-[32px] overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] rounded-[8px] border-solid border-[1px] border-border mb-[50px] sm:!mb-0"
+            className="relative !flex-shrink-0 mt-[32px] overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] rounded-[8px] border-solid border-[1px] border-border mb-[50px] sm:!mb-0"
           >
             <Image
               src={aboutData?.image ?? "/images/about.png"}
@@ -82,7 +82,7 @@ const About = () => {
               alt={aboutData?.content ?? ""}
               className={`${
                 isDarkMode ? "grayscale" : "grayscale-0"
-              } rounded-se-[64px] rounded-[8px] hover:scale-105 transition-transform duration-500 border-solid border-[1px] border-border`}
+              } rounded-se-[64px] rounded-[8px]  hover:scale-105 transition-transform duration-500 border-solid border-[1px] border-border`}
             />
           </motion.div>
 
@@ -91,13 +91,13 @@ const About = () => {
               variants={itemVariants}
               className={`${
                 isDarkMode ? "text-text " : "text-[#767575]"
-              } max-w-[709px] text-justify mt-[40px] leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
+              }  text-justify mt-[40px] leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
               dangerouslySetInnerHTML={{ __html: aboutData?.content }}
             />
 
             <motion.div
               variants={containerVariants}
-              className="flex justify-start flex-wrap mt-[16px] sm:!mt-[80px] md:!mt-[93px] gap-16"
+              className="flex justify-center sm:!justify-start flex-wrap mt-[16px] sm:!mt-[80px] md:!mt-[93px] gap-16"
               initial="visible"
               viewport={{ once: false, amount: 0.2 }}
             >

@@ -38,7 +38,7 @@ const config: Config = {
       lg: "1360px",
       md: "1280px",
       sm: "744px",
-      xs: "360px",
+      xs: "500px",
     },
     extend: {
       boxShadow: {

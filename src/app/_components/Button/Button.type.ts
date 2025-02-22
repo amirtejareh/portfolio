@@ -8,4 +8,6 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
     icon?: React.ReactNode;
     isLink?: boolean;
     borderColor?: "dark" | "light";
+    btnIconColor?: string;
+    btnBorder?: string;
   };

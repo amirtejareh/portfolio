@@ -46,7 +46,7 @@ const Footer = () => {
           isDarkMode ? "bg-[#434342]" : "bg-[#e7e7e7]"
         } h-[1px] `}
       ></div>
-      <div className="px-16 sm:!pl-[56px] sm:!pr-[40px] md:!px-[124px] max-w-[1360px] mx-auto mt-[33px] md:!items-center flex-col justify-between   sm:!flex-row flex flex-wrap md:!flex-nowrap ">
+      <div className="px-16 sm:!pl-[56px] sm:!pr-[40px]  max-w-[1360px] mx-auto mt-[33px] md:!items-center flex-col justify-between   sm:!flex-row flex flex-wrap md:!flex-nowrap ">
         <div className="flex  flex-col">
           <span
             className={`${
@@ -70,7 +70,11 @@ const Footer = () => {
             } text-text`}
             href={`tel:+98${getSettings?.data?.phone}`}
           >
-            <Button icon={<ArrowRightIcon />} dimensions="large">
+            <Button
+              btnIconColor="text-white"
+              icon={<ArrowRightIcon />}
+              dimensions="large"
+            >
               Available for projects
             </Button>
           </a>
@@ -82,7 +86,7 @@ const Footer = () => {
           isDarkMode ? "bg-[#434342]" : "bg-[#e7e7e7]"
         }  `}
       ></div>
-      <div className="flex px-16 sm:!pl-[56px] sm:!pr-[40px] md:!px-[124px] max-w-[1360px] mx-auto mt-[40px] gap-[16px] justify-between flex-wrap flex-col-reverse md:!flex-nowrap md:!flex-row">
+      <div className="flex px-16 sm:!pl-[56px] sm:!pr-[40px]  max-w-[1360px] mx-auto mt-[40px] gap-[16px] justify-between flex-wrap flex-col-reverse md:!flex-nowrap md:!flex-row">
         <div className="flex justify-center items-center gap-[8px] text-border text-16 text-center md:!text-left">
           <span
             className={`${

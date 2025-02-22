@@ -80,7 +80,7 @@ const Hero = () => {
             <div
               className={`${
                 isDarkMode ? "text-[#CECECE]" : "text-[#767575]"
-              } relative text-[24px] mt-[50px] sm:!mt-[140px] leading-[32px] font-normal`}
+              } relative text-[18px] md:!text-[24px] mt-[50px] sm:!mt-[140px] leading-[32px] font-normal`}
             >
               {getSettings?.data?.hero_first}
             </div>
@@ -94,7 +94,7 @@ const Hero = () => {
             <div
               className={`${
                 isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-              } relative mt-[24px] pl-[16px] border-l-2 border-primary  text-[20px] lleading-[32px] max-w-[170px] sm:!max-w-[400px]`}
+              } relative mt-[24px] pl-[16px] border-l-2  border-primary  sm:!text-[20px] leading-[32px max-w-[154px] h-[60px] text-[14px] md:!max-w-[212px] lg:!max-w-[400px]`}
             >
               {getSettings?.data?.hero_about_me}
             </div>
@@ -102,13 +102,14 @@ const Hero = () => {
               {getSettings?.data?.telegram && (
                 <a target="_blank" href={getSettings?.data?.telegram}>
                   <Button
-                    className={`z-[999999] ${
+                    className={`z-[9999] ${
                       isDarkMode
                         ? "text-white bg-background"
                         : "text-[#3D3B3B] bg-[#f9f9f9]"
                     } `}
                     icon={<ArrowRightIcon />}
                     dimensions="large"
+                    btnIconColor="text-white"
                   >
                     Hire Me
                   </Button>
@@ -129,11 +130,11 @@ const Hero = () => {
             <div
               className={`absolute ${
                 orientationDevice === "portrait"
-                  ? "w-[500px] h-[500px] right-0 bottom-[233px] sm:!right-[50px] sm:!bottom-[100px]"
-                  : "w-[300px] h-[300px]  right-[150px] bottom-[100px]"
-              } sm:!w-[600px] sm:!h-[600px] md:!w-[800px] md:!h-[800px]  sm:!right-[-50px] md:!bottom-[110px]`}
+                  ? "w-[500px] h-[500px] right-[42px] bottom-[108px] xs:!right-[150px]  xs:!bottom-[-16px]  "
+                  : "w-[300px] h-[300px]  right-[150px] bottom-[80px]"
+              } sm:!w-[600px] sm:!h-[600px] md:!w-[870px] md:!h-[870px]  sm:!right-[50px] sm:!bottom-[155px] md:!bottom-[79px]`}
             >
-              <div className="absolute  bottom-[110px] sm:!bottom-[70px]  scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
+              <div className="absolute  bottom-[110px]   scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
                 <a target="_blank" href={getSettings?.data?.resume}>
                   {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
                 </a>

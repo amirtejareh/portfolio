@@ -29,12 +29,14 @@ const Button: React.FC<ButtonProps> = ({
   icon = <MobileIcon />,
   borderColor = "light",
   shape = "default",
+  btnIconColor,
+  btnBorder,
   type = "button",
   children,
   className,
   ...rest
 }) => {
-  const classes = classNames("btn", classNames, {
+  const classes = classNames("btn " + btnBorder, classNames, {
     [`btn-${variant}`]: variant,
     [`${sizeClasses[dimensions]}`]: dimensions,
     [`${shapeClasses[shape]}`]: shape,
@@ -48,7 +50,7 @@ const Button: React.FC<ButtonProps> = ({
       {...rest}
     >
       <div className="btn-text-wrapper">{children}</div>
-      <div className="btn-icon">{icon}</div>
+      <div className={`btn-icon  ${btnIconColor}`}>{icon}</div>
     </button>
   );
 };

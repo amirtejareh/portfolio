@@ -80,17 +80,20 @@ const PricingCard: React.FC<IPricingCard> = ({
         <Button
           icon={<ArrowRight />}
           dimensions="small"
-          className="mt-[40px] absolute bottom-24"
+          className={`${
+            isDarkMode ? "bg-white text-[#272424]" : ""
+          } mt-[40px] absolute bottom-24 `}
           variant="Outline"
+          btnIconColor={`${isDarkMode ? "bg-inherit  text-[#272424]" : ""}`}
+          btnBorder={`!border-none`}
         >
           <span
             className={`${
-              isDarkMode ? "text-text " : "text-white"
+              isDarkMode ? " text-[#272424] " : "text-white"
             } font-semibold text-16`}
           >
-            {" "}
             Order Now
-          </span>{" "}
+          </span>
         </Button>
       </a>
     </div>

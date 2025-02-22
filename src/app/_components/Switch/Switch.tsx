@@ -38,7 +38,7 @@ const Switch: React.FC<SwitchProps> = ({
   return (
     <label
       className={`${classes} ${
-        isDarkMode ? "border-[#e0e0e0]" : "border-[#d9d9d9]"
+        isDarkMode ? "border-[#6E7070]" : "border-[#d9d9d9]"
       }`}
     >
       <input
