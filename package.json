@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env.development next dev --port 5010",
-    "build": "env-cmd -f .env.production next build",
+    "build": "next build",
     "start": "next start --port 4050",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
