@@ -63,7 +63,7 @@ const TopHeader = () => {
       setOrientationDevice("portrait");
     }
     window.document.addEventListener("mousedown", checkMenu);
-  }, []);
+  }, [setOrientationDevice]);
 
   useEffect(() => {
     if (window.matchMedia("(orientation: landscape)").matches) {
@@ -79,7 +79,7 @@ const TopHeader = () => {
     if (isMenuOpen === true && dimensions.width > 1279) {
       setIsMenuOpen(false);
     }
-  }, [isMenuOpen, dimensions]);
+  }, [isMenuOpen, dimensions, setOrientationDevice]);
 
   useEffect(() => {
     const handleSize = () => {
