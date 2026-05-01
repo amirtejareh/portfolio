@@ -127,7 +127,7 @@ const Hero = () => {
           <div
             className={`absolute ${
               orientationDevice === "portrait"
-                ? "w-[300px] h-[300px] right-[-20px] bottom-[100px] xs:!w-[450px] xs:!h-[450px] xs:!right-[155px] xs:!bottom-[-16px]"
+                ? "w-[300px] h-[300px] right-[155px] bottom-[100px] xs:!w-[450px] xs:!h-[450px] xs:!right-[155px] xs:!bottom-[-16px]"
                 : "w-[220px] h-[220px] right-[40px] bottom-[40px]"
             } sm:!w-[550px] sm:!h-[550px] md:!w-[870px] md:!h-[870px] sm:!right-[50px] sm:!bottom-[125px] md:!bottom-[79px] [@media(max-height:600px)]:!w-[250px] [@media(max-height:600px)]:!h-[250px] [@media(max-height:600px)]:!right-[20px] [@media(max-height:600px)]:!bottom-[20px]`}
           >
