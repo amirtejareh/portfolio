@@ -61,7 +61,7 @@ const Experties = () => {
         {/* Left: Title + about */}
         <div className="w-[100%] md:!w-auto">
           <div className="!font-moul text-[24px] sm:!text-[28px] md:!text-[40px] text-primary">
-            My Experties
+            My Expertise
           </div>
           <div
             className={`${

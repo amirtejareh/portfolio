@@ -44,7 +44,7 @@ const About = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="relative !flex-shrink-0 mt-[32px] overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] rounded-[8px] border-solid border-[1px] border-border mb-[50px] sm:!mb-0"
+            className="relative !flex-shrink-0 mt-[32px] overflow-hidden w-full max-w-[360px] md:!w-[394px] md:!max-w-[394px] h-[360px] rounded-se-[64px] rounded-[8px] border-solid border-[1px] border-border mb-[50px] sm:!mb-0"
           >
             <Image
               src={aboutData.image}

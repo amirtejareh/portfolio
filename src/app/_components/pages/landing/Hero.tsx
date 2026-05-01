@@ -13,157 +13,165 @@ const ArrowRightIcon = dynamic(
 );
 
 const Hero = () => {
-  const { isDarkMode, orientationDevice } = useThemeStore();
+  const { isDarkMode } = useThemeStore();
+  const heroImage = isDarkMode
+    ? settingsData.image_dark
+    : settingsData.image_light;
 
   return (
-    <div
-      className={`hero h-screen ${
-        isDarkMode ? "" : "bg-[#f9f9f9]"
-      } overflow-hidden flex flex-col`}
+    <section
+      className={`hero relative isolate overflow-hidden ${
+        isDarkMode ? "bg-background" : "bg-[#f9f9f9]"
+      }`}
     >
-      {/* Background with Zoom-Out Animation */}
       <motion.div
         initial={{ scale: 1.2 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
-        className={`absolute inset-0 z-0 ${isDarkMode ? "visible" : "hidden"} `}
+        className={`absolute inset-0 z-0 ${isDarkMode ? "opacity-100" : "opacity-0"}`}
+        aria-hidden="true"
       >
         <Image
           src="/images/hero.jpg"
-          alt="Hero Background"
-          layout="fill"
-          objectFit="cover"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
+
       <div
-        className={`${
-          isDarkMode ? "visible" : "hidden"
-        } absolute inset-0 bg-black/85`}
-      ></div>
+        className={`absolute inset-0 z-0 ${
+          isDarkMode
+            ? "bg-[linear-gradient(90deg,rgba(22,21,20,0.97)_0%,rgba(22,21,20,0.89)_48%,rgba(22,21,20,0.76)_100%)]"
+            : "bg-[linear-gradient(115deg,rgba(255,255,255,0.95)_0%,rgba(249,249,249,0.88)_56%,rgba(239,142,53,0.1)_100%)]"
+        }`}
+        aria-hidden="true"
+      />
 
-      {/* Main Hero Section */}
-      <div className="max-w-[1360px] relative w-full mx-auto px-16 sm:!px-64">
-        <div className="flex-1 flex flex-col items-start z-20">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          >
-            <div
-              className={`${
-                isDarkMode ? "text-[#CECECE]" : "text-[#767575]"
-              } relative text-[18px] md:!text-[24px] mt-[50px] sm:!mt-[140px] leading-[32px] font-normal`}
-            >
-              {settingsData.hero_first}
-            </div>
-            <div
-              className={`${
-                isDarkMode ? "text-[#EFEFEF]" : "text-[#3D3B3B]"
-              } relative sm:!mt-[40px] text-[32px] sm:!text-[64px] md:!text-[80px] leading-[88px] !font-moul`}
-            >
-              {settingsData.hero_second}
-            </div>
-            <div className="relative group">
-              <div
-                className={`${
-                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-                } relative sm:!mt-[24px] pl-[16px] border-l-2 border-primary sm:!text-[20px] leading-[28px] sm:!leading-[36px] max-w-[200px] sm:!max-w-[450px] text-[14px] md:!max-w-[400px] overflow-hidden line-clamp-2 sm:line-clamp-none cursor-help transition-colors duration-300 hover:text-primary/80`}
-              >
-                {settingsData.hero_about_me}
-              </div>
-
-              {/* Tooltip - Modern Glassmorphism */}
-              <div className="absolute left-0 bottom-full mb-12 hidden group-hover:block z-[9999] pointer-events-none">
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  className={`${
-                    isDarkMode
-                      ? "bg-black/60 text-white border-white/10"
-                      : "bg-white/80 text-[#333] border-black/5 shadow-xl"
-                  } p-16 rounded-12 text-[14px] max-w-[280px] border backdrop-blur-xl`}
-                >
-                  <p className="leading-relaxed">
-                    {settingsData.hero_about_me}
-                  </p>
-                  <div
-                    className={`absolute left-6 top-full w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent ${
-                      isDarkMode
-                        ? "border-t-[8px] border-t-black/60"
-                        : "border-t-[8px] border-t-white/80"
-                    }`}
-                  ></div>
-                </motion.div>
-              </div>
-            </div>
-            <div className={`mt-[40px]`}>
-              {settingsData.telegram && (
-                <a target="_blank" href={settingsData.telegram}>
-                  <Button
-                    className={`z-[9999] ${
-                      isDarkMode
-                        ? "text-white bg-background"
-                        : "text-[#3D3B3B] bg-[#f9f9f9]"
-                    } `}
-                    icon={<ArrowRightIcon />}
-                    dimensions="large"
-                    btnIconColor="text-white"
-                  >
-                    Hire Me
-                  </Button>
-                </a>
-              )}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Image with Animation */}
+      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-88px)] w-full max-w-[1360px] items-center gap-[36px] px-16 py-[40px] sm:!px-64 sm:!py-[64px] md:!grid-cols-[minmax(0,0.9fr)_minmax(420px,1.1fr)] md:!gap-[56px] md:!py-[52px] [@media(max-height:720px)]:md:!gap-[32px] [@media(max-height:720px)]:md:!py-[32px]">
         <motion.div
-          initial={{ x: "100%", y: "0", opacity: 0 }}
-          animate={{ x: 135, y: "0", opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className=" absolute right-[-50px] sm:!right-[100px] z-[9999] md:z-20 w-[700px] h-full"
+          initial={{ opacity: 0, y: 36 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+          className="relative z-20 max-w-[640px]"
         >
           <div
-            className={`absolute ${
-              orientationDevice === "portrait"
-                ? "w-[300px] h-[300px] right-[155px] bottom-[100px] xs:!w-[450px] xs:!h-[450px] xs:!right-[155px] xs:!bottom-[-16px]"
-                : "w-[220px] h-[220px] right-[40px] bottom-[40px]"
-            } sm:!w-[550px] sm:!h-[550px] md:!w-[870px] md:!h-[870px] sm:!right-[50px] sm:!bottom-[125px] md:!bottom-[79px] [@media(max-height:600px)]:!w-[250px] [@media(max-height:600px)]:!h-[250px] [@media(max-height:600px)]:!right-[20px] [@media(max-height:600px)]:!bottom-[20px]`}
+            className={`${
+              isDarkMode ? "text-[#CECECE]" : "text-[#767575]"
+            } text-[16px] sm:!text-[20px] md:!text-[24px] leading-[28px] sm:!leading-[32px] font-normal`}
           >
-            <div className="absolute bottom-[110px] scale-50 md:!scale-100 md:!bottom-[200px] left-0 md:!left-[50px] z-20">
-              <a target="_blank" href={settingsData.resume}>
-                {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
-              </a>
-            </div>
+            {settingsData.hero_first}
+          </div>
 
-            {isDarkMode ? (
-              <Image
-                src={settingsData.image_dark}
-                blurDataURL={settingsData.image_dark}
-                loading="lazy"
-                layout="fill"
-                objectFit="contain"
-                placeholder="blur"
-                alt={settingsData.hero_about_me}
-                className="hover:scale-105 transition-transform duration-500"
-              />
-            ) : (
-              <Image
-                src={settingsData.image_light}
-                blurDataURL={settingsData.image_light}
-                loading="lazy"
-                layout="fill"
-                objectFit="contain"
-                placeholder="blur"
-                alt={settingsData.hero_about_me}
-                className="hover:scale-105 transition-transform duration-500"
-              />
+          <h1
+            className={`${
+              isDarkMode ? "text-[#EFEFEF]" : "text-[#2F2D2D]"
+            } mt-[12px] sm:!mt-[24px] text-[40px] xs:!text-[48px] sm:!text-[64px] md:!text-[80px] leading-[48px] xs:!leading-[58px] sm:!leading-[74px] md:!leading-[88px] !font-moul`}
+          >
+            {settingsData.hero_second}
+          </h1>
+
+          <div className="relative group mt-[20px] sm:!mt-[24px]">
+            <p
+              className={`${
+                isDarkMode ? "text-[#B2B2B2]" : "text-[#6F6D6D]"
+              } border-l-2 border-primary pl-[16px] text-[14px] sm:!text-[18px] md:!text-[20px] leading-[26px] sm:!leading-[32px] md:!leading-[36px] max-w-[560px] cursor-help transition-colors duration-300 hover:text-primary/85`}
+            >
+              {settingsData.hero_about_me}
+            </p>
+
+            <div className="absolute left-0 bottom-full z-[60] mb-12 hidden pointer-events-none group-hover:block">
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                className={`${
+                  isDarkMode
+                    ? "bg-black/70 text-white border-white/10"
+                    : "bg-white/90 text-[#333] border-black/5 shadow-xl"
+                } max-w-[300px] rounded-[12px] border p-16 text-[14px] backdrop-blur-xl`}
+              >
+                <p className="leading-relaxed">{settingsData.hero_about_me}</p>
+                <div
+                  className={`absolute left-6 top-full h-0 w-0 border-l-[8px] border-r-[8px] border-t-[8px] border-l-transparent border-r-transparent ${
+                    isDarkMode ? "border-t-black/70" : "border-t-white/90"
+                  }`}
+                />
+              </motion.div>
+            </div>
+          </div>
+
+          <div className="mt-[28px] sm:!mt-[36px] flex flex-wrap items-center gap-[16px]">
+            {settingsData.telegram && (
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={settingsData.telegram}
+              >
+                <Button
+                  className={`${
+                    isDarkMode
+                      ? "bg-white text-[#272424]"
+                      : "bg-[#232222] text-white"
+                  } shadow-[0_16px_45px_rgba(239,142,53,0.18)]`}
+                  icon={<ArrowRightIcon />}
+                  dimensions="large"
+                  btnIconColor="text-white"
+                >
+                  Hire Me
+                </Button>
+              </a>
             )}
           </div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 56 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.25 }}
+          className="relative z-10 mx-auto flex w-full max-w-[520px] items-end justify-center md:!max-w-[680px] md:!justify-end"
+        >
+          <div
+            className={`relative h-[min(74vw,360px)] w-full md:!h-[clamp(330px,calc(100svh-190px),650px)] ${
+              isDarkMode ? "text-white" : "text-[#232222]"
+            }`}
+          >
+            <div
+              className={`absolute inset-x-[8%] bottom-[4%] h-[44%] rounded-t-[180px] border ${
+                isDarkMode
+                  ? "border-white/10 bg-white/[0.03]"
+                  : "border-[#ececea] bg-white/65"
+              }`}
+              aria-hidden="true"
+            />
+            <div
+              className={`absolute inset-x-[4%] bottom-[4%] h-[1px] ${
+                isDarkMode ? "bg-white/15" : "bg-[#d8d5d2]"
+              }`}
+              aria-hidden="true"
+            />
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={settingsData.resume}
+              aria-label="Download CV"
+              className="absolute bottom-[9%] left-[2%] z-20 block h-[86px] w-[86px] transition-transform duration-300 hover:scale-105 sm:!h-[112px] sm:!w-[112px] md:!bottom-[16%] md:!left-[1%] md:!h-[130px] md:!w-[130px] [&>svg]:h-full [&>svg]:w-full"
+            >
+              {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
+            </a>
+            <Image
+              src={heroImage}
+              priority
+              fill
+              sizes="(min-width: 1280px) 650px, (min-width: 744px) 520px, 92vw"
+              alt={settingsData.hero_second}
+              className="object-contain object-bottom transition-transform duration-500 hover:scale-[1.025]"
+            />
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -15,7 +15,7 @@ const Work = () => {
       id="Work"
     >
       <div className="text-primary !font-moul text-[24px] sm:!text-[28px] md:!text-[40px] text-center">
-        My Project
+        My Projects
       </div>
 
       <Tab inView={true} data={data} />
