@@ -5,7 +5,7 @@ export const settingsData = {
   linkedin: "https://www.linkedin.com/in/amirtejareh",
   telegram: "https://t.me/amirtejareh",
   phone: "+4915569382977",
-  resume: "/resume.pdf",
+  resume: "/Resume_Amir_Tejareh.pdf",
   hero_first: "Fullstack Developer",
   hero_second: "Amir Tejareh",
   image_dark: "/images/AmirTejareh.png",
@@ -45,7 +45,7 @@ export const servicesData = [
   {
     title: "Web Design and Development",
     subtitle: "Website Responsive",
-    price: "$30",
+    price: "$35",
     content: [
       "Responsive Website Design",
       "Single Page Application (SPA)",
@@ -57,7 +57,7 @@ export const servicesData = [
   {
     title: "App Design and Development",
     subtitle: "App Responsive",
-    price: "$35",
+    price: "$45",
     content: [
       "Responsive Web Apps (PWA)",
       "App Prototyping",
@@ -69,7 +69,7 @@ export const servicesData = [
   {
     title: "WP Theme Implementation",
     subtitle: "Wordpress Responsive",
-    price: "$45",
+    price: "$40",
     content: [
       "Custom Wordpress Design",
       "Theme Instalation",

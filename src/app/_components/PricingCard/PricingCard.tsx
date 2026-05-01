@@ -44,10 +44,15 @@ const PricingCard: React.FC<IPricingCard> = ({
         >
           {subtitle}
         </div>
-        <div
-          className={` text-primary mt-24 md:!mt-16 ml-[3px] text-[24px] sm:!text-[28px] md:!text-[40px] leading-[48px] font-bold`}
-        >
-          {price}
+        <div className="mt-24 md:mt-16 ml-[3px] w-fit rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 px-6 py-4 shadow-sm backdrop-blur">
+          <p className="text-xs sm:text-sm text-primary/60 mb-1">Starting at</p>
+
+          <div className="flex items-baseline gap-2">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight">
+              {price}
+            </span>
+            <span className="text-sm sm:text-base text-primary/70">/hr</span>
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-8 md:!gap-[12px] mt-[24px] md:!mt-[40px]">
