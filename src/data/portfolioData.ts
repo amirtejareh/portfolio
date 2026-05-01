@@ -97,7 +97,7 @@ export const projectsData = [
     title: "Portfolio",
     link: "https://www.amirtejareh.com",
     categoryIds: [1, 2],
-    image: "/images/AmirTejarehLight.png",
+    image: "/images/portfolio_preview.png",
     attachment: "",
   },
 ];
