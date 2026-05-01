@@ -1,42 +1,32 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import { useThemeStore } from "@/stores/darkmode.store";
 
 interface ISkill {
   title: string;
-  logo: string;
+  logo: React.ReactNode;
 }
 
 const SkillCard: React.FC<ISkill> = ({ title, logo }) => {
-  const [dimensions, setDimensions] = useState({ width: 1, height: 1 });
   const { isDarkMode } = useThemeStore();
-  const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
-    const { naturalWidth, naturalHeight } = event.currentTarget;
-    setDimensions({ width: naturalWidth, height: naturalHeight });
-  };
 
   return (
     <div
       className={`${
         isDarkMode
-          ? " border-statCardBorder text-white bg-[linear-gradient(90deg,_rgba(33,33,30,0.1)_0%,_rgba(33,33,30,0.8)_100%)]"
+          ? "border-statCardBorder text-white bg-[linear-gradient(90deg,_rgba(33,33,30,0.1)_0%,_rgba(33,33,30,0.8)_100%)]"
           : "bg-transparent border-[#ececea]"
-      } flex backdrop-blur-[10px] justify-center items-center sm:!w-[210.67px] w-[163.5px] md:!w-[214.4px] gap-[8px] h-[72px] border-solid border-[1px] rounded-[40px] `}
+      } flex backdrop-blur-[10px] justify-center items-center sm:!w-[210.67px] w-[163.5px] md:!w-[214.4px] gap-[8px] h-[72px] border-solid border-[1px] rounded-[40px]`}
     >
-      <div>
-        {logo && (
-          <Image
-            loading="lazy"
-            layout="responsive"
-            src={logo}
-            alt={title}
-            width={dimensions.width}
-            height={dimensions.height}
-            onLoad={handleImageLoad}
-          />
-        )}
+      <div className="flex items-center justify-center w-[32px] h-[32px] flex-shrink-0">
+        {logo}
       </div>
-      <div>{title}</div>
+      <div
+        className={`${
+          isDarkMode ? "text-white" : "text-[#3D3B3B]"
+        } text-[14px] sm:!text-[16px]`}
+      >
+        {title}
+      </div>
     </div>
   );
 };

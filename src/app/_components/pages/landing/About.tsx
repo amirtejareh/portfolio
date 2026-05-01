@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/legacy/image";
 import { motion } from "framer-motion";
 import StatCard from "../../StatCard/StatCard";
 import { useThemeStore } from "@/stores/darkmode.store";
-
-import useGetAbout from "@/hooks/about/useGetAbout";
-import { useInView } from "react-intersection-observer";
+import { aboutData } from "@/data/portfolioData";
 
 const About = () => {
   const containerVariants = {
@@ -17,25 +15,6 @@ const About = () => {
       },
     },
   };
-  const getAbout = useGetAbout();
-  const { ref, inView } = useInView({ triggerOnce: true });
-
-  useEffect(() => {
-    if (inView) {
-      getAbout?.refetch();
-    }
-  }, [inView]);
-
-  const [aboutData, setAbout] = useState<any>();
-
-  useEffect(() => {
-    const formattedAbouts = getAbout?.data?.map((about: any) => ({
-      content: about.content.rendered,
-      card: about?.acf?.card || "",
-      image: about?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
-    }));
-    setAbout(formattedAbouts?.[0]);
-  }, [getAbout?.data]);
 
   const { isDarkMode } = useThemeStore();
 
@@ -50,16 +29,12 @@ const About = () => {
   };
 
   return (
-    <div
-      ref={ref}
-      id="About"
-      className="px-16 sm:!px-64 max-w-[1360px] mx-auto"
-    >
-      <h2 className="mt-[40px] sm:!mt-[64px] md:!mt-[120px]!font-moul text-[24px] sm:!text-[28px]  md:!text-[40px] font-normal leading-[60px] text-primary">
+    <div id="About" className="px-16 sm:!px-64 max-w-[1360px] mx-auto">
+      <h2 className="mt-[40px] sm:!mt-[64px] md:!mt-[120px] !font-moul text-[24px] sm:!text-[28px] md:!text-[40px] font-normal leading-[60px] text-primary">
         About Me
       </h2>
 
-      <div className="flex justify-center  md:!justify-start  gap-[20px] md:!gap-[40px]">
+      <div className="flex justify-center md:!justify-start gap-[20px] md:!gap-[40px]">
         <motion.div
           className="flex flex-col-reverse md:!flex-row justify-center md:!justify-start mt-16 md:!mt-[56px] flex-wrap md:!flex-nowrap gap-[20px] md:!gap-[40px]"
           variants={containerVariants}
@@ -72,17 +47,17 @@ const About = () => {
             className="relative !flex-shrink-0 mt-[32px] overflow-hidden w-[360px] md:!w-[394px] h-[360px] rounded-se-[64px] rounded-[8px] border-solid border-[1px] border-border mb-[50px] sm:!mb-0"
           >
             <Image
-              src={aboutData?.image ?? "/images/about.png"}
-              blurDataURL={aboutData?.image ?? "/images/about.png"}
+              src={aboutData.image}
+              blurDataURL={aboutData.image}
               loading="lazy"
               layout="fill"
               objectFit="cover"
               placeholder="blur"
               objectPosition={"center 25%"}
-              alt={aboutData?.content ?? ""}
+              alt="About Amir Tejareh"
               className={`${
                 isDarkMode ? "grayscale" : "grayscale-0"
-              } rounded-se-[64px] rounded-[8px]  hover:scale-105 transition-transform duration-500 border-solid border-[1px] border-border`}
+              } rounded-se-[64px] rounded-[8px] hover:scale-105 transition-transform duration-500 border-solid border-[1px] border-border`}
             />
           </motion.div>
 
@@ -91,9 +66,10 @@ const About = () => {
               variants={itemVariants}
               className={`${
                 isDarkMode ? "text-text " : "text-[#767575]"
-              }  text-justify mt-[40px] leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
-              dangerouslySetInnerHTML={{ __html: aboutData?.content }}
-            />
+              } text-justify mt-[40px] leading-[32px] text-[14px] sm:!text-[16px] md:!text-[18px] font-normal`}
+            >
+              {aboutData.content}
+            </motion.div>
 
             <motion.div
               variants={containerVariants}
@@ -101,13 +77,12 @@ const About = () => {
               initial="visible"
               viewport={{ once: false, amount: 0.2 }}
             >
-              {aboutData?.card?.map((detail, index) => {
+              {aboutData.card?.map((detail, index) => {
                 return (
                   <motion.div key={index} variants={statVariants}>
                     <StatCard
-                      shiningPosition={detail?.position}
-                      count={detail?.number}
-                      text={detail?.text}
+                      count={detail.value}
+                      text={detail.title}
                     />
                   </motion.div>
                 );

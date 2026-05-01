@@ -97,27 +97,28 @@ const Tab: React.FC<ITab> = ({ data, inView }) => {
                       {post?.website?.title}
                     </p>
                     <div className="flex gap-[2px] items-center text-border">
-                      {post?.attachment?.map((attach, index) => {
-                        return (
-                          <p
-                            key={index}
-                            className={`relative  w-[20px] h-[20px] sm:!w-[40px] sm:!h-[40px] border-[1px] ${
-                              isDarkMode
-                                ? "border-[#434342]"
-                                : "border-[#c9c9c9] bg-[#e5e5e5]"
-                            }  rounded-[50%]`}
-                          >
-                            <Image
-                              src={`${attach?.source_url}`}
-                              loading="lazy"
-                              layout="fill"
-                              objectFit="cover"
-                              className="absolute w-[12px] !mx-auto top-0 px-[1px] py-[1px] sm:!px-0 sm:!py-0 sm:!top-[7px] h-[12px] sm:!w-[24px] sm:!h-[24px]"
-                              alt=""
-                            />
-                          </p>
-                        );
-                      })}
+                      {Array.isArray(post?.attachment) &&
+                        post.attachment.map((attach, index) => {
+                          return (
+                            <p
+                              key={index}
+                              className={`relative  w-[20px] h-[20px] sm:!w-[40px] sm:!h-[40px] border-[1px] ${
+                                isDarkMode
+                                  ? "border-[#434342]"
+                                  : "border-[#c9c9c9] bg-[#e5e5e5]"
+                              }  rounded-[50%]`}
+                            >
+                              <Image
+                                src={`${attach?.source_url}`}
+                                loading="lazy"
+                                layout="fill"
+                                objectFit="cover"
+                                className="absolute w-[12px] !mx-auto top-0 px-[1px] py-[1px] sm:!px-0 sm:!py-0 sm:!top-[7px] h-[12px] sm:!w-[24px] sm:!h-[24px]"
+                                alt=""
+                              />
+                            </p>
+                          );
+                        })}
                     </div>
                   </div>
                   <div
