@@ -63,12 +63,36 @@ const Hero = () => {
             >
               {settingsData.hero_second}
             </div>
-            <div
-              className={`${
-                isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
-              } relative mt-[24px] pl-[16px] border-l-2 border-primary sm:!text-[20px] leading-[32px] max-w-[154px] h-[60px] text-[14px] md:!max-w-[212px] lg:!max-w-[400px]`}
-            >
-              {settingsData.hero_about_me}
+            <div className="relative group">
+              <div
+                className={`${
+                  isDarkMode ? "text-[#B2B2B2]" : "text-[#767575]"
+                } relative mt-[24px] pl-[16px] border-l-2 border-primary sm:!text-[20px] leading-[32px] max-w-[154px] h-[64px] sm:!h-auto sm:!max-w-[400px] text-[14px] md:!max-w-[212px] lg:!max-w-[400px] overflow-hidden line-clamp-2 sm:line-clamp-none cursor-help`}
+              >
+                {settingsData.hero_about_me}
+              </div>
+
+              {/* Tooltip */}
+              <div className="absolute left-0 bottom-full mb-8 hidden group-hover:block z-[9999]">
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  className={`${
+                    isDarkMode
+                      ? "bg-[#333] text-white"
+                      : "bg-white text-[#333] shadow-lg"
+                  } p-12 rounded-8 text-[14px] max-w-[250px] border border-primary/20 backdrop-blur-md`}
+                >
+                  {settingsData.hero_about_me}
+                  <div
+                    className={`absolute left-4 top-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent ${
+                      isDarkMode
+                        ? "border-t-[6px] border-t-[#333]"
+                        : "border-t-[6px] border-t-white"
+                    }`}
+                  ></div>
+                </motion.div>
+              </div>
             </div>
             <div className={`mt-[40px]`}>
               {settingsData.telegram && (
