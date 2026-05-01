@@ -6,7 +6,7 @@
   }
 
   &-icon {
-    @apply bg-primary px-[10px] py-[8px] flex h-[100%] items-center justify-center;
+    @apply bg-primary px-0 py-[8px] flex h-[100%] flex-shrink-0 items-center justify-center overflow-visible;
   }
 
   &-xs {
@@ -25,7 +25,10 @@
   &-lg {
     @apply h-[64px] rounded-[16px] text-[14px] sm:!text-[16px] font-medium leading-[24px] min-w-[123px]  sm:!min-w-[233px] w-auto;
     .btn-icon {
-      @apply w-[40px] sm:!w-[80px];
+      @apply w-[58px] sm:!w-[80px];
+      svg {
+        @apply h-[32px] w-[32px] flex-shrink-0;
+      }
     }
   }
 
