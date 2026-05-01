@@ -57,11 +57,11 @@ const About = () => {
               variants={itemVariants}
               className="max-w-[709px] text-text leading-[32px] text-[18px] font-[400]"
             >
-              I’m a full-stack developer with over 10 years of experience,
+              I&apos;m a full-stack developer with over 10 years of experience,
               specializing in frontend technologies like HTML, CSS, and
               JavaScript, along with frameworks such as React and Angular. I
               have a solid grasp of backend systems for seamless integration and
-              stay updated on industry trends. I'm eager to connect with
+              stay updated on industry trends. I&apos;m eager to connect with
               professionals to explore new opportunities and enhance the digital
               landscape.
             </motion.div>
