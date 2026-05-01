@@ -150,7 +150,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               href={settingsData.resume}
               aria-label="Download CV"
-              className="absolute bottom-[15%] left-[7%] z-20 block h-[74px] w-[74px] transition-transform duration-300 hover:scale-105 xs:!h-[86px] xs:!w-[86px] sm:!bottom-[13%] sm:!left-[5%] sm:!h-[104px] sm:!w-[104px] [@media(min-width:980px)]:!bottom-[14%] [@media(min-width:980px)]:!left-[0] md:!bottom-[16%] md:!left-[1%] md:!h-[130px] md:!w-[130px] [&>svg]:h-full [&>svg]:w-full"
+              className="absolute bottom-[15%] left-[7%] z-20 block h-[74px] w-[74px] transition-transform duration-300 hover:scale-105 xs:!h-[86px] xs:!w-[86px] sm:!bottom-[13%] sm:!left-[5%] sm:!h-[104px] sm:!w-[104px] [@media(min-width:980px)]:!bottom-[14%] [@media(min-width:980px)]:!left-[0] md:!bottom-[16%] md:!left-[1%] md:!h-[130px] md:!w-[130px] "
             >
               {isDarkMode ? <SvgCv /> : <SvgCvBlack />}
             </a>
