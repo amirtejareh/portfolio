@@ -19,6 +19,7 @@ export const tailwindColors: ColorObject = {
   text: "rgba(224, 224, 224, 1)",
   statCardBorder: "rgba(67, 67, 66, 1)",
   statCardTextColor: "rgba(203, 203, 203, 1)",
+  heroFilter: "rgba(239, 142, 53, 0.4)",
   "secondary-1": "rgba(243, 183, 0, 1)",
   "secondary-2": "rgba(72, 50, 14, 1) ",
   "gray-100": "rgba(248, 250, 251, 1)",
@@ -34,14 +35,15 @@ const config: Config = {
   content: ["./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
-      lg: "1440px",
+      lg: "1360px",
       md: "1280px",
       sm: "744px",
-      xs: "360px",
+      xs: "500px",
     },
     extend: {
       boxShadow: {
         custom: "0 4px 10px 0 rgba(0,0,0,0.1)",
+        logo: " 1px 8px 13px 0px rgba(239, 142, 53, 0.5)",
       },
       fontFamily: {
         lobster: ["var(--font-lobster-two)", "cursive"],
@@ -52,6 +54,123 @@ const config: Config = {
       backgroundImage: {
         "custom-gradient":
           "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)",
+      },
+      keyframes: {
+        moveAround: {
+          "0%": {
+            top: "-2px",
+            left: "-4px",
+            transform: "translate(0, 0)",
+          },
+          "25%": {
+            top: "-2px",
+            left: "188px",
+            transform: "translate(-100%, 0)",
+          },
+          "50%": {
+            top: "98px",
+            left: "188px",
+            transform: "translate(-100%, -100%)",
+          },
+          "75%": {
+            top: "98px",
+            left: "-2px",
+            transform: "translate(0, -100%)",
+          },
+          "100%": {
+            top: "-2px",
+            left: "-2px",
+            transform: "translate(0, 0)",
+          },
+        },
+        moveAroundMobile: {
+          "0%": {
+            top: "-2px",
+            left: "-4px",
+            transform: "translate(0, 0)",
+          },
+          "25%": {
+            top: "-2px",
+            left: "164px",
+            transform: "translate(-100%, 0)",
+          },
+          "50%": {
+            top: "98px",
+            left: "164px",
+            transform: "translate(-100%, -100%)",
+          },
+          "75%": {
+            top: "98px",
+            left: "-2px",
+            transform: "translate(0, -100%)",
+          },
+          "100%": {
+            top: "-2px",
+            left: "-2px",
+            transform: "translate(0, 0)",
+          },
+        },
+        moveAroundRightReverse: {
+          "0%": {
+            top: "-2px",
+            left: "-2px",
+            transform: "translate(0, 0)",
+          },
+          "25%": {
+            top: "98px",
+            left: "-2px",
+            transform: "translate(0, -100%)",
+          },
+          "50%": {
+            top: "98px",
+            left: "188px",
+            transform: "translate(-100%, -100%)",
+          },
+          "75%": {
+            top: "-2px",
+            left: "188px",
+            transform: "translate(-100%, 0)",
+          },
+          "100%": {
+            top: "-2px",
+            left: " -4px",
+            transform: "translate(0, 0)",
+          },
+        },
+        moveAroundRightReverseMobile: {
+          "0%": {
+            top: "-2px",
+            left: "-2px",
+            transform: "translate(0, 0)",
+          },
+          "25%": {
+            top: "98px",
+            left: "-2px",
+            transform: "translate(0, -100%)",
+          },
+          "50%": {
+            top: "98px",
+            left: "164px",
+            transform: "translate(-100%, -100%)",
+          },
+          "75%": {
+            top: "-2px",
+            left: "164px",
+            transform: "translate(-100%, 0)",
+          },
+          "100%": {
+            top: "-2px",
+            left: " -4px",
+            transform: "translate(0, 0)",
+          },
+        },
+      },
+      animation: {
+        moveAround: "moveAround 2s linear infinite",
+        moveAroundMobile: "moveAroundMobile 2s linear infinite",
+        moveAroundRightReverse: "moveAroundRightReverse 2s linear infinite",
+        moveAroundRightReverseMobile:
+          "moveAroundRightReverseMobile 2s linear infinite",
       },
       colors: tailwindColors,
       spacing: {
@@ -75,6 +194,8 @@ const config: Config = {
     },
   },
   plugins: [
+    require("tailwind-scrollbar-hide"),
+
     plugin(function ({ addUtilities }: any) {
       addUtilities({
         ".scrollbar-none": {

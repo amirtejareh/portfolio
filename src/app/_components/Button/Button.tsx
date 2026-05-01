@@ -4,6 +4,7 @@ import { Size } from "../types/size.type";
 import { ButtonProps, ButtonShape } from "./Button.type";
 import dynamic from "next/dynamic";
 import { useLocale } from "next-intl";
+import { useThemeStore } from "@/stores/darkmode.store";
 const MobileIcon = dynamic(() => import("@/app/_components/icons/Mobile"), {
   ssr: true,
 });
@@ -28,13 +29,14 @@ const Button: React.FC<ButtonProps> = ({
   icon = <MobileIcon />,
   borderColor = "light",
   shape = "default",
+  btnIconColor,
+  btnBorder,
   type = "button",
   children,
   className,
   ...rest
 }) => {
-  const locale = useLocale();
-  const classes = classNames("btn", classNames, {
+  const classes = classNames("btn " + btnBorder, classNames, {
     [`btn-${variant}`]: variant,
     [`${sizeClasses[dimensions]}`]: dimensions,
     [`${shapeClasses[shape]}`]: shape,
@@ -44,11 +46,11 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       disabled={isDisabled}
-      className={`${className} ${classes}`}
+      className={`${className} ${classes} `}
       {...rest}
     >
       <div className="btn-text-wrapper">{children}</div>
-      <div className="btn-icon">{icon}</div>
+      <div className={`btn-icon  ${btnIconColor}`}>{icon}</div>
     </button>
   );
 };

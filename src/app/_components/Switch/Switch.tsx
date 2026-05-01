@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { Size } from "../types/size.type";
 import { SwitchProps } from "./Switch.type";
+import SvgMoon from "../icons/Moon";
+import SvgSun from "../icons/Sun";
+import { useThemeStore } from "@/stores/darkmode.store";
 
 const sizeClasses: Record<Size, string> = {
   tiny: "switch-xs",
@@ -17,9 +20,9 @@ const Switch: React.FC<SwitchProps> = ({
   dimensions = "medium",
   color = "default",
   className,
-  ...rest
+  isDarkMode,
 }) => {
-  const [isChecked, setIsChecked] = useState<boolean>(true);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   const classes = classNames("switch", className, {
     [`switch-${color}`]: color,
     [`${sizeClasses[dimensions]}`]: dimensions,
@@ -28,8 +31,16 @@ const Switch: React.FC<SwitchProps> = ({
     "switch-disabled": isDisabled,
   });
 
+  useEffect(() => {
+    setIsChecked(isDarkMode);
+  }, [isDarkMode]);
+
   return (
-    <label className={classes}>
+    <label
+      className={`${classes} ${
+        isDarkMode ? "border-[#6E7070]" : "border-[#d9d9d9]"
+      }`}
+    >
       <input
         type="checkbox"
         checked={isChecked}
@@ -41,8 +52,21 @@ const Switch: React.FC<SwitchProps> = ({
           }
         }}
         className="switch-input"
-        {...rest}
       />
+      <span
+        className={`absolute left-[8px] z-[9999] ${
+          isChecked ? "text-white" : "text-[#545957]"
+        }`}
+      >
+        <SvgMoon />
+      </span>
+      <span
+        className={`absolute right-[8px] z-[9999] ${
+          !isChecked ? "text-white" : "text-[#545957]"
+        }`}
+      >
+        <SvgSun />
+      </span>
       <span className="switch-slider" />
     </label>
   );

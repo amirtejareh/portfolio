@@ -10,16 +10,22 @@
   }
 
   &-xs {
-    @apply h-[40px] text-[16px] font-[500] leading-[24px];
+    @apply h-[40px] text-[16px] font-medium leading-[24px];
   }
 
   &-sm {
-    @apply h-[64px] text-[16px] font-[500] leading-[24px] w-[233px];
+    @apply pl-[24px] py-[16px] h-[56px] text-[16px] font-medium leading-[24px]  bg-primary;
+    .btn-icon {
+      @apply mr-[24px] pl-0 pr-0;
+    }
+    .btn-text-wrapper {
+      @apply px-0 py-0;
+    }
   }
   &-lg {
-    @apply h-[64px] rounded-[16px] text-[16px] font-[500] leading-[24px] w-[233px];
+    @apply h-[64px] rounded-[16px] text-[14px] sm:!text-[16px] font-medium leading-[24px] min-w-[123px]  sm:!min-w-[233px] w-auto;
     .btn-icon {
-      @apply w-[80px];
+      @apply w-[40pxz] sm:!w-[80px];
     }
   }
 

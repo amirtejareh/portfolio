@@ -1,3 +1,7 @@
 .hero li {
   @apply hover:text-primary;
 }
+
+html {
+  scroll-behavior: smooth;
+}

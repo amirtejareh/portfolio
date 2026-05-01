@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Rubik, Lobster_Two, Moul } from "next/font/google";
 import MessagesProvider from "./[locale]/MessageProvider";
 import { useLocale } from "next-intl";
+import ThemeProvider from "./_components/ThemeProvider/ThemeProvider";
 
 const rubik = Rubik({
   display: "swap",
@@ -90,10 +91,10 @@ export default function RootLayout({
       suppressHydrationWarning={true}
       lang={locale}
       dir={locale === "fa" ? "rtl" : "ltr"}
-      className={`${peyda.variable} ${rubik.variable}  ${lobsterTwo.variable} ${moul.variable}`}
+      className={`${peyda.variable} ${rubik.variable} ${lobsterTwo.variable} ${moul.variable}`}
     >
       <MessagesProvider locale={locale}>
-        <body>{children}</body>
+        <ThemeProvider>{children}</ThemeProvider>
       </MessagesProvider>
     </html>
   );
