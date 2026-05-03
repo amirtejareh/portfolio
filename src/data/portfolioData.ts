@@ -88,7 +88,7 @@ export const projectCategories = [
 export const projectsData = [
   {
     title: "Celpip Practice Test",
-    link: "https://cellpippracticetest.com",
+    link: "https://celpippracticetest.com",
     categoryIds: [1, 2],
     image: "/images/celpippracticetest.png",
     attachment: "",
