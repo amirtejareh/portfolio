@@ -1,4 +1,6 @@
+// @ts-ignore: Allow side-effect CSS import without type declarations
 import "./globals.css";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Rubik, Lobster_Two, Moul } from "next/font/google";
 import MessagesProvider from "./[locale]/MessageProvider";
@@ -80,6 +82,13 @@ const peyda = localFont({
   variable: "--font-peyda",
 });
 
+export const metadata: Metadata = {
+  metadataBase: new URL("https://amirtejareh.com"),
+  alternates: {
+    canonical: "/",
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -93,9 +102,11 @@ export default function RootLayout({
       dir={locale === "fa" ? "rtl" : "ltr"}
       className={`${peyda.variable} ${rubik.variable} ${lobsterTwo.variable} ${moul.variable}`}
     >
-      <MessagesProvider locale={locale}>
-        <ThemeProvider>{children}</ThemeProvider>
-      </MessagesProvider>
+      <body>
+        <MessagesProvider locale={locale}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </MessagesProvider>
+      </body>
     </html>
   );
 }
