@@ -2,16 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useThemeStore } from "@/stores/darkmode.store";
 
+type ProjectPost = {
+  website: { title: string; link: string };
+  attachment?: { source_url: string }[] | string;
+  image: string;
+  techSkills?: string[];
+};
+
 interface ITab {
   inView: any;
   data: {
     title: string;
-    data: { website: { title: string; link: string } }[];
+    data: ProjectPost[];
   }[];
 }
 
 const Tab: React.FC<ITab> = ({ data, inView }) => {
-  const projectRef = useRef(null);
+  const projectRef = useRef<HTMLDivElement | null>(null);
   const { isDarkMode } = useThemeStore();
 
   useEffect(() => {
@@ -22,7 +29,7 @@ const Tab: React.FC<ITab> = ({ data, inView }) => {
 
   const [active, setActive] = useState(0);
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<ProjectPost[]>([]);
 
   const printPosts = (index: number) => {
     setPosts(data[index]?.data);
@@ -78,6 +85,33 @@ const Tab: React.FC<ITab> = ({ data, inView }) => {
                   className="absolute rounded-[8px] "
                   alt={post?.website?.title}
                 />
+
+                {post?.techSkills && post.techSkills.length > 0 && (
+                  <div
+                    className="absolute left-12 right-12 top-12 z-[90] flex max-h-[82px] flex-wrap items-start gap-[6px] overflow-hidden sm:!left-[20px] sm:!right-[20px] sm:!top-[20px] sm:!max-h-[104px]"
+                    aria-label={`${post?.website?.title} tech stack`}
+                  >
+                    {post.techSkills.map((skill) => (
+                      <span
+                        key={`${post?.website?.title}-${skill}`}
+                        className={`group inline-flex h-[26px] cursor-pointer items-center gap-[6px] rounded-[999px] border px-[9px] text-[10px] font-medium leading-none shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-[18px] transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-[#161514] hover:shadow-[0_0_0_1px_rgba(239,142,53,0.25),0_10px_24px_rgba(239,142,53,0.24)] sm:!h-[30px] sm:!gap-[7px] sm:!px-[11px] sm:!text-[12px] ${
+                          isDarkMode
+                            ? "border-white/10 bg-[#161514]/70 text-[#fff7ef]"
+                            : "border-white/70 bg-white/80 text-[#33312F]"
+                        }`}
+                      >
+                        <span
+                          className={`h-[5px] w-[5px] flex-shrink-0 rounded-[50%] bg-primary transition-all duration-300 group-hover:bg-[#161514] ${
+                            isDarkMode
+                              ? "shadow-[0_0_10px_rgba(239,142,53,0.95)]"
+                              : "shadow-[0_0_8px_rgba(239,142,53,0.65)]"
+                          }`}
+                        />
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 <div
                   className={`rounded-es-[8px] z-[99] rounded-br-[8px] ${
