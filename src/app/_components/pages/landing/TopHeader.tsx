@@ -175,7 +175,7 @@ const TopHeader = () => {
       <div
         ref={divRef}
         className={`max-w-[1360px] mx-auto ${
-          isDarkMode ? "" : "bg-[#f9f9f9]"
+          isDarkMode ? "" : ""
         } relative z-10 flex items-center justify-between`}
       >
         <motion.span
