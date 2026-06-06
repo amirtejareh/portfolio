@@ -5,6 +5,7 @@ const SvgArrowRight = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width={32}
     height={32}
+    viewBox="0 0 32 32"
     fill="none"
     {...props}
   >
@@ -12,9 +13,15 @@ const SvgArrowRight = (props: SVGProps<SVGSVGElement>) => (
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeMiterlimit={10}
       strokeWidth={1.5}
-      d="M19.24 7.906 27.334 16l-8.094 8.093M4.667 16h22.44"
+      d="M5.333 16h21.334"
+    />
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="m18.667 8 8 8-8 8"
     />
   </svg>
 );
