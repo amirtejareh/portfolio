@@ -82,29 +82,10 @@ const Hero = () => {
             <p
               className={`${
                 isDarkMode ? "text-[#B2B2B2]" : "text-[#6F6D6D]"
-              } border-l-2 border-primary pl-[16px] text-[14px] sm:!text-[18px] md:!text-[20px] leading-[26px] sm:!leading-[32px] md:!leading-[36px] max-w-[560px] [@media(min-width:980px)]:max-w-[440px] md:!max-w-[560px] cursor-help transition-colors duration-300 hover:text-primary/85`}
+              } border-l-2 border-primary pl-[16px] text-[14px] sm:!text-[18px] md:!text-[20px] leading-[26px] sm:!leading-[32px] md:!leading-[36px] max-w-[560px] [@media(min-width:980px)]:max-w-[440px] md:!max-w-[560px] cursor-default transition-colors duration-300 hover:text-primary/85`}
             >
               {settingsData.hero_about_me}
             </p>
-
-            <div className="absolute left-0 bottom-full z-[60] mb-12 hidden pointer-events-none group-hover:block">
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                className={`${
-                  isDarkMode
-                    ? "bg-black/70 text-white border-white/10"
-                    : "bg-white/90 text-[#333] border-black/5 shadow-xl"
-                } max-w-[300px] rounded-[12px] border p-16 text-[14px] backdrop-blur-xl`}
-              >
-                <p className="leading-relaxed">{settingsData.hero_about_me}</p>
-                <div
-                  className={`absolute left-6 top-full h-0 w-0 border-l-[8px] border-r-[8px] border-t-[8px] border-l-transparent border-r-transparent ${
-                    isDarkMode ? "border-t-black/70" : "border-t-white/90"
-                  }`}
-                />
-              </motion.div>
-            </div>
           </div>
 
           <div className="mt-[28px] sm:!mt-[36px] flex flex-wrap items-center gap-[12px] sm:!gap-[16px]">
