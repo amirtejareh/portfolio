@@ -94,6 +94,13 @@ export const projectsData = [
     attachment: "",
   },
   {
+    title: "Holding Daric Data Processing",
+    link: "https://holding.daricdev.ir/en",
+    categoryIds: [1, 2],
+    image: "/images/holdingdaricdev.png",
+    attachment: "",
+  },
+  {
     title: "Portfolio",
     link: "https://www.amirtejareh.com",
     categoryIds: [1, 2],
