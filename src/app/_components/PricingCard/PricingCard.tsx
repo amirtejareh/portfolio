@@ -55,7 +55,7 @@ const PricingCard: React.FC<IPricingCard> = ({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-8 md:!gap-[12px] mt-[24px] md:!mt-[40px]">
+      <div className="flex flex-col gap-8 md:!gap-[12px] mt-[16px] md:!mt-[40px]">
         {services?.map((service: any, index) => (
           <div key={index} className="flex gap-8 items-center leading-[20px]">
             <div className="w-[24px] h-[24px] flex-shrink-0">
