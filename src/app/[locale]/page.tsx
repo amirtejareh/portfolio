@@ -1,6 +1,7 @@
 "use client";
 import { useThemeStore } from "@/stores/darkmode.store";
 import dynamic from "next/dynamic";
+import Hero from "@/app/_components/pages/landing/Hero";
 
 const TopHeader = dynamic(
   () => import("@/app/_components/pages/landing/TopHeader"),
@@ -8,10 +9,6 @@ const TopHeader = dynamic(
     ssr: true,
   }
 );
-
-const Hero = dynamic(() => import("@/app/_components/pages/landing/Hero"), {
-  ssr: true,
-});
 
 const About = dynamic(() => import("@/app/_components/pages/landing/About"), {
   ssr: true,

@@ -93,12 +93,14 @@ const TopHeader = () => {
   }, []);
 
   return (
-    <div className="z-[999999] relative">
+    <div className="absolute left-0 right-0 top-0 z-[999999]">
       <div
-        style={{ maxWidth: `${1079 + Number(margin.replace("px", ""))}px` }}
+        style={{
+          maxWidth: "calc(1079px + max((100vw - 1360px) / 2, 0px))",
+        }}
         className={`${
           margin === "0px" ? "hidden" : "visible"
-        } absolute top-0 right-0 bottom-0 w-full h-full z-[-1] rounded-es-[40px] ${
+        } absolute top-0 right-0 bottom-0 w-full h-full z-0 rounded-es-[40px] ${
           isDarkMode
             ? "bg-[rgba(255,255,255,0.1)] backdrop-blur-[1px]"
             : "bg-white"
@@ -174,7 +176,7 @@ const TopHeader = () => {
         ref={divRef}
         className={`max-w-[1360px] mx-auto ${
           isDarkMode ? "" : "bg-[#f9f9f9]"
-        } flex items-center justify-between`}
+        } relative z-10 flex items-center justify-between`}
       >
         <motion.span
           initial={{ opacity: 0, y: -50 }}

@@ -1,26 +1,31 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import Button from "../../Button/Button";
 import SvgCv from "../../icons/Cv";
 import SvgCvBlack from "../../icons/CvBlack";
 import { useThemeStore } from "@/stores/darkmode.store";
 import { settingsData } from "@/data/portfolioData";
-
-const ArrowRightIcon = dynamic(
-  () => import("@/app/_components/icons/ArrowRight"),
-  { ssr: true },
-);
+import ArrowRightIcon from "@/app/_components/icons/ArrowRight";
 
 const Hero = () => {
   const { isDarkMode } = useThemeStore();
   const heroImage = isDarkMode
     ? settingsData.image_dark
     : settingsData.image_light;
+  const [isHeroImageReady, setIsHeroImageReady] = useState(false);
+  const previousHeroImage = useRef(heroImage);
+
+  useEffect(() => {
+    if (previousHeroImage.current !== heroImage) {
+      previousHeroImage.current = heroImage;
+      setIsHeroImageReady(false);
+    }
+  }, [heroImage]);
 
   return (
     <section
-      className={`hero relative isolate overflow-hidden ${
+      className={`hero relative isolate min-h-[calc(100svh-88px)] overflow-hidden ${
         isDarkMode ? "bg-background" : "bg-[#f9f9f9]"
       }`}
     >
@@ -137,13 +142,34 @@ const Hero = () => {
               isDarkMode ? "text-white" : "text-[#232222]"
             }`}
           >
+            <div
+              className={`absolute inset-x-[10%] bottom-0 top-[8%] rounded-t-[160px] border transition-opacity duration-700 ${
+                isHeroImageReady ? "opacity-0" : "opacity-100"
+              } ${
+                isDarkMode
+                  ? "border-white/10 bg-[linear-gradient(145deg,rgba(239,142,53,0.18),rgba(255,255,255,0.07)_38%,rgba(22,21,20,0)_72%)] shadow-[0_28px_90px_rgba(239,142,53,0.18)]"
+                  : "border-white/80 bg-[linear-gradient(145deg,rgba(239,142,53,0.2),rgba(255,255,255,0.82)_45%,rgba(239,142,53,0.08)_100%)] shadow-[0_28px_90px_rgba(239,142,53,0.16)]"
+              }`}
+              aria-hidden="true"
+            >
+              <div
+                className={`absolute inset-[1px] rounded-t-[160px] ${
+                  isDarkMode
+                    ? "bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_45%,transparent_75%)]"
+                    : "bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.95)_45%,transparent_75%)]"
+                } animate-pulse`}
+              />
+            </div>
             <Image
               src={heroImage}
               priority
               fill
               sizes="(min-width: 1280px) 650px, (min-width: 744px) 520px, 92vw"
               alt={settingsData.hero_second}
-              className="object-contain object-bottom transition-transform duration-500 hover:scale-[1.025]"
+              onLoad={() => setIsHeroImageReady(true)}
+              className={`object-contain object-bottom transition-[opacity,transform] duration-700 hover:scale-[1.025] ${
+                isHeroImageReady ? "opacity-100" : "opacity-0"
+              }`}
             />
             <a
               target="_blank"

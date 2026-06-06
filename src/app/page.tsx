@@ -1,6 +1,7 @@
-import Button from "./_components/Button/Button";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
+
 export default function HomePage() {
-  return <></>;
+  redirect("/en");
 }
