@@ -92,6 +92,7 @@ export const projectsData = [
     categoryIds: [1, 2],
     image: "/images/celpippracticetest.png",
     attachment: "",
+    techSkills: ["Next.js", "Tailwind CSS", "MongoDB", "Stripe", "Clerk", "SEO"],
   },
   {
     title: "Holding Daric Data Processing",
@@ -99,6 +100,7 @@ export const projectsData = [
     categoryIds: [1, 2],
     image: "/images/holdingdaricdev.png",
     attachment: "",
+    techSkills: ["Next.js", "Nest.js", "MongoDB", "SEO", "Jest"],
   },
   {
     title: "Portfolio",
@@ -106,6 +108,7 @@ export const projectsData = [
     categoryIds: [1, 2],
     image: "/images/portfolio_preview.png",
     attachment: "",
+    techSkills: ["Next.js", "Tailwind CSS", "SEO"],
   },
 ];
 
@@ -121,6 +124,7 @@ export const getFormattedWorkData = () => {
         },
         attachment: project.attachment,
         image: project.image,
+        techSkills: project.techSkills,
       }));
 
     return {
